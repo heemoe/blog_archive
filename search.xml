@@ -3378,4 +3378,18 @@ return 0;
     
   
   
+    
+    <entry>
+      <title></title>
+      <url>/about/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Search]]></title>
+      <url>/Search/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+  
 </search>
