@@ -1,0 +1,3381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+    
+    <entry>
+      <title><![CDATA[remove past/copy action of UITextView]]></title>
+      <url>/2017/07/14/remove-pastcopy-action-of-uitextview/</url>
+      <content type="html"><![CDATA[<pre><code>override this function in UITextView subclass.
+</code></pre><p>`override func canPerformAction(<em> action: Selector, withSender sender: Any?) -&gt; Bool {<br>        switch action {<br>        case #selector(UIResponderStandardEditActions.paste(</em>:)),</p>
+<pre><code>         #selector(UIResponderStandardEditActions.select(_:)),
+         #selector(UIResponderStandardEditActions.selectAll(_:)),
+         #selector(UIResponderStandardEditActions.copy(_:)),
+         #selector(UIResponderStandardEditActions.cut(_:)),
+         #selector(UIResponderStandardEditActions.delete(_:)) :
+        return false
+    default:
+        return true
+    }
+    return false
+}`
+</code></pre>]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+            <tag> Swift </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[certbot error 'pyOpenSSL' module missing required functionality. Try upgrading to v0.14 or newer.]]></title>
+      <url>/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/</url>
+      <content type="html"><![CDATA[<p><code>Traceback (most recent call last):
+  File &quot;/usr/bin/certbot&quot;, line 9, in &lt;module&gt;
+    load_entry_point(&#39;certbot==0.12.0&#39;, &#39;console_scripts&#39;, &#39;certbot&#39;)()
+  File &quot;/usr/lib/python2.7/site-packages/pkg_resources/__init__.py&quot;, line 560, in load_entry_point
+    return get_distribution(dist).load_entry_point(group, name)
+  File &quot;/usr/lib/python2.7/site-packages/pkg_resources/__init__.py&quot;, line 2648, in load_entry_point
+    return ep.load()
+  File &quot;/usr/lib/python2.7/site-packages/pkg_resources/__init__.py&quot;, line 2302, in load
+    return self.resolve()
+  File &quot;/usr/lib/python2.7/site-packages/pkg_resources/__init__.py&quot;, line 2308, in resolve
+    module = __import__(self.module_name, fromlist=[&#39;__name__&#39;], level=0)
+  File &quot;/usr/lib/python2.7/site-packages/certbot/main.py&quot;, line 21, in &lt;module&gt;
+    from certbot import client
+  File &quot;/usr/lib/python2.7/site-packages/certbot/client.py&quot;, line 10, in &lt;module&gt;
+    from acme import client as acme_client
+  File &quot;/usr/lib/python2.7/site-packages/acme/client.py&quot;, line 31, in &lt;module&gt;
+    requests.packages.urllib3.contrib.pyopenssl.inject_into_urllib3()
+  File &quot;/usr/lib/python2.7/site-packages/requests/packages/urllib3/contrib/pyopenssl.py&quot;, line 112, in inject_into_urllib3
+    _validate_dependencies_met()
+  File &quot;/usr/lib/python2.7/site-packages/requests/packages/urllib3/contrib/pyopenssl.py&quot;, line 147, in _validate_dependencies_met
+    raise ImportError(&quot;&#39;pyOpenSSL&#39; module missing required functionality. &quot;
+ImportError: &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer.</code></p>
+<p><strong>solution</strong>:<br><code>wget ftp://mirror.switch.ch/pool/4/mirror/centos/7.3.1611/cloud/x86_64/openstack-liberty/common/pyOpenSSL-0.15.1-1.el7.noarch.rpm</code><br><code>rpm -Uvh pyOpenSSL-0.15.1-1.el7.noarch.rpm</code></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[store Logs in iOS for QA]]></title>
+      <url>/2017/03/06/store-logs-in-ios-for-qa/</url>
+      <content type="html"><![CDATA[<p>1.re-define NSLog.<br>2.open iTunes file sharing.<br>3.save logs to iTunes file sharing fold.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[shell find path that contains whitespace]]></title>
+      <url>/2017/03/04/shell-find-path-that-contains-whitespace/</url>
+      <content type="html"><![CDATA[<p><code>find . -type f -name &#39;*.*&#39; -print0 | while IFS= read -r -d &#39;&#39; file; do
+    printf &#39;%s\n&#39; &quot;$file&quot;
+done</code></p>
+<p>Btw,I hate some language likes shell. Python is another good way for devOps.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> shell </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[swift unittest access app code with frameworks in cocoapods]]></title>
+      <url>/2017/02/15/swift-unittest-access-app-code-with-frameworks-in-cocoapods/</url>
+      <content type="html"><![CDATA[<p>access app code<br><code>@testable import PROJECTNAME</code></p>
+<p>access frameworks in cocoapods<br>“pod install FRAMEWORK” in your test target in Podfile</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[leetcode1  twosum]]></title>
+      <url>/2017/02/07/leetcode1-twosum/</url>
+      <content type="html"><![CDATA[<p><code>class Solution(object):
+    def twoSum(nums, target):
+        hash = {}
+        for i in range(len(nums)): #遍历数组中的下标
+            if target - nums[i] in hash: #i = 3的时候取出下标3的值4，7-4=3在hash的key中
+                return [hash[target - nums[i]], i] #则i是一个加数，在hash中的key为3的是另一个加数
+            hash[nums[i]] = i #设置数组中对应下标的值为key，下标为value
+            print hash
+        return [-1,-1]
+    print twoSum([1,2,3,4,5],7)</code></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[set up proxy in mac terminal]]></title>
+      <url>/2017/01/06/set-up-proxy-in-mac-terminal/</url>
+      <content type="html"><![CDATA[<p>just one line of command type in terminal<br><code>export http_proxy=&quot;username:password@ip address:port number&quot;</code></p>
+<p>example:<br><code>export http_proxy=&quot;http://127.0.0.1:1088&quot;</code><br><code>export https_proxy=&quot;https://127.0.0.1:1088&quot;</code></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> Mac </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[2017]]></title>
+      <url>/2016/12/31/2017-2/</url>
+      <content type="html"><![CDATA[<p>10000<br>100000</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> balabalabala </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[a shell script for automation test.]]></title>
+      <url>/2016/11/10/a-shell-script-for-automation-test/</url>
+      <content type="html"><![CDATA[<pre><code>#!/bin/sh
+#@author hee
+LogParse(){
+  echo &apos;Log Parse Begin&apos;
+  now=$(date +%Y-%m-%d-%T)
+  path=TestLogs
+  fullLogPath=$path/$now.log
+  errorLogPath=$path/error_$now.log
+  echo $(pwd)/$fullLogPath
+  echo $(pwd)/$errorLogPath
+  if [ ! -d $path ]; then
+  mkdir $path
+  fi
+  xcodebuild test -project mobile.xcodeproj -scheme mobile -destination &quot;$1&quot; &amp;gt; $fullLogPath
+  # headLineNum=$(awk &apos;/========== Detailed Exception ==========/{ print NR;}&apos; $fullLogPath) #find a head
+  # endLineNum=$(awk &apos;/ failed \(/{ print NR;}&apos; $fullLogPath) #find end line
+  headLineNum=$(awk &apos;/Exception: AssertionFailedException/{ print NR;}&apos; $fullLogPath) #find a head
+  endLineNum=$(awk &apos;/Application window hierarchy \(/{ print NR;}&apos; $fullLogPath) #find end line
+  hNums=(${headLineNum//\ / })
+  eNums=(${endLineNum//\ / })
+  echo $hNums
+  if [ ${#hNums} = ${#eNums} ]; then #heads equal ends
+    echo ${#hNums}
+    count=${#eNums[@]}
+    for ((i=0;i&amp;lt;count;i++))
+      do
+        for ((n=${hNums[$i]};n&amp;lt;=${eNums[$i]};n++))
+          do
+            sed &quot;${n}q;d&quot; $fullLogPath &amp;gt;&amp;gt; $errorLogPath # write error content
+          done
+      done
+  elif [ ${#hNums}=0 -a ${#eNums}=0 ] ;then #heads and ends are equal 0
+      echo &apos;error&apos;
+  else 
+    echo &apos;read line numbers error&apos;
+  fi
+  tail -n 2 $fullLogPath &amp;gt;&amp;gt; $errorLogPath  # write 2 line of end error
+}
+
+if [ &quot;$1&quot; = &quot;&quot; ]; then
+devices=(&quot;platform=iOS Simulator,OS=9.3,name=iPhone 5&quot;
+&quot;platform=iOS Simulator,OS=9.3,name=iPhone 5s&quot;
+&quot;platform=iOS Simulator,OS=9.3,name=iPhone 6s&quot;
+&quot;platform=iOS Simulator,OS=9.3,name=iPhone 6s Plus&quot;)
+for i in &quot;${devices[@]}&quot;
+do
+  echo $i
+  LogParse &quot;$i&quot;
+done 
+exit
+fi
+
+if [ ! -e $1 ]; then
+echo &apos;run test with xlsx&apos;
+echo &apos;  earlgreyTool.sh [XLSXFILE]    eg. earlgreyTool.sh ~/example.xlsx &apos; 
+echo &apos;run test&apos;
+echo &apos;  earlgreyTool.sh run &apos;
+exit;
+fi
+
+# process sheet 1
+echo ##############process sheet 1################
+xlsx2csv $1 data.csv -s 1
+if [ ! $? -eq 0 ]; then
+    echo &apos;You have not install xlsx2csv !&apos;
+    echo &apos;Please execute sudo easy_install xlsx2csv or pip install xlsx2csv.&apos;
+    exit
+fi
+sql=&apos;csv2sql.sql&apos;
+if [ -e $sql ]; then
+rm -rf $sql
+echo &apos;removed exists .sql file&apos;
+fi 
+touch $sql
+echo &apos;DROP TABLE DATA;&apos; &amp;gt;&amp;gt; $sql
+echo &apos;CREATE TABLE  data(caseId,dataId,inputData,expectation,mark);&apos; &amp;gt;&amp;gt; $sql
+echo &apos;.mode csv&apos; &amp;gt;&amp;gt; $sql
+echo &apos;.import data.csv data&apos; &amp;gt;&amp;gt; $sql
+echo &quot;DELETE FROM data WHERE caseId=&apos;caseId&apos;;&quot; &amp;gt;&amp;gt; $sql
+echo &apos;.header on&apos; &amp;gt;&amp;gt; $sql
+echo &apos;.mode column&apos; &amp;gt;&amp;gt; $sql
+echo &apos;SELECT * FROM data;&apos; &amp;gt;&amp;gt; $sql
+sqlite3 data.sqlite &amp;lt; $sql
+rm $sql
+rm data.csv
+
+echo ##############process sheet 2################
+xlsx2csv $1 data.csv -s 2
+sql=&apos;csv2sql.sql&apos;
+touch $sql
+echo &apos;DROP TABLE COM;&apos; &amp;gt;&amp;gt; $sql
+echo &apos;CREATE TABLE com(key,value);&apos; &amp;gt;&amp;gt; $sql
+echo &apos;.mode csv&apos; &amp;gt;&amp;gt; $sql
+echo &apos;.import data.csv com&apos; &amp;gt;&amp;gt; $sql
+echo &quot;DELETE FROM com WHERE key=&apos;key&apos;;&quot; &amp;gt;&amp;gt; $sql
+echo &apos;.header on&apos; &amp;gt;&amp;gt; $sql
+echo &apos;.mode column&apos; &amp;gt;&amp;gt; $sql
+echo &apos;SELECT * FROM com;&apos; &amp;gt;&amp;gt; $sql
+sqlite3 data.sqlite &amp;lt; $sql
+rm $sql
+rm data.csv
+</code></pre>]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> shell </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Snippets for reactjs]]></title>
+      <url>/2016/09/25/snippets-for-reactjs/</url>
+      <content type="html"><![CDATA[<p>Snippets</p>
+<p>Below is a list of all available snippets and the triggers of each one. The ⇥ means the TAB key.</p>
+<p>Trigger Content<br>rcc→    class component skeleton<br>rccp→   class component skeleton with prop types after the class<br>rcjc→   class component skeleton without import and default export lines<br>rcfc→   class component skeleton that contains all the lifecycle methods<br>rsc→    stateless component skeleton<br>rscp→   stateless component with prop types skeleton<br>rpt→    empty propTypes declaration<br>con→    class default constructor with props<br>conc→   class default constructor with props and context<br>est→    empty state object<br>cwm→    componentWillMount method<br>cdm→    componentDidMount method<br>cwr→    componentWillReceiveProps method<br>scu→    shouldComponentUpdate method<br>cwup→   componentWillUpdate method<br>cdup→   componentDidUpdate method<br>cwun→   componentWillUnmount method<br>ren→    render method<br>sst→    this.setState with object as parameter<br>ssf→    this.setState with function as parameter<br>props→  this.props<br>state→  this.state<br>bnd→    binds the this of method inside the constructor<br>The following table lists all the snippets that can be used for prop types.<br>Every snippet regarding prop types begins with pt so it’s easy to group it all together and explore all the available options.<br>On top of that each prop type snippets has one equivalent when we need to declare that this property is also required.<br>For example pta creates the PropTypes.array and ptar creates the PropTypes.array.isRequired</p>
+<p>Trigger Content<br>pta→    PropTypes.array,<br>ptar→   PropTypes.array.isRequired,<br>ptb→    PropTypes.bool,<br>ptbr→   PropTypes.bool.isRequired,<br>ptf→    PropTypes.func,<br>ptfr→   PropTypes.func.isRequired,<br>ptn→    PropTypes.number,<br>ptnr→   PropTypes.number.isRequired,<br>pto→    PropTypes.object.,<br>ptor→   PropTypes.object.isRequired,<br>pts→    PropTypes.string,<br>ptsr→   PropTypes.string.isRequired,<br>ptnd→   PropTypes.node,<br>ptndr→  PropTypes.node.isRequired,<br>ptel→   PropTypes.element,<br>ptelr→  PropTypes.element.isRequired,<br>pti→    PropTypes.instanceOf(ClassName),<br>ptir→   PropTypes.instanceOf(ClassName).isRequired,<br>pte→    PropTypes.oneOf([‘News’, ‘Photos’]),<br>pter→   PropTypes.oneOf([‘News’, ‘Photos’]).isRequired,<br>ptet→   PropTypes.oneOfType([PropTypes.string, PropTypes.number]),<br>ptetr→  PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,<br>ptao→   PropTypes.arrayOf(PropTypes.number),<br>ptaor→  PropTypes.arrayOf(PropTypes.number).isRequired,<br>ptoo→   PropTypes.objectOf(PropTypes.number),<br>ptoor→  PropTypes.objectOf(PropTypes.number).isRequired,<br>ptsh→   PropTypes.shape({color: PropTypes.string, fontSize: PropTypes.number}),<br>ptshr→  PropTypes.shape({color: PropTypes.string, fontSize: PropTypes.number}).isRequired,</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Editor/IDE </tag>
+            
+            <tag> javascript </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[442]]></title>
+      <url>/2016/09/25/442/</url>
+      <content type="html"><![CDATA[<p>Actually write React.js code just need a Editor.  I have a particular fondness for Vscode.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[439]]></title>
+      <url>/2016/09/13/439/</url>
+      <content type="html"><![CDATA[<p>time is important, but how to spent time is more important than it.<br>let time more worthy.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[space in shell]]></title>
+      <url>/2016/09/05/space-in-shell/</url>
+      <content type="html"><![CDATA[<pre><code>if [ &quot;$1&quot; = &quot;run&quot; ]; then
+LogParse
+exit
+fi
+</code></pre><p>the ‘=’ equal to a command . if you write <code>if [ &quot;$1&quot;=&quot;run&quot; ]; then</code> that always be ‘true’.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> shell </tag>
+            
+            <tag> linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[a log parse shell script for Google EarlGrey UI Automation Test]]></title>
+      <url>/2016/09/01/a-log-parse-shell-script-for-google-earlgrey-ui-automation-test/</url>
+      <content type="html"><![CDATA[<p>This script help you get Xcode console log and output into log file,then parse specific error lines out.<br>it will be parse between <code>========== Detailed Exception ==========</code> and <code>Test Case &#39;-[SomeClass someMethod]&#39; failed (24.795 seconds).</code> and print on terminal.</p>
+<pre><code>#!/bin/shell
+now=$(date +%Y-%m-%d-%T)
+xcodebuild test -project mobile.xcodeproj -scheme mobile -destination &apos;platform=iOS Simulator,OS=9.3,name=iPhone 6 Plus&apos; &amp;gt; $now.log
+headLineNum=$(awk &apos;/========== Detailed Exception ==========/{ print NR;}&apos; $now.log) #find a head
+endLineNum=$(awk &apos;/ failed \(/{ print NR;}&apos; $now.log) #find end line
+
+hNums=(${headLineNum//\ / })
+eNums=(${endLineNum//\ / })
+
+if [ ${#hNums}==${#eNums} ］&amp;amp;&amp;amp;［ ${#hNums}!＝0 ]
+then
+  echo ${#hNums}
+  count=${#eNums[@]}
+  for ((i=0;i&amp;lt;count;i++))
+    do
+    # echo loop $i
+      for ((n=${hNums[$i]};n&amp;lt;=${eNums[$i]};n++))
+        do
+          # num of line : echo $n
+          sed &quot;${n}q;d&quot; $now.log
+        done
+    done
+elif ${#hNums}=0 -a [${#eNums}=0
+  then
+    echo &apos;there has no error found.&apos;
+else 
+  echo &apos;read line numbers error&apos;
+fi
+</code></pre>]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+            <tag> shell </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[429]]></title>
+      <url>/2016/08/30/429/</url>
+      <content type="html"><![CDATA[<p>I least spend about five years to improve my programming.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[exchange method implementation using runtime.]]></title>
+      <url>/2016/08/26/exchange-method-implementation-using-runtime/</url>
+      <content type="html"><![CDATA[<p>If you search ‘method_exchangeImplementations’ by Google. you will found a Apple Api Reference Link:<br><a href="https://developer.apple.com/reference/objectivec/1418769-method_exchangeimplementations?language=objc" target="_blank" rel="noopener"></a><br>A <code>method_exchangeImplementations</code> method’s declaration quote on this page.but that did not have any description and not any discussion talked about.I’m trying to call the method for exchange method but it is not work for me.<br>Fortunately，the discussion quote another method that is easy to use and work for me.<br>import <code>objc/runtime.h</code> first.</p>
+<pre><code>- (void)inject{
+}
+- (void)exchangeMethod{
+    // my Imp will replace the `method` implementation.
+    Method myMethod = class_getInstanceMethod([ViewController class], @selector(inject)); // you alse can call class_getClassMethod() for class method.
+    IMP myImp = method_getImplementation(myMethod);
+    // 
+    Method method = class_getInstanceMethod([MapView class], @selector(loadView));
+    method_setImplementation(method, imp);
+}
+</code></pre><p>So,all of <code>loadView</code> method exchange with ‘inject’ method in your project. if you call the ‘loadView’ method it will be executing ‘inject’ method’s implementation.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Objective C </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[convert excel csv to sqlite.]]></title>
+      <url>/2016/08/23/convert-from-excel-csv-to-sqlite/</url>
+      <content type="html"><![CDATA[<p>1.in the first you should export your excel file as <code>csv</code> file type.<br>2.open your ‘terminal’.<br>3.execute command ‘sqlite3 data.sqlite’ for create a database.<br>4.now you hava a database,next to convert enter the following code in the sqlite mode:</p>
+<pre><code>DROP TABLE DATA;
+CREATE TABLE  data(caseId,dataId,inputData,expectation,mark);
+.mode csv
+.import data.csv data
+
+// the DELETE is not necessary.
+DELETE FROM data WHERE caseId=&apos;caseId&apos;;
+
+.header on
+.mode column
+SELECT * FROM data;
+</code></pre><p>5.you also can write the code of step 4 into a ‘.sql’ file.then you enter <code>.read YOURSQLFILENAME.sql</code> it will be execute the codes.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> Mac </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[419]]></title>
+      <url>/2016/08/05/419/</url>
+      <content type="html"><![CDATA[<p>Todo List of next months:<br>Do React.js code.<br>Keep running every day.<br>Thirty minutes in KnowYou English.<br>Read some “Chicken soup” books.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[%e6%90%9e%e4%ba%86%e6%90%9e%e5%8d%9a%e5%ae%a2%e7%9a%84style%e3%80%82%e3%80%82%e3%80%82]]></title>
+      <url>/2016/07/27/e6-90-9e-e4-ba-86-e6-90-9e-e5-8d-9a-e5-ae-a2-e7-9a-84style-e3-80-82-e3-80-82-e3-80-82/</url>
+      <content type="html"><![CDATA[<p>搞了搞博客的style。。。</p>
+<p>不会ui的程序员，只能靠抄了！！！</p>
+<p>改css好累啊 ＝＝</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[一行命令关闭Mac连接移动设备照片应用自动打开]]></title>
+      <url>/2016/07/22/e4-b8-80-e8-a1-8c-e5-91-bd-e4-bb-a4-e5-85-b3-e9-97-admac-e8-bf-9e-e6-8e-a5-e7-a7-bb-e5-8a-a8-e8-ae-be-e5-a4-87-e7-85-a7-e7-89-87-e5-ba-94-e7-94-a8-e8-87-aa-e5-8a-a8-e6-89-93-e5-bc-80/</url>
+      <content type="html"><![CDATA[<p>关闭自动打开 终端输入以下命令，回车<br><code>defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool YES</code></p>
+<p>打开自动打开只需要将上面的命令中<code>YES</code>改成<code>NO</code>。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Mac </tag>
+            
+            <tag> KYL </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[自建无污染DNS服务器]]></title>
+      <url>/2016/07/20/e8-87-aa-e5-bb-ba-e6-97-a0-e6-b1-a1-e6-9f-93dns-e6-9c-8d-e5-8a-a1-e5-99-a8/</url>
+      <content type="html"><![CDATA[<p>通过一键脚本安装：<a href="https://github.com/zyqf/DNS" target="_blank" rel="noopener">https://github.com/zyqf/DNS</a></p>
+<p>执行命令： <code>cd /root &amp;amp;&amp;amp; git clone https://github.com/zyqf/DNS.git &amp;amp;&amp;amp; cd DNS &amp;amp;&amp;amp; python install.py</code></p>
+<p>更新zone文件：<code>python /root/DNS/bin/update.py</code> 或者 <code>crontab -e</code> <code>00 02 * * * python /root/DNS/bin/update.py</code></p>
+<p>DNS服务安全设置（防污染？）:<br>添加规则：<code>iptables -A INPUT -p udp --dport 53 -m recent --set --name dnslimit</code><br>添加规则：<code>iptables -A INPUT -p udp --dport 53 -m recent --update --seconds 2 --hitcount 18 --name dnslimit -j DROP</code><br>保存规则: <code>service iptables save</code><br>重启iptables服务: <code>service iptables restart</code></p>
+<p>然后就可以使用了，可能会出现国内网站访问不了或者超时的情况，按照以下操作可以解决。<br>方法一：<br>1.修改/etc/selinux/config 文件,将SELINUX=enforcing改为SELINUX=disabled<br>2.rcdp的key错误，重生成后重启服务<code>rndc reconfig | rndc reload</code><br>3.重启VPS <code>reboot</code></p>
+<p>方法二：<br>修改<code>/etc/named.conf</code>中的’zone “.” IN’字段为转发中科大的上游无污染DNS</p>
+<pre><code>zone &quot;.&quot; IN {
+type forward;
+forwarders { 202.38.93.153;202.141.162.123};
+};
+</code></pre><p>修改后重启服务:<code>/etc/rc.d/init.d/named restart</code></p>
+<p>参考两个issues<br><a href="https://github.com/zyqf/DNS/issues/28" target="_blank" rel="noopener">https://github.com/zyqf/DNS/issues/28</a><br><a href="https://github.com/zyqf/DNS/issues/20" target="_blank" rel="noopener">https://github.com/zyqf/DNS/issues/20</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[VSCode javascript.json配置]]></title>
+      <url>/2016/07/06/vscode-javascript-json-e9-85-8d-e7-bd-ae/</url>
+      <content type="html"><![CDATA[<h3 id="VS-Code-javascript-config-file"><a href="#VS-Code-javascript-config-file" class="headerlink" title="VS Code javascript config file ."></a>VS Code javascript config file .</h3><p>VS Code支持两种JavaScript运作模式：</p>
+<ul>
+<li><code>File scope</code> 没有javascript.json文件</li>
+</ul>
+<blockquote>
+<p>此模式下打开js脚本将以单独运作的方式打开，多个js文件之间不会产生联系。</p>
+</blockquote>
+<ul>
+<li><code>Explicit Project</code> 有javascript.json文件<blockquote>
+<p>一个JavaScript项目是通过一个jsconfig.json文件定义。目录中的这样一个文件的存在表明，目录是一个JavaScript项目的根。该文件可以选择性列出属于此项目的文件且被排除在项目之外，以及编译器选项（见下文）。</p>
+</blockquote>
+</li>
+</ul>
+<p><code>javascript.json</code></p>
+<ul>
+<li><code>compilerOptions</code>可以定义javascript版本ES6,ES5等（target）</li>
+<li><p><code>exclude</code> 可以指定一个数组包含非js文件目录</p>
+<p>  {</p>
+<pre><code>&quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;ES6&quot;
+},
+&quot;exclude&quot;: [
+    &quot;node_modules&quot;
+]
+</code></pre><p>  }<br>  `</p>
+<p>  也可以根据文件来指定js文件，<code>files</code>字段指定一个包含文件位置的数组</p>
+<p>  <pre>`{</pre></p>
+<pre><code>&quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;ES6&quot;
+},
+&quot;files&quot;: [
+    &quot;src/app.js&quot;
+]
+</code></pre><p>  }</p>
+</li>
+</ul>
+<p><code>files</code>字段和<code>exclude</code>字段不可以同时存在，如果存在则优先执行<code>exclude</code>字段。</p>
+<p>javascript.json可以在一个workspace中存在多个，列入项目分为<code>server</code>和<code>client</code>两个目录，则可以在这两个目录下放此文件更明确的处理</p>
+<p>排除（<code>exclude</code>字段）:<br>你应该把非源码的js文件放在排除目录中<br>一些建议排除的文件夹：<br><code>node</code> ：    排除 <code>node_modules</code> 文件夹<br><code>webpack</code>, <code>webpack-dev-server</code> 排除内容文件夹, 例如 <code>dist</code>.<br><code>bower</code> 排除 <code>bower_components</code>文件夹<br><code>ember</code> 排除 <code>tmp</code> and <code>temp</code> 文件夹<br><code>jspm</code>  排除 <code>jspm_packages</code> 文件夹</p>
+<blockquote>
+<p>Tip: 有时候某些操作需要重新加载javascrpt.json，例如添加此文件，你可以运行<code>&amp;gt; Reload JavaScript Project</code>命令来重新加载</p>
+</blockquote>
+<p>可选字段<br> <code>noLib</code> 不导入默认库 (lib.d.ts)<br><code>target</code>    “ES3”, “ES5”, “ES6”.<br><code>experimentalDecorators</code>    Enables experimental support for proposed ES decorators.<br><code>allowSyntheticDefaultImports</code>  Allow default imports from modules with no default export. This does not affect code emit, just typechecking.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Editor/IDE </tag>
+            
+            <tag> javascript </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[一个最简单的Flask-RESTful API]]></title>
+      <url>/2016/07/05/e4-b8-80-e4-b8-aa-e6-9c-80-e7-ae-80-e5-8d-95-e7-9a-84flask-restful-api/</url>
+      <content type="html"><![CDATA[<h3 id="一个最简单的Flask-RESTful-API"><a href="#一个最简单的Flask-RESTful-API" class="headerlink" title="一个最简单的Flask-RESTful API"></a>一个最简单的Flask-RESTful API</h3><pre><code>#导入相关包
+from flask import Flask
+from flask_restful import Resource, Api
+
+#创建app
+app = Flask(__name__)
+#初始化api
+api = Api(app)
+
+class HelloWorld(Resource):
+    def get(self):
+        return {&apos;hello&apos;: &apos;world&apos;}
+
+#请求url
+api.add_resource(HelloWorld, &apos;/&apos;)
+
+if __name__ == &apos;__main__&apos;:
+    app.run(debug=True)
+</code></pre>]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[RX480 价格预测。]]></title>
+      <url>/2016/06/12/rx480-e4-bb-b7-e6-a0-bc-e9-a2-84-e6-b5-8b-e3-80-82/</url>
+      <content type="html"><![CDATA[<p>4 GB版本 1399（不含税）<br>8 GB版本 1699（不含税）</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[iOS network caching]]></title>
+      <url>/2016/05/25/ios-network-caching/</url>
+      <content type="html"><![CDATA[<p>The URL Loading System built-into Foundation classes like NSURLConnection and NSURLCache, as well as frameworks that leverage them, such as AFNetworking will correctly follow HTTP directives sent from the server.</p>
+<p>NSURLCache automatically manages the caching behavior of incoming and outgoing network requests that use NSURLConnection. If a cached response is available, NSURLCache will transparently return the cached response without making a network request.<br>With a few simple adjustments, your iOS app has taken advantage of the powerful caching infrastructure provided by Foundation classes and HTTP.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[fask-RESTful Api return Internal Server Error]]></title>
+      <url>/2016/05/05/fask-restful-api-return-internal-server-error/</url>
+      <content type="html"><![CDATA[<pre><code>{&quot;message&quot;: &quot;Internal Server Error&quot;}
+`&lt;/pre&gt;
+
+Json structures support contain dict,array,value([http://www.json.org/json-zh.html](http://www.json.org/json-zh.html)).
+
+if your json structures contain other ,you need use `str()` function to type conversion.
+
+&lt;pre&gt;`articles = Article.objects.all()
+alist = dict()
+for one in articles:
+    myComments = dict()
+    if one.comments is None:
+        myComments = {}
+    else:
+        for comment in one.comments:
+            myComments = {
+                &apos;created_at&apos;: str(comment.created_at),
+                &apos;body&apos;: str(comment.body),
+                &apos;author&apos; : str(comment.author),
+            }
+    json_dict = {
+        &apos;created_at&apos; : str(one.created_at),
+        &apos;title&apos; : one.title,
+        &apos;slug&apos; : one.slug,
+        &apos;body&apos; : str(one.body),
+        &apos;comments&apos; : myComments
+    }
+    alist.setdefault(one.slug, json_dict)
+</code></pre>]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[互换button的图像和文字的位置]]></title>
+      <url>/2016/03/24/e4-ba-92-e6-8d-a2button-e7-9a-84-e5-9b-be-e5-83-8f-e5-92-8c-e6-96-87-e5-ad-97-e7-9a-84-e4-bd-8d-e7-bd-ae/</url>
+      <content type="html"><![CDATA[<pre><code>- (void)layoutSubviews{
+    [super layoutSubviews];
+    self.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+    self.titleLabel.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+    self.imageView.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+}
+</code></pre>]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[MVC分文件夹体现出的两种流派。]]></title>
+      <url>/2016/03/24/mvc-e5-88-86-e6-96-87-e4-bb-b6-e5-a4-b9-e4-bd-93-e7-8e-b0-e5-87-ba-e7-9a-84-e4-b8-a4-e7-a7-8d-e6-b5-81-e6-b4-be-e3-80-82/</url>
+      <content type="html"><![CDATA[<ul>
+<li>在刚开始做iOS开发时，分文件夹采用的是每个Tabbar建一个文件夹（所谓模块化），在每个模块下建立 Model,View,Controller 三个子文件夹。<br>Model 里面放json的映射数据。<br>View 里面放控件，例如自定义的Button，自定义的Cell等<br>Controller 则放控制器。</li>
+</ul>
+<p>以及在一级目录创建library文件夹，Oher文件夹 放Category等、</p>
+<p>在以前的应用中，Controller用来请求数据，处理数据，展示数据等。Model只用来存储映射的数据。 View可以和Model通信，View也可以做数据处理。<br>所以这使用这种模式，我需要创建N个Model View Controller 的文件夹，我甚至写了个脚本用来快速生成这些文件夹，这个操作实在是太麻烦，太慢了。</p>
+<p>难道所有数据都要进行映射吗？都要转模型这一操作？</p>
+<ul>
+<li><p>事实上MVC是微软所推广的，在.net框架下广泛应用。<br>在我现在的项目已经不用上面所提的方式。</p>
+<p>  The model directly manages the data, logic and rules of the application.<br>  A view can be any output representation of information, such as a chart or a diagram. Multiple views of the same information are possible, such as a bar chart for management and a tabular view for accountants.<br>  The third part, the controller, accepts input and converts it to commands for the model or view.</p>
+</li>
+</ul>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/MVC-Process.svg/500px-MVC-Process.svg.png" alt=""></p>
+<p>1.Controller可以直接调用Model。 Model提供获取数据，发送数据的public method。<br>2.Controller可以直接访问View。View则提供控制控件和事件响应的方法给Controller。<br>3.Model 是独立的，任何Controller都可以调用Model中的方法（以前是有额外写网络请求工具类），Model中放网络请求类。<br>4.Model和View不应该相互通信，View只需要你给他数据，他展示就行了，不需要知道数据是什么。</p>
+<ul>
+<li>cs193p的MVC图<br><img src="http://tmy-course.oss-cn-beijing.aliyuncs.com/ios-course/mvc/mvc.png" alt=""></li>
+</ul>
+<p>两种风格，可能很多第一次接触iOS的多数喜欢第一种，但是第一种事实上并没有第二种好用。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[__weak __block __unsafe_unretained理解]]></title>
+      <url>/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/</url>
+      <content type="html"><![CDATA[<h2 id="一些关键字的作用"><a href="#一些关键字的作用" class="headerlink" title="一些关键字的作用"></a>一些关键字的作用</h2><p><code>__weak</code> <code>__block</code> <code>unsafe_unretained</code></p>
+<h4 id="unsafe-unretained的问题"><a href="#unsafe-unretained的问题" class="headerlink" title="__unsafe_unretained的问题"></a>__unsafe_unretained的问题</h4><p><strong>unsafe_unretained和</strong>weak类似，<strong>weak会自己所指向的内存释放并且置空（nil），但是</strong>unsafe_unretained所指向的内存被释放后并不知道自己指向的内存地址被销毁了，所以会造成野指针是不安全的。</p>
+<p>strong会给计数器+1，有可能会造成不会释放。</p>
+<p>声明为weak的指针，指针指向的地址一旦被释放，这些指针都将被赋值为nil。这样的好处能有效的防止野指针</p>
+<p>unsafe_unretained会将指针指向的地址赋值nil，但是unsafe_unretained声明的变量并不会知道自己所指向的指针被释放了。所以会造成野指针，访问野指针会出现崩溃。</p>
+<p><strong>unsafe_unretained修饰符可以被视为iOS SDK 4.3以前版本的</strong>weak的替代品，不过不会被自动置空为nil。所以尽可能不要使用这个修饰符。</p>
+<h4 id="为什么weak不能给int用？和block的区别？"><a href="#为什么weak不能给int用？和block的区别？" class="headerlink" title="为什么weak不能给int用？和block的区别？"></a>为什么<strong>weak不能给int用？和</strong>block的区别？</h4><p><strong>weak不增加引用，</strong>block增加引用</p>
+<p>1.<strong>block不管是ARC还是MRC模式下都可以使用，可以修饰对象，还可以修饰基本数据类型。<br>2.</strong>weak只能在ARC模式下使用，也只能修饰对象（NSString），不能修饰基本数据类型（int）。<br>3.<strong>block对象可以在block中被重新赋值，</strong>weak不可以。<br>4.<strong>block对象在ARC下可能会导致循环引用，非ARC下会避免循环引用，</strong>weak只在ARC下使用，可以避免循环引用。</p>
+<h4 id="为什么有block循环引用？"><a href="#为什么有block循环引用？" class="headerlink" title="为什么有block循环引用？"></a>为什么有block循环引用？</h4><p>因为self指向控制器，控制器又指向block，而block又指向self。</p>
+<h4 id="为什么block不能修改外部变量？"><a href="#为什么block不能修改外部变量？" class="headerlink" title="为什么block不能修改外部变量？"></a>为什么block不能修改外部变量？</h4><p>因为block通常是作为参数传递以供后续回调执行的，通常在这些情况下，block被执行时，定义时所在的函数栈已经被展开，局部变量已经不在栈中了，所以访问不到了。<br>block内变量ISA指针指向的存储域<br>_NSConcreteStackBlock 保存在栈中的block，出栈时会被销毁<br>_NSConcreteGlobalBlock 全局的静态block，不会访问任何外部变量<br>_NSConcreteMallocBlock 保存在堆中的block，当引用计数为0时会被销毁</p>
+<p>使用了__block关键字的变量会将变量从栈上复制到堆上。栈上那个变量会指向复制到堆上的变量。</p>
+<h4 id="为什么系统和AFN的block不会造成循环引用？"><a href="#为什么系统和AFN的block不会造成循环引用？" class="headerlink" title="为什么系统和AFN的block不会造成循环引用？"></a>为什么系统和AFN的block不会造成循环引用？</h4><p>著作权归作者所有。<br>商业转载请联系作者获得授权，非商业转载请注明出处。<br>作者：精致的developer<br>链接：<a href="http://www.zhihu.com/question/36358590/answer/67885408" target="_blank" rel="noopener">http://www.zhihu.com/question/36358590/answer/67885408</a><br>来源：知乎</p>
+<p>其实只要抓住循环引用的本质，就不难理解。所谓循环引用，是因为当前控制器在引用着block，而block又引用着self即当前控制器，这样就造成了循环引用。系统的block或者AFN等block的调用并不在当前控制器中调用，那么这个self就不代表当前控制器，那自然也就没有循环引用的问题。以上引用均指强引用。<br>著作权归作者所有。<br>商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<p>作者：七夕之雪<br>链接：<a href="http://www.zhihu.com/question/36358590/answer/68135219" target="_blank" rel="noopener">http://www.zhihu.com/question/36358590/answer/68135219</a><br>来源：知乎</p>
+<p>关于这个问题，UIView和AFN还是不一样的。首先循环引用发生的条件就是持有这个block的对象，被block里边加入的对象持有。当然是强引用。所以UIView的动画block不会造成循环引用的原因就是，这是个类方法，当前控制器不可能强引用一个类，所以循环无法形成。而AFN无循环是因为绝大部分情况下，你的网络类对象是不会被当前控制器引用的，这时就不会形成引用环。当然我不知道AFN是否做了别的处理，按照这样来说的话，如果你的控制器强引用了这个网络类的对象，而且在block里面引用了当前控制器，也是会发生循环引用的。</p>
+<p>####相关文章<br><a href="http://www.cocoachina.com/ios/20150106/10850.html" target="_blank" rel="noopener">http://www.cocoachina.com/ios/20150106/10850.html</a><br><a href="https://www.mgenware.com/blog/?p=1493" target="_blank" rel="noopener">https://www.mgenware.com/blog/?p=1493</a><br><a href="http://tanqisen.github.io/blog/2013/04/19/gcd-block-cycle-retain/" target="_blank" rel="noopener">http://tanqisen.github.io/blog/2013/04/19/gcd-block-cycle-retain/</a><br><a href="http://blog.csdn.net/abc649395594/article/details/45476925" target="_blank" rel="noopener">http://blog.csdn.net/abc649395594/article/details/45476925</a><br><a href="http://draveness.me/guan-yu-xie-ios-wen-ti-de-jie-da/" target="_blank" rel="noopener">http://draveness.me/guan-yu-xie-ios-wen-ti-de-jie-da/</a><br><a href="http://blog.sina.com.cn/s/blog_a843a8850101b6b9.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_a843a8850101b6b9.html</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+            <tag> Objective C </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[看iOS人机交互指南,几句话印象很深]]></title>
+      <url>/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/</url>
+      <content type="html"><![CDATA[<p><code>遵从：UI 能够帮助用户理解内容并与之互动，但却不会分散用户对内容的注意力</code></p>
+<p><code>清晰：每种大小的文字都必须是易读的，界面中的图标醒目且无多余的修饰，在功能上有突出的重点，很好地突显了设计理念。</code></p>
+<p><code>深度：视觉层次和生动的交互操作赋予了 UI 生命力，不仅能够帮助用户更好的理解 UI，还能让用户在使用过程中感到惊喜</code></p>
+<p>然后再看看自己的做的项目,真是惨不忍睹.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[VideoCore集成出现的一些问题总结.]]></title>
+      <url>/2016/01/12/videocore-e9-9b-86-e6-88-90-e5-87-ba-e7-8e-b0-e7-9a-84-e4-b8-80-e4-ba-9b-e9-97-ae-e9-a2-98-e6-80-bb-e7-bb-93/</url>
+      <content type="html"><![CDATA[<p>集成这个东西需要使用<code>cocoapods 0.37.2</code> 不然会出现 <code>type_half.inl not found</code>文件找不到.</p>
+<p><code>build active Architecture only</code> debug设置成yes;</p>
+<p><code>Header search path</code>设置成</p>
+<pre><code>$(PROJECT_DIR)/ffmpegDemo $(PROJECT_DIR) $(inherited) &quot;${PODS_ROOT}/Headers/Public&quot; &quot;${PODS_ROOT}/Headers/Public/UriParser-cpp&quot; &quot;${PODS_ROOT}/Headers/Public/UriParser-cpp/UriParser&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/api/iOS&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/filters&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/filters/Basic&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/mixers&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/mixers/Apple&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/mixers/iOS&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/rtmp&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/sources&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/sources/Apple&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/sources/iOS&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/stream&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/stream/Apple&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/system&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/system/h264&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/system/pixelBuffer&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/system/pixelBuffer/Apple&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/transforms&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/transforms/Apple&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/transforms/RTMP&quot; &quot;${PODS_ROOT}/Headers/Public/VideoCore/videocore/transforms/iOS&quot; &quot;${PODS_ROOT}/Headers/Public/boost&quot; &quot;${PODS_ROOT}/Headers/Public/glm&quot; &quot;${PODS_ROOT}/Headers/Public/glm/core&quot; &quot;${PODS_ROOT}/Headers/Public/glm/gtc&quot; &quot;${PODS_ROOT}/Headers/Public/glm/gtx&quot; &quot;${PODS_ROOT}/Headers/Public/glm/virtrev&quot; ${PODS_ROOT}/boost &quot;${PODS_ROOT}/boost&quot; &quot;${PODS_ROOT}/boost&quot; &quot;${PODS_ROOT}/boost&quot; &quot;${PODS_ROOT}/boost&quot; &quot;${PODS_ROOT}/boost&quot; &quot;${PODS_ROOT}/boost&quot; &quot;${PODS_ROOT}/boost&quot; &quot;${PODS_ROOT}/boost&quot;
+</code></pre><p>objective c 需要将一个.m文件改成.mm;</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> ffmpeg </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[解决`library not found for -lPods`]]></title>
+      <url>/2016/01/11/e8-a7-a3-e5-86-b3library-not-found-for-lpods/</url>
+      <content type="html"><![CDATA[<p>啊…</p>
+<p>这个问题搞了有半天.</p>
+<p><code>pod install / update</code>都没有用.</p>
+<p>把那什么 <code>Build Active Architecture Only</code>设置为 NO 也是没用.</p>
+<p>最后从stackoverflow得知,在link library 中删除libPods就解决了.</p>
+<p>上图:</p>
+<p><img src="http://i.stack.imgur.com/cGYNu.png" alt=""></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[使用xcode对新版本的ffmpeg集成]]></title>
+      <url>/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/</url>
+      <content type="html"><![CDATA[<ul>
+<li><p>FFmpeg集成</p>
+<pre><code>*   编译.a静态库
+</code></pre><ul>
+<li><p>导入.a静态库和头文件</p>
+<pre><code>*   include下的文件夹应该导入真实文件夹,不是group
+</code></pre></li>
+<li><p>build setting中的一些设置</p>
+<pre><code>*   需要在header search path中设置代码目录 `$(PROJECT_DIR)/ffmpegDemo`
+</code></pre><ul>
+<li>以及library search path<code>$(PROJECT_DIR)/ffmpegDemo</code></li>
+<li>以及oher link flag中添加<code>-liconv</code> <code>-lz</code> 不然会报错误,大约20个</li>
+<li>还要添加库<code>libbz2.1.0</code> 不添加会报BZ开头的错误</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>导入头文件<code>#include &quot;libavcodec/avcodec.h&quot;</code></li>
+<li>调用查看系统信息函数<code>avcodec_configuration()</code> 编译如果编译成功就集成成功了.</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+            <tag> ffmpeg </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[2016小的规划～]]></title>
+      <url>/2015/12/31/2016-e5-b0-8f-e7-9a-84-e8-a7-84-e5-88-92-ef-bd-9e/</url>
+      <content type="html"><![CDATA[<ul>
+<li><code>关于英语</code></li>
+<li>把剩下的单词（大约5000多）背掉。</li>
+<li>坚决完成扇贝考研任务。</li>
+<li><p>把英语语法看完，然后再看一遍。</p>
+</li>
+<li><p><code>关于代码</code></p>
+</li>
+<li><p>无压力用python编写爬虫。</p>
+</li>
+<li>使用csharp入门unity3d。</li>
+<li>尽量争取公司项目用swift进行开发。</li>
+<li><p>玩转iOS逆向（至少要能拿出来装逼</p>
+</li>
+<li><p><code>关于看书</code></p>
+</li>
+<li><p>屯着的书看完</p>
+</li>
+<li>《重来》//重来2也除了</li>
+<li>《重新定义公司：谷歌是如何运营的》</li>
+<li>《游戏设计的236个技巧》</li>
+<li>《iOS逆向工程》</li>
+<li>应该还要看好多本，到时候再想咯</li>
+<li><p>最好能啃下一本英文原著</p>
+</li>
+<li><p><code>关于生活</code></p>
+</li>
+<li><p>我要健身，我要肌肉</p>
+</li>
+<li>旅游，旅游，旅游，想去泰国摸人妖</li>
+<li>穿衣打扮应该更上一层</li>
+<li>我的脸啊啊啊</li>
+<li>每天早上都吃早饭！</li>
+<li>攒下一笔看起来不错的钱</li>
+<li>get a girlfriend ！</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[用正则表达式判断字符串是否符合条件]]></title>
+      <url>/2015/12/30/e7-94-a8-e6-ad-a3-e5-88-99-e8-a1-a8-e8-be-be-e5-bc-8f-e5-88-a4-e6-96-ad-e5-ad-97-e7-ac-a6-e4-b8-b2-e6-98-af-e5-90-a6-e7-ac-a6-e5-90-88-e6-9d-a1-e4-bb-b6/</url>
+      <content type="html"><![CDATA[<p>@regex 正则表达<br>@string 字符串</p>
+<pre><code>- (BOOL)boolWithRegex:(NSString *)regex string:(NSString *)str{
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@&quot;SELF MATCHES %@&quot;,regex];
+    BOOL isMatch = [pred evaluateWithObject:str];
+    return isMatch;
+}
+</code></pre>]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+            <tag> Objective C </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[push/pop 转场动画.]]></title>
+      <url>/2015/12/28/pushpop-e8-bd-ac-e5-9c-ba-e5-8a-a8-e7-94-bb/</url>
+      <content type="html"><![CDATA[<pre><code>// 穿件动画
+CATransition *anima = [CATransition animation];
+// 动画时间
+anima.duration = 0.3;
+// 啥样的动画(揭开)
+anima.type = kCATransitionReveal;
+// 动画的样式 (从下到上)
+anima.subtype = kCATransitionFromTop;
+// 规定动画的速度曲线(从慢到快)
+anima.timingFunction = UIViewAnimationCurveEaseInOut;
+// 添加动画 这里一定要加到导航控制器的View上
+[self.navigationController.view.layer addAnimation:anima forKey:nil];
+// pop 如果是要push 则直接push 要把原来的动画关了!
+[self.navigationController popViewControllerAnimated:NO];
+</code></pre><p>具体更多参数可以跳到头文件看.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[cygwin 安装 apt-cyg.]]></title>
+      <url>/2015/12/27/cygwin-e5-ae-89-e8-a3-85-apt-cyg/</url>
+      <content type="html"><![CDATA[<p>cygwin中输入以下两条命令<br><code>lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg &amp;gt; apt-cyg</code></p>
+<p><code>install apt-cyg /bin</code></p>
+<p>再重新打开cygwin。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[329]]></title>
+      <url>/2015/12/26/329/</url>
+      <content type="html"><![CDATA[<p>人生最苦逼的事,无非就是装visual studio了.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[在View里获取控制器ViewController]]></title>
+      <url>/2015/12/26/e5-9c-a8view-e9-87-8c-e8-8e-b7-e5-8f-96-e6-8e-a7-e5-88-b6-e5-99-a8viewcontroller/</url>
+      <content type="html"><![CDATA[<pre><code>- (UIViewController*)viewController {
+    for (UIView* next = [self superview];next;next = next.superview)
+    {
+        UIResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]])
+        {
+            return (UIViewController*)nextResponder;
+        }
+    }
+    return nil;
+}
+</code></pre>]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[记录个YYKeyboard键盘弹出View往上推的代码~]]></title>
+      <url>/2015/12/24/e8-ae-b0-e5-bd-95-e4-b8-aayykeyboard-e9-94-ae-e7-9b-98-e5-bc-b9-e5-87-baview-e5-be-80-e4-b8-8a-e6-8e-a8-e7-9a-84-e4-bb-a3-e7-a0-81/</url>
+      <content type="html"><![CDATA[<p>// 代码通用 … 这么点代码其实调的我好辛苦~</p>
+<pre><code>- (void)keyboardChangedWithTransition:(YYKeyboardTransition)transition{
+
+    // 键盘消失
+    [UIView animateWithDuration:transition.animationCurve delay:0 options:transition.animationOption animations:^{
+        self.view.y = self.navigationController.navigationBar.y + self.navigationController.navigationBar.height;
+    } completion:NULL];
+
+    if ([YYKeyboardManager defaultManager].keyboardVisible == YES) { // 不可见 推上去
+        [UIView animateWithDuration:transition.animationCurve delay:0 options:transition.animationOption animations:^{
+            CGRect kbFrame = [[YYKeyboardManager defaultManager]convertRect:transition.toFrame toView:self.view];
+            self.view.y -= kbFrame.size.height * 0.75;
+        } completion:nil];
+        return;
+    }
+}
+</code></pre>]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[记录一个cell 侧滑的pan手势监听代码]]></title>
+      <url>/2015/12/18/e8-ae-b0-e5-bd-95-e4-b8-80-e4-b8-aacell-e4-be-a7-e6-bb-91-e7-9a-84pan-e6-89-8b-e5-8a-bf-e7-9b-91-e5-90-ac-e4-bb-a3-e7-a0-81/</url>
+      <content type="html"><![CDATA[<pre><code>- (void)panActon:(UIPanGestureRecognizer *)pan{
+
+    if (pan.state == UIGestureRecognizerStateBegan) {
+        // 开始
+        _originX = self.x;
+    }
+    if (pan.state == UIGestureRecognizerStateChanged) {
+       CGPoint cur = [pan translationInView:self];
+        if (_originX + cur.x + MaxOffset &amp;lt; 0 || cur.x + _originX &amp;gt; 0) {
+            return;
+        }
+        self.x = _originX + cur.x;
+    }
+    if (pan.state == UIGestureRecognizerStateEnded){
+        CGPoint point = [pan translationInView:self];
+        if(_originX + MaxOffset + point.x &amp;gt; MaxOffset / 2)
+        {
+            [UIView animateWithDuration:animDur animations:^{
+                self.x = 0;
+            }];
+        }
+        else
+        {
+            [UIView animateWithDuration:animDur animations:^{
+                self.x = -MaxOffset;
+            }];
+        }
+    }
+}
+</code></pre>]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[获取wifi名,iOS9可用.]]></title>
+      <url>/2015/12/15/e8-8e-b7-e5-8f-96wifi-e5-90-8dios9-e5-8f-af-e7-94-a8/</url>
+      <content type="html"><![CDATA[<p>一定要真机才能获取到!!<br>导入头文件: <code>#import &amp;lt;SystemConfiguration/CaptiveNetwork.h&amp;gt;</code></p>
+<pre><code>NSString *ssid = nil;
+    NSArray *ifs = (__bridge_transfer id)CNCopySupportedInterfaces();
+    for (NSString *ifnam in ifs) {
+        NSDictionary *info = (__bridge_transfer id)CNCopyCurrentNetworkInfo((__bridge CFStringRef)ifnam);
+        if (info[@&quot;SSID&quot;]) {
+            ssid = info[@&quot;SSID&quot;];
+        }
+    }
+</code></pre>]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[记录几个正则表达式 .]]></title>
+      <url>/2015/12/15/e8-ae-b0-e5-bd-95-e5-87-a0-e4-b8-aa-e6-ad-a3-e5-88-99-e8-a1-a8-e8-be-be-e5-bc-8f/</url>
+      <content type="html"><![CDATA[<p>1.匹配0-6位正整数,0-2位小数 用来匹配价格!<br><code>\\d{1,6}(\\.\\d{1,2})?$</code></p>
+<ol>
+<li>匹配 0-999 数字<br><code>[1-9]\d{1,2}|\d</code></li>
+</ol>
+<p>3.整数,或者小数<br><code>^[0-9]+([.]{0,1}[0-9]+){0,1}$</code></p>
+<p>4.验证是否含有^%&amp;’,;=?$\”等字符<br><code>[^%&amp;amp;&#39;,;=?$\x22]+</code></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[更新到xcode7.2发现一些问题.]]></title>
+      <url>/2015/12/14/e6-9b-b4-e6-96-b0-e5-88-b0xcode7-2-e5-8f-91-e7-8e-b0-e4-b8-80-e4-ba-9b-e9-97-ae-e9-a2-98/</url>
+      <content type="html"><![CDATA[<p>据stackoverflow上的讨论,据说xcode7.2对约束要求更加严格.(但是我在xcode release note中并未发现此更新);<br>但是确实问题出现在我的项目中了.在一个使用了xib的控制器使用xcode7.1编译通过,运行并未出现问题.但是,使用xcode7.2版本</p>
+<p>进行编译,运行,点击Push到此控制器后出现crash.具体报错如下:<br><code>Could not instantiate class named IBNSLayoutConstraint</code></p>
+<p>于是怀疑是ios9.2哪里不兼容了. 使用xcode7.1编译一个版本,在ios9.2真机上运行是正常的.没有一点问题.但是用xcode7.2编译的版本不管是<br>在ios9.1还是9.2都会出现奔溃问题.</p>
+<p>stackoverflow上寻得答案,说是关闭sizeClass可以解决,但是对我并不奏效;<br><img src="http://i.stack.imgur.com/fJy6q.png" alt=""></p>
+<p>以及,可能是xib的语言本地化中的错误,我尝试更换xib中的语言设置,能进控制器了,但是发现所有View都没加载出来.还是未解决.<br><img src="http://i.stack.imgur.com/cZxB7.png" alt=""></p>
+<p>无解,继续琢磨,在xib中找到灰色的约束(未install的约束),删除掉,不起作用.</p>
+<p>此时已经准备重写这个控制器了,但是编译后有几个我一直没注意到的警告.<br><a href="http://www.ixizi.cn/wp-content/uploads/2015/12/屏幕快照-2015-12-14-下午2.01.36.png" target="_blank" rel="noopener"><img src="http://www.ixizi.cn/wp-content/uploads/2015/12/屏幕快照-2015-12-14-下午2.01.36-300x109.png" alt="屏幕快照 2015-12-14 下午2.01.36"></a></p>
+<p>我估计不错误的原因可能在这了,怎么解决.<br>首先选中警告,然后鼠标右击警告,出现以下选项.<br><a href="http://www.ixizi.cn/wp-content/uploads/2015/12/屏幕快照-2015-12-14-下午2.04.03.png" target="_blank" rel="noopener"><img src="http://www.ixizi.cn/wp-content/uploads/2015/12/屏幕快照-2015-12-14-下午2.04.03-300x175.png" alt="屏幕快照 2015-12-14 下午2.04.03"></a><br>选择<code>Reveal in Log</code> 然后你会看到以下一大堆错误:<br><a href="http://www.ixizi.cn/wp-content/uploads/2015/12/屏幕快照-2015-12-14-下午2.07.35.png" target="_blank" rel="noopener"><img src="http://www.ixizi.cn/wp-content/uploads/2015/12/屏幕快照-2015-12-14-下午2.07.35-300x206.png" alt="屏幕快照 2015-12-14 下午2.07.35"></a><br>图中蓝色选中的就是xcode认为你没有布局好的约束的id了,你可以全局搜索这个id然后就可以找到对应的约束.<br><a href="http://www.ixizi.cn/wp-content/uploads/2015/12/屏幕快照-2015-12-14-下午2.11.09.png" target="_blank" rel="noopener"><img src="http://www.ixizi.cn/wp-content/uploads/2015/12/屏幕快照-2015-12-14-下午2.11.09-300x203.png" alt="屏幕快照 2015-12-14 下午2.11.09"></a><br>然后呢, 一个一个乖乖解决吧, 哈哈.</p>
+<p>最后几点感悟:<br>1.控件太多不要用xib;<br>2.出现版本更新后的错误先去看官方文档,进行排错;<br>3.别忽视警告;<br>4.和同事多人开发最好保证xcode版本一致,要更新就都更新.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[记录一些个不太熟(不会)的单词,保持更新]]></title>
+      <url>/2015/12/07/e8-ae-b0-e5-bd-95-e4-b8-80-e4-ba-9b-e4-b8-aa-e4-b8-8d-e5-a4-aa-e7-86-9f-e4-b8-8d-e4-bc-9a-e7-9a-84-e5-8d-95-e8-af-8d-e4-bf-9d-e6-8c-81-e6-9b-b4-e6-96-b0/</url>
+      <content type="html"><![CDATA[<p>presentations 展示,自我介绍<br>front 前面,正面<br>pretty 漂亮的,相当的<br>charming 迷人的<br>assume 承担,假设,装腔作势<br>entire 全部的,整个的<br>totally 完全的<br>discussion 讨论,议论<br>considerate 体贴的,体谅的,考虑周全的<br>drastically 彻底的,激烈的<br>drastic 猛烈的,极端的<br>varies 使不同,多重符合 vary的三单形式<br>vary 使不同,变异,使多样化<br>individual 个体的,个别的,独特的,个体,个人<br>irrational 不合理的,无理性的,荒谬的<br>culture 文明,文化,修养,栽培<br>behavior 行为,举止<br>possible 可能的,合理的 n可能性<br>serendipity 意外发现珍奇事物的本领；有意外发现珍宝的运气<br>introduction 介绍,引进,入门<br>Welsh 威尔士 俚语:赖账,逃避责任…<br>chapter 章,回<br>dodge 躲避,避开<br>committee 委员会<br>agenda 议程,日常工作事项<br>activity 活动,行动,活跃<br>usher 引座员,接待员<br>ambulance 救护车(船),战时流动医院<br>grass 草地,草…<br>necessary 必要的,必须的,必然的 n必需品<br>encourage 鼓励,激励,支持,怂恿<br>volunteer 志愿兵,志愿者,自愿<br>elementary 基本的,初级的<br>behind 在..后面,在..之后,落后于..,身后,背后<br>fallen fall的过去分词,落下的,倒下的<br>least 最少的,最小的<br>graduate 研究生,毕业生<br>might 力量,威力 may的过去式<br>may 可以,能够,也许,祝,愿,会,能<br>especially 特别,尤其<br>semester 半学期,学期,半年<br>subject 主题,科目<br>act 扮演,装作<br>mentor 指导者,指导老师<br>resume 重新开始,继续,恢复 &lt;==<br>prospect 景色<br>provision 条款,规定<br>tunnel 隧道,地下道<br>intensity 强烈,强度<br>arrival 到达<br>personality 个性<br>enormous 巨大的<br>consensus 共识,一致<br>chip 薄片<br>phenomenon 现象<br>dust 灰尘<br>virtue 美德,贞操<br>summit 高层<br>symptom 症状,征兆<br>enhance 提高增强<br>nonetheless 尽管如此任然<br>assess 评估<br>gaze 凝视<br>recognition 认出,承认<br>quarterback 操纵<br>arrest 逮捕,监禁</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> English </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Could not load NIB in bundle: 'NSBundle xib加载出错]]></title>
+      <url>/2015/12/01/could-not-load-nib-in-bundle-nsbundle-xib-e5-8a-a0-e8-bd-bd-e5-87-ba-e9-94-99/</url>
+      <content type="html"><![CDATA[<p>删除xib文件的引用.<br>再添加进工程中.</p>
+<p>bug fixed;</p>
+<p>xCode 时常抽风, 做个笔记 希望能帮助到别人…</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[通过遍历修改textField的placeHolder.]]></title>
+      <url>/2015/11/25/e9-80-9a-e8-bf-87-e9-81-8d-e5-8e-86-e4-bf-ae-e6-94-b9textfield-e7-9a-84placeholder/</url>
+      <content type="html"><![CDATA[<pre><code>for (id a in self.tableCountTextField.subviews) {
+    if ([a isKindOfClass:[UILabel class]]) {
+        UILabel *label = (UILabel *)a;
+        label.textColor = [UIColor lightGrayColor];
+    }
+}
+</code></pre><p>一定要在viewDidLayoutSubviews中进行遍历,不然你拿到的是空的.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[让某个界面支持横屏,其他界面竖屏]]></title>
+      <url>/2015/11/21/e8-ae-a9-e6-9f-90-e4-b8-aa-e7-95-8c-e9-9d-a2-e6-94-af-e6-8c-81-e6-a8-aa-e5-b1-8f-e5-85-b6-e4-bb-96-e7-95-8c-e9-9d-a2-e7-ab-96-e5-b1-8f/</url>
+      <content type="html"><![CDATA[<p>你需要在Target中设置支持横屏和竖屏;<br>你需要自定义NavgationController;</p>
+<p>在自定义的NavgationController中重写以下方法;</p>
+<pre><code>- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    if([[self topViewController] isKindOfClass:[XZStoreOrdersViewController class]])
+        return UIInterfaceOrientationMaskLandscape;
+    else
+        return UIInterfaceOrientationMaskPortrait;
+}
+`&lt;/pre&gt;
+
+另外,我这个需要横屏的控制器是present出来的,所以上面的代码对present出来的控制器是无效的,但是对navgationController所push出来的控制器是生效的,So,程序中所有push的出来的控制器都是竖屏,以及在我的程序里所有Present出来的控制器都会支持横屏和竖屏.
+在这个present出来的控制器重写以下三个方法
+
+&lt;pre&gt;`// 允许转屏
+- (BOOL)shouldAutorotate{
+    return NO;
+}
+// 支持横屏显示
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskLandscape;
+}
+// 默认是横屏显示
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    return UIInterfaceOrientationLandscapeLeft;
+}
+</code></pre><p>如果你想要你的其他present出来的控制器只支持竖屏显示,则把上面的三个方法重写至你需要竖屏的控制器中,并且修改return值为<code>UIInterfaceOrientationMaskPortrait</code>;</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[duplicate symbols for architecture i386 clang 错误原因]]></title>
+      <url>/2015/11/19/duplicate-symbols-for-architecture-i386-clang-e9-94-99-e8-af-af-e5-8e-9f-e5-9b-a0/</url>
+      <content type="html"><![CDATA[<p>1.有重复的library.<br>2.有同名文件.<br>3.头文件导入循环!!!!!!!!!</p>
+<p>解决方法:<br>1.build phases中查看是否有重复导入的文件或库.<br>2.全项目搜索报错文件.<br>3.报错前修改的代码以及文件,查看是否有导入未使用的头文件,造成导入循环的头文件.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[block控制器传值]]></title>
+      <url>/2015/11/19/block-e6-8e-a7-e5-88-b6-e5-99-a8-e4-bc-a0-e5-80-bc/</url>
+      <content type="html"><![CDATA[<p><code>需要传值的控制器.h</code><br>给block起个名,用于快速创建block.<br>在block中定义你要传的对象作为参数</p>
+<pre><code>typedef void (^MyBlock)(NSMutableArray * arr);
+`&lt;/pre&gt;
+
+在@interface中定义block属性和发送这个block属性的方法.
+
+&lt;pre&gt;`@property (nonatomic, copy) MyBlock myFirstBlock;
+
+- (void)sendMyFirstBlock:(XZShopCells)block;
+
+`&lt;/pre&gt;
+
+`需要传值的控制器.m`
+实现sendMyFirstBlock方法,把参数复制给属性
+
+&lt;pre&gt;`- (void)sendMyFirstBlock:(XZShopCells)block
+{
+self.myFirstBlock = block;
+}
+`&lt;/pre&gt;
+
+在页面即将消失时将block带着数据发送出去
+
+&lt;pre&gt;`- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    if (self.myFirstBlock) {
+       // self.arr 是我要传递的对象
+        self.myFirstBlock(self.arr);
+    }
+}
+</code></pre><p><code>接收值的控制器.m</code><br>只需要创建<code>需要传值的控制器</code>,再调用<code>- (void)sendMyFirstBlock:(XZShopCells)block;</code>方法就可以拿到你所传的值了.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[判断是否数字!]]></title>
+      <url>/2015/11/18/e5-88-a4-e6-96-ad-e6-98-af-e5-90-a6-e6-95-b0-e5-ad-97/</url>
+      <content type="html"><![CDATA[<p>现在又第三方键盘了,就算你把键盘设置成numberPad也不能阻挡其他键盘的非数字字符输入.<br>so, 可以利用NSScanner对字符扫描,判断是否整型数字.</p>
+<pre><code>- (BOOL)isPureInt:(NSString*)string{
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    int val;
+    return [scan scanInt:&amp;amp;val] &amp;amp;&amp;amp; [scan isAtEnd];
+}
+`&lt;/pre&gt;
+
+// 判断是否浮点型
+
+&lt;pre&gt;`- (BOOL)isPureFloat:(NSString*)string{
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    float val;
+    return[scan scanFloat:&amp;amp;val] &amp;amp;&amp;amp; [scan isAtEnd];
+}
+</code></pre><p>是数字返回 1<br>其他字符则 0</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Objective C </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Internal error. Please file a bug at bugreport.apple.com and attach 错误]]></title>
+      <url>/2015/11/13/internal-error-please-file-a-bug-at-bugreport-apple-com-and-attach-e9-94-99-e8-af-af/</url>
+      <content type="html"><![CDATA[<p>直接 cmd + shift + k 清理下解决!!!</p>
+<p>xcode 抽风!</p>
+<p>请善待他!!!</p>
+<p>:p</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[垃圾评论太多了.直接把数据库里面的评论表清空了...]]></title>
+      <url>/2015/11/03/e5-9e-83-e5-9c-be-e8-af-84-e8-ae-ba-e5-a4-aa-e5-a4-9a-e4-ba-86-e7-9b-b4-e6-8e-a5-e6-8a-8a-e6-95-b0-e6-8d-ae-e5-ba-93-e9-87-8c-e9-9d-a2-e7-9a-84-e8-af-84-e8-ae-ba-e8-a1-a8-e6-b8-85-e7-a9-ba-e4-ba-86/</url>
+      <content type="html"><![CDATA[<p>‘’’ 然后,,,,就没然后了… ‘’’</p>
+<h3 id="just-吐槽一下"><a href="#just-吐槽一下" class="headerlink" title="just 吐槽一下."></a>just 吐槽一下.</h3><h2 id="现在这些个机器人太厉害了"><a href="#现在这些个机器人太厉害了" class="headerlink" title="现在这些个机器人太厉害了."></a>现在这些个机器人太厉害了.</h2><blockquote>
+<p>每月都把我流量吃光…</p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> balabalabala </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[iOS面试重点,供参考.]]></title>
+      <url>/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/</url>
+      <content type="html"><![CDATA[<p>Tip:如果下面每一条你都能扯个10分钟拿个15K+是没问题了.靠前面本人被问得越多.都是一个点开始,延伸很多问题,各种被追问…</p>
+<p>UI的东西,CALayer和View的关系,CoreAnimation,Core Graphics,Quartz 2D,自动布局,面试时较多的情况还是打开一个APP问你这个界面怎么搭建的,动态Cell之类的.某些公司对动画,绘图是比较严格的.</p>
+<p>SDWebImage的原理,实现机制,也就是缓存怎么做,如何解决TableView卡的问题,Cell重用机制,多图片加载.</p>
+<p>多线程,特别是NSOperation 和 GCD 的内部原理,以及NSThread和他们的区别,实际应用.</p>
+<p>设计模式,mvc模式,单利模式,工厂模式,代理模式等的应用场景,实现方法原理.</p>
+<p>内存管理,ARC,MRC区别,优缺点.计数器,内存释放,内存泄露(某次面试说的是OOM,out of memory).</p>
+<p>block和代理的,通知的区别,应用场景.block的用法需要注意些什么.还有KVO经常会被拿到一起问.</p>
+<p>第三方框架,即时通讯,云推送,云短信验证码之类的,支付宝,百度地图,第三方登录等.这是一大块东西,看面什么公司再来准备.</p>
+<p>然后就是数据库sqlite,本地存储方式.什么样的文件适合用那种方式存储.</p>
+<p>strong,weak,retain,assign,readonly,readwrite,copy,nonatomic,atomic等的区别,xcode7出的Nonnull可以拿出来装逼.还有getter.</p>
+<p>运行时(Runtime)机制的原理和应用场景,上面很多点其实都关系到runtime.</p>
+<p>NSString 用copy和strong的区别.浅拷贝,深拷贝.</p>
+<p>程序运行循环(Runloop)机制的原理,Mode作用,应用场景.事件传递,响应者链.</p>
+<p>单例的写法,在单例中应该注意些什么,iOS中有哪些系统的单例,单例坏处.</p>
+<p>网络,AFN怎么实现的,HTTP协议,Socket,TCP/IP,长连接短连接,三次握手什么的.</p>
+<p>git,svn代码管理会不会,先update再commit.</p>
+<p>Instruments调试,断点什么的.</p>
+<p>另外欢迎补充…….</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[快速入门3D Touch集成.]]></title>
+      <url>/2015/10/12/e5-bf-ab-e9-80-9f-e5-85-a5-e9-97-a83d-touch-e9-9b-86-e6-88-90/</url>
+      <content type="html"><![CDATA[<p>直接切入主题!</p>
+<h3 id="一-首先得安装ios模拟器支持3D-Touch的插件"><a href="#一-首先得安装ios模拟器支持3D-Touch的插件" class="headerlink" title="一.首先得安装ios模拟器支持3D Touch的插件"></a>一.首先得安装ios模拟器支持3D Touch的插件</h3><p>苹果官方竟然不给模拟器提供3D Touch的模拟,真是会赚钱.用到<a href="https://github.com/DeskConnect/SBShortcutMenuSimulator" target="_blank" rel="noopener">SBShortcutMenuSimulator</a><br>Tip:以下操作都在终端执行<br>1&gt; clone并编译</p>
+<pre>
+git clone https://github.com/DeskConnect/SBShortcutMenuSimulator.git
+cd SBShortcutMenuSimulator
+make
+</pre>
+2> 对模拟器的一些处理,请确保在SBShortcutMenuSimulator目录下.
+<pre>
+xcrun simctl spawn booted launchctl debug system/com.apple.SpringBoard --environment DYLD_INSERT_LIBRARIES=$PWD/SBShortcutMenuSimulator.dylib
+
+xcrun simctl spawn booted launchctl stop com.apple.SpringBoard
+</pre>
+3> 下面可以启动模拟3D Touch了.这里的com.apple.mobilecal是苹果日历的bundle id,自己的应用调试时换成自己的bundle id即可,每次执行下面命令会弹窗一次快捷操作的PopView.
+<pre>
+echo 'com.apple.mobilecal' | nc 127.0.0.1 8000
+</pre>
+![null](https://raw.githubusercontent.com/DeskConnect/SBShortcutMenuSimulator/screenshot/Shortcuts.png)
+
+### 二.上代码,两种方式创建3D Touch PopView的标签.
+
+#####  方式一.通过代码方式创建 
+
+ UIApplicationShortcutItem
+ UIMutableApplicationShortcutItem
+ 创建标签的两个类.
+ UIApplicationShortcutIcon
+ 创建标签图标的类.
+<pre>
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // 创建个标签Icon对象
+    UIApplicationShortcutIcon *icon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeAdd];
+
+    // 创建标签
+    UIApplicationShortcutItem *item = [[UIApplicationShortcutItem alloc]initWithType:@"c" localizedTitle:@"代码创建的&#x1f601;" localizedSubtitle:@"subTitle" icon:icon userInfo:nil];
+
+    // 通过单例设置 传一个标签数组
+    [UIApplication sharedApplication].shortcutItems = @[item];
+}
+</pre>
+
+<h5 id="方式二-通过info-plist方式创建"><a href="#方式二-通过info-plist方式创建" class="headerlink" title="方式二.通过info.plist方式创建"></a>方式二.通过info.plist方式创建</h5><p><pre><br>先添加了一个UIApplicationShortcutItems的数组，这个数组中添加的元素就是对应的静态标签，在每个标签中我们需要添加一些设置的键值：<br><a href="http://www.ixizi.cn/wp-content/uploads/2015/10/Screen-Shot-2015-10-12-at-10.19.57-PM.png" target="_blank" rel="noopener"><img src="http://www.ixizi.cn/wp-content/uploads/2015/10/Screen-Shot-2015-10-12-at-10.19.57-PM-300x142.png" alt="Screen Shot 2015-10-12 at 10.19.57 PM"></a><br>必填项（下面两个键值是必须设置的）：</pre></p>
+<p>UIApplicationShortcutItemType 这个键值设置一个快捷通道类型的字符串 </p>
+<p>UIApplicationShortcutItemTitle 这个键值设置标签的标题</p>
+<p>选填项（下面这些键值不是必须设置的）：</p>
+<p>UIApplicationShortcutItemSubtitle 设置标签的副标题</p>
+<p>UIApplicationShortcutItemIconType 设置标签Icon类型</p>
+<p>UIApplicationShortcutItemIconFile  设置标签的Icon文件</p>
+<p>UIApplicationShortcutItemUserInfo 设置信息字典(用于传值)<br><br><a href="http://www.ixizi.cn/wp-content/uploads/2015/10/Screen-Shot-2015-10-12-at-10.40.51-PM.png" target="_blank" rel="noopener"><img src="http://www.ixizi.cn/wp-content/uploads/2015/10/Screen-Shot-2015-10-12-at-10.40.51-PM-241x300.png" alt="Screen Shot 2015-10-12 at 10.40.51 PM"></a></p>
+<p><a href="http://www.ixizi.cn/wp-content/uploads/2015/10/Screen-Shot-2015-10-12-at-10.40.33-PM.png" target="_blank" rel="noopener"><img src="http://www.ixizi.cn/wp-content/uploads/2015/10/Screen-Shot-2015-10-12-at-10.40.33-PM-261x300.png" alt="Screen Shot 2015-10-12 at 10.40.33 PM"></a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Xcode7文档离线下载地址分享]]></title>
+      <url>/2015/09/19/xcode7-e6-96-87-e6-a1-a3-e7-a6-bb-e7-ba-bf-e4-b8-8b-e8-bd-bd-e5-9c-b0-e5-9d-80-e5-88-86-e4-ba-ab/</url>
+      <content type="html"><![CDATA[<p>OS X 10.11 Documentation<br><a href="https://devimages.apple.com.edgekey.net/docsets/20150916/031-34988-A.dmg" target="_blank" rel="noopener">https://devimages.apple.com.edgekey.net/docsets/20150916/031-34988-A.dmg</a></p>
+<p>iOS 9.0 Documentation<br><a href="https://devimages.apple.com.edgekey.net/docsets/20150916/031-34987-A.dmg" target="_blank" rel="noopener">https://devimages.apple.com.edgekey.net/docsets/20150916/031-34987-A.dmg</a></p>
+<p>watchOS 2.0 Documentation<br><a href="https://devimages.apple.com.edgekey.net/docsets/20150916/031-34989-A.dmg" target="_blank" rel="noopener">https://devimages.apple.com.edgekey.net/docsets/20150916/031-34989-A.dmg</a></p>
+<p>Xcode 7 Documentation<br><a href="https://devimages.apple.com.edgekey.net/docsets/20150916/031-34986-A.dmg" target="_blank" rel="noopener">https://devimages.apple.com.edgekey.net/docsets/20150916/031-34986-A.dmg</a></p>
+<p>来源: <a href="https://developer.apple.com/library/downloads/docset-index.dvtdownloadableindex" target="_blank" rel="noopener">https://developer.apple.com/library/downloads/docset-index.dvtdownloadableindex</a> 无校验值，请自行鉴别真伪</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[解决Xcode7调试出现:The identity used to sign the executable is no longer valid.错误]]></title>
+      <url>/2015/09/18/e8-a7-a3-e5-86-b3xcode7-e8-b0-83-e8-af-95-e5-87-ba-e7-8e-b0the-identity-used-to-sign-the-executable-is-no-longer-valid-e9-94-99-e8-af-af/</url>
+      <content type="html"><![CDATA[<p><img src="\" alt="\"><br>这个图片是老图,因为我自己解决了然后没截图了.</p>
+<p>出现这个错误原因可能是ios developer证书过期,或者是一个帐号使用的人太多了.如果是xcode7的话可以免费真机调试了,但是貌似同时一个xcode中使用一个买了99刀的开发者帐户和一个免费的帐户,开发者帐户出现此问题免费帐户也不能使用,就算你在code signing中设置为免费帐号也是不行滴..</p>
+<p>解决这个问题只需重新部署下证书就可以fix了.<br>打开 钥匙串访问 ! 搜索 developer 把相关证书删除掉,不过我是把所有都删了,好像没出现什么问题,把已被撤销的证书删除掉就可以了.<br><img src="\" alt="\"></p>
+<p>接下来你就可以打开你的Xcode编译运行在真机上了.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[[转]VPS搭建Pac代理翻墙]]></title>
+      <url>/2015/09/15/e8-bd-acvps-e6-90-ad-e5-bb-bapac-e4-bb-a3-e7-90-86-e7-bf-bb-e5-a2-99/</url>
+      <content type="html"><![CDATA[<h1 id="搭建代理服务器"><a href="#搭建代理服务器" class="headerlink" title="搭建代理服务器"></a>搭建代理服务器</h1><p>在 25 端口搭建 http/https 代理。</p>
+<h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu:"></a>Ubuntu:</h2><p>apt-get install squid<br>curl <a href="https://pac.itzmx.com/squid/ubuntu-squid.conf" target="_blank" rel="noopener">https://pac.itzmx.com/squid/ubuntu-squid.conf</a> &gt; /etc/squid3/squid.conf<br>/etc/init.d/squid3 restart<br>复制代码</p>
+<h2 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS:"></a>CentOS:</h2><p>setenforce 0<br>ulimit -n 1048576<br>echo \”<em> soft nofile 1048576\” &gt;&gt; /etc/security/limits.conf<br>echo \”</em> hard nofile 1048576\” &gt;&gt; /etc/security/limits.conf<br>killall sendmail<br>/etc/init.d/postfix stop<br>chkconfig –level 2345 postfix off<br>yum -y install squid<br>wget -O /etc/squid/squid.conf <a href="https://pac.itzmx.com/squid/centos-squid.conf" target="_blank" rel="noopener">https://pac.itzmx.com/squid/centos-squid.conf</a><br>/etc/init.d/squid restart<br>chkconfig –level 2345 squid on<br>复制代码</p>
+<p>然后使用 <a href="\">PAC</a> 右键另存为 PAC 文件后修改其中的IP地址为你的服务器IP即可。</p>
+<p>注意服务器DNS修改成8.8.8.8：<a href="http://bbs.itzmx.com/thread-6353-1-1.html" target="_blank" rel="noopener">http://bbs.itzmx.com/thread-6353-1-1.html</a></p>
+<p>搭配锐速，网页打开速度翻十倍，效果更加：<a href="http://bbs.itzmx.com/thread-7220-1-1.html" target="_blank" rel="noopener">http://bbs.itzmx.com/thread-7220-1-1.html</a></p>
+<p>转载注明出处：<a href="http://bbs.itzmx.com/thread-8815-1-1.html" target="_blank" rel="noopener">http://bbs.itzmx.com/thread-8815-1-1.html</a></p>
+<p>推荐服务器：<a href="http://www.vultr.com/" target="_blank" rel="noopener">http://www.vultr.com/</a><br>优惠码：OWNCLOUD<br>赠送的20刀期限30天，注意使用。<br>注意点击小尾巴，才能享受到优惠哦</p>
+<p>Ubuntu 可以直接使用，centos需要发TK叫开mail端口<br>搭配锐速效果更赞：<a href="http://bbs.itzmx.com/thread-7220-1-1.html" target="_blank" rel="noopener">http://bbs.itzmx.com/thread-7220-1-1.html</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[解决Xcode7出现Error Domain=NSURLErrorDomain错误,在Xcode7中使用HTTP连接]]></title>
+      <url>/2015/09/14/e8-a7-a3-e5-86-b3xcode7-e5-87-ba-e7-8e-b0error-domainnsurlerrordomain-e9-94-99-e8-af-af-e5-9c-a8xcode7-e4-b8-ad-e4-bd-bf-e7-94-a8http-e8-bf-9e-e6-8e-a5/</url>
+      <content type="html"><![CDATA[<p>在你使用xcode7运行使用http的App时会出现一下错误:<br>`App Transport Security has blocked a cleartext HTTP (http://) resource load since it is insecure. Temporary exceptions can be configured via your app’s Info.plist file.</p>
+<p>Error Domain=NSURLErrorDomain Code=-1022 “The resource could not be loaded because the App Transport Security policy requires the use of a secure connection.” UserInfo={NSUnderlyingError=0x7fdb52665d50 {Error Domain=kCFErrorDomainCFNetwork Code=-1022 “(null)”}, NSErrorFailingURLStringKey=<a href="http://xxx.com/" target="_blank" rel="noopener">http://xxx.com/</a>, NSErrorFailingURLKey=<a href="http://xxx.com" target="_blank" rel="noopener">http://xxx.com</a>, NSLocalizedDescription=The resource could not be loaded because the App Transport Security policy requires the use of a secure connection.}`<br>这是因为苹果在iOS9中禁止所有不安全的HTTP请求,也就是说在xcode7中不能在使用HTTP的连接,不过只需要在info.plist文件中加入以下key就可以正常使用:</p>
+<pre><code>&amp;lt;key&amp;gt;NSAppTransportSecurity&amp;lt;/key&amp;gt;
+&amp;lt;dict&amp;gt;
+    &amp;lt;key&amp;gt;NSAllowsArbitraryLoads&amp;lt;/key&amp;gt;
+    &amp;lt;true/&amp;gt;
+&amp;lt;/dict&amp;gt;
+// 复制下面代码 到info.plist
+&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;
+&amp;lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&amp;gt;
+&amp;lt;plist version=&quot;1.0&quot;&amp;gt;
+&amp;lt;dict&amp;gt;
+    &amp;lt;key&amp;gt;NSAllowsArbitraryLoads&amp;lt;/key&amp;gt;
+    &amp;lt;true/&amp;gt;
+&amp;lt;/dict&amp;gt;
+&amp;lt;/plist&amp;gt;
+</code></pre><p>添加完成后的样子:<br><img src="http://40.media.tumblr.com/f8d0d408522669d6a1cb9f2a231b6f7d/tumblr_inline_nq3e2bH7dE1qh9cw7_500.png" alt="null"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[写了个shell脚本,用于快速创建Xcode项目分类文件夹]]></title>
+      <url>/2015/09/12/e5-86-99-e4-ba-86-e4-b8-aashell-e8-84-9a-e6-9c-ac-e7-94-a8-e4-ba-8e-e5-bf-ab-e9-80-9f-e5-88-9b-e5-bb-baxcode-e9-a1-b9-e7-9b-ae-e5-88-86-e7-b1-bb-e6-96-87-e4-bb-b6-e5-a4-b9/</url>
+      <content type="html"><![CDATA[<p>自动生成树型目录 Classes &gt; 自定文件夹 &gt; MVC文件夹 还会自动生成Other文件夹<br> 使用方法<br>1.打开终端 进入脚本存放目录<br>2.\’./XZMkdirClasses.sh\’<br>如果觉得太麻烦可以直接右击使用终端打开,以后要用就直接双击就可以了<br>3. 输入你要创建的文件夹名,空格隔开,回车确认<br>4.输入你的项目代码文件夹,可以直接从Xcode拖一个文件,会过滤掉文件<br>5.done 自动打开项目目录<br><img src="\" alt="\"></p>
+<p><a href="\">github地址</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> shell </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[IOS推送通知]]></title>
+      <url>/2015/09/05/ios-e6-8e-a8-e9-80-81-e9-80-9a-e7-9f-a5/</url>
+      <content type="html"><![CDATA[<p> 远程推送应用配置过程</p>
+<p>1. 创建支持远程推送功能的App ID<br>2. 申请开发者证书，并选中刚刚创建的App ID<br>3. 下载CER文件，并导入钥匙串管理<br>4. 申请发布证书，并选中刚刚创建的App ID<br>5. 下载CER文件，并导入钥匙串管理<br>6. 检查App ID，确认证书已经指定</p>
+<p>格式:<code>{&quot;aps&quot;:{&quot;alert&quot;:&quot;This is some fancy message.&quot;,&quot;badge&quot;:1,&quot;sound&quot;:&quot;default&quot;}}</code></p>
+<p>远程推送应用程序开发过程</p>
+<ol>
+<li>新建应用程序<br>2. 指定AppID，在developer.apple.com上设置的AppID</li>
+</ol>
+<p>#ifdef __IPHONE_8_0<br>    // 注册接收通知的类型<br>    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];<br>    [application registerUserNotificationSettings:settings];</p>
+<pre><code>// 注册允许接收远程推送通知
+[application registerForRemoteNotifications];
+</code></pre><p>#else<br>    // 如果是iOS7.0，使用以下方法注册<br>    [application registerForRemoteNotificationTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound];</p>
+<p>#endif</p>
+<p>// 当得到苹果的APNs服务器返回的DeviceToken就会被调用<br>// 7040f7d5 5a974598 c5cf31b5 3e340b39 68affd25 122f0ce1 3f315226 396c2e5b<br><code>- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSLog(@&quot;deviceToken是：%@&quot;, deviceToken);
+}</code></p>
+<p>// 接收到远程通知，触发方法和本地通知一致<br><code>- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@&quot;%@&quot;, userInfo);
+}</code></p>
+<p><em>*</em> 使用后台的远程消息推送</p>
+<p>1&gt;    在Capabilities中打开远程推送通知<br>2&gt; 实现代理方法<br><code>- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler</code></p>
+<p>远程消息数据格式：<br><code>{&quot;aps&quot; : {&quot;content-available&quot; : 1},&quot;content-id&quot; : 42}</code></p>
+<p>执行completionHandler有两个目的<br>1&gt; 系统会估量App消耗的电量，并根据传递的UIBackgroundFetchResult 参数记录新数据是否可用<br>2&gt; 调用完成的处理代码时，应用的界面缩略图会自动更新</p>
+<p>注意：接收到远程通知到执行完网络请求之间的时间不能超过30秒<br>`<br>if (userInfo) {<br>    int contentId = [userInfo[@”content-id”] intValue];</p>
+<pre><code>ViewController *vc = (ViewController *)application.keyWindow.rootViewController;
+[vc loadDataWithContentID:contentId completion:^(NSArray *dataList) {
+    vc.dataList = dataList;
+
+    NSLog(@&quot;刷新数据结束&quot;);
+
+    completionHandler(UIBackgroundFetchResultNewData);
+}];
+</code></pre><p>} else {<br>    completionHandler(UIBackgroundFetchResultNoData);<br>}<br>`</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[[科普]Mbps、Kbps、bps、kb、mb的换算和区别]]></title>
+      <url>/2015/08/30/e7-a7-91-e6-99-aembps-e3-80-81kbps-e3-80-81bps-e3-80-81kb-e3-80-81mb-e7-9a-84-e6-8d-a2-e7-ae-97-e5-92-8c-e5-8c-ba-e5-88-ab/</url>
+      <content type="html"><![CDATA[<p>Mbps 即 Milionbit pro second(百万位每秒)；</p>
+<p>Kbps：首先要了解的是，ps指的是/s，即每秒。　在这里需要说明的问题是在单位换算上有一点是极其重要的即：1Mb=1024Kb=1024_1024b=1048576b 而1MB=1024KB=1024_1024B=1024_1024_8b=8388608b这在数量上差的很多.!!!!</p>
+<p>Kbps 即 Kilobit pro second（千位每秒）； bps 即 bit pro second（位每秒）；  速度单位，bit即比特，通常用b（小写）表示，指一位二进制位，Milionbit=1000Kilobit=1000000bit； 所以1Mbps=1000000bps；  这是通常用来衡量带宽的单位，指每秒钟传输的二进制位数； 而通常软件上显示的速度则是指每秒种传输的字节数（Byte）通常用B（大写）表示；  MB即百万字节也称兆字节； KB即千字节； B即字节；  之间关系为1MB=1024KB=1024*1024B； 1B=8b；  所以1M带宽即指1Mbps=1000Kbps=1000/8KBps=125KBps； 因此1M的带宽下载的速度一般不会超过125KB每秒。 2M、3M带宽分别是250KBps、375KBps；  2M、3M带宽的下载速度分别不会超过250KB、375KB每秒。</p>
+<p>假设要对10kbps进行换算，则有 10kbps=10000bps=0.01Mpbs.数据传输速率的衡量单位K是十进制含义,但数据存储的K是2进制含义。  1kbit/s就是1000bit/s,而KB是1024个字节,注意KB和kbit的区别，另外，数据传输速率的单位是bit/s 记作：bps 。</p>
+<p>在实际应用中,1kbps=1000bps，1Mbps=1000,000bps.1bps=0.000001bps  1Mbps与 1m/s 是有区别的，1m/s指的是是1024KB/S   而1Mbps指的是1000/8KB/S也就是125KB/S，记住K和k是没区别的,区别在于bps属于位每秒的单位，而m/s ,KB/S这两个属于字节每秒的单位，一字节等于8位，即1B=8b</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> KYL </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[iOS 用富文本NSMutableAttributedString来设置label文字显示不同的颜色和字体]]></title>
+      <url>/2015/08/17/ios-e7-94-a8-e5-af-8c-e6-96-87-e6-9c-acnsmutableattributedstring-e6-9d-a5-e8-ae-be-e7-bd-aelabel-e6-96-87-e5-ad-97-e6-98-be-e7-a4-ba-e4-b8-8d-e5-90-8c-e7-9a-84-e9-a2-9c-e8-89-b2-e5-92-8c-e5-ad-97/</url>
+      <content type="html"><![CDATA[<p><strong>由于StoryBoard的局限性(不能设置某段字符串颜色字体)有时候我们想要label上面的文字更加多样,不得不通过富文本的方式来对文本进行混排.下面介绍了NSMutableAttributedString类的一些常用方法和属性说明.</strong></p>
+<p>1.使用方法：</p>
+<p>为某一范围内文字设置多个属性<br><code>- (void)setAttributes:(NSDictionary *)attrs range:(NSRange)range;</code><br>为某一范围内文字添加某个属性<br><code>- (void)addAttribute:(NSString *)name value:(id)value range:(NSRange)range;</code><br>为某一范围内文字添加多个属性<br><code>- (void)addAttributes:(NSDictionary *)attrs range:(NSRange)range;</code><br>移除某范围内的某个属性<br><code>- (void)removeAttribute:(NSString *)name range:(NSRange)range;</code></p>
+<ol>
+<li>常见的属性及说明</li>
+</ol>
+<p><code>NSFontAttributeName</code><br>字体<br><code>NSParagraphStyleAttributeName</code><br>段落格式<br><code>NSForegroundColorAttributeName</code><br>字体颜色<br><code>NSBackgroundColorAttributeName</code></p>
+<p>背景颜色<br><code>NSStrikethroughStyleAttributeName</code><br>删除线格式<br><code>NSUnderlineStyleAttributeName</code></p>
+<p>下划线格式<br><code>NSStrokeColorAttributeName</code><br>删除线颜色<br><code>NSStrokeWidthAttributeName</code><br>删除线宽度<br><code>NSShadowAttributeName</code><br>阴影</p>
+<p>3.代码实现</p>
+<pre>
+// 将Label连线
+@interface XZNoFriendTrendsView()
+@property (weak, nonatomic) IBOutlet UILabel *label;
+@end
+</pre>
+
+<p><strong>以字典方式设置字体富文本属性</strong></p>
+<pre>
+
+// 以字典方式设置富文本
+    // 设置阴影
+    NSShadow *shadow = [[NSShadow alloc]init];
+    shadow.shadowColor = [UIColor redColor];
+    shadow.shadowOffset = CGSizeMake(20, 20);
+    shadow.shadowBlurRadius = 0.5;
+// 创建个字典用来设置属性
+    NSDictionary *dict = [[NSDictionary alloc]init];
+    dict = @{
+             // 设置字体
+             NSFontAttributeName:[UIFont systemFontOfSize:16],
+             // 设置阴影 需要先创建好对象
+             NSShadowAttributeName:shadow
+             };
+// 添加字典,和你要设置的文字位置
+[AttributedStr addAttributes:dict range:NSMakeRange(0, 10)];
+</pre>
+
+<p><strong>单个添加属性</strong></p>
+<pre>
+// 设置文字背景颜色
+    [AttributedStr addAttribute:NSBackgroundColorAttributeName value:[UIColor greenColor] range:NSMakeRange(10, 4)];
+    // 设置文字颜色
+    [AttributedStr addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(16, 4)];
+</pre>
+
+<p><strong>最后只需要把文字赋值给label就可以了</strong></p>
+<pre>self.label.attributedText = AttributedStr;</pre>]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+            <tag> Objective C </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[IT 圈里有哪些经常被读错的词？]]></title>
+      <url>/2015/08/10/it-e5-9c-88-e9-87-8c-e6-9c-89-e5-93-aa-e4-ba-9b-e7-bb-8f-e5-b8-b8-e8-a2-ab-e8-af-bb-e9-94-99-e7-9a-84-e8-af-8d-ef-bc-9f/</url>
+      <content type="html"><![CDATA[<p>===总结版===<br>*感谢各位朋友在评论中的指正。本贴旨在纠正各种明显的发音错误。如@梁海，@依云，@汤海所说，拿中文近似肯定会存在误差——对于这些误差，请直接参考音标或者真人发音。</p>
+<p>()标相应英文单词<br>[]标音标</p>
+<p>=====公司/产品名=====<br>Youtube (You-tube [tju:b]) 念 优tiu啵 不念 优吐毙<br>Skype [ˈskaɪp] 念 死盖破 不念 死盖屁<br>Adobe [əˈdəʊbi] 念 阿兜笔 不念 阿斗伯<br>Chrome [krəʊm] 念 克肉姆<br>C# (C Sharp) 念 C煞破<br>GNU [(g)nuː] 念 哥怒<br>GUI [ˈɡui] 念 故意<br>JAVA [ˈdʒɑːvə] 念 扎蛙 不念 夹蛙<br>AJAX [ˈeɪdʒæks] 念 诶(ei)贾克斯 不念 阿贾克斯<br>Ubuntu [uˈbuntuː] 念 巫不恩兔 不念 友邦兔<br>Debian [ˈdɛbiən] 念 得(dei)变<br>Linux [ˈlɪnəks] [ˈlɪnʊks] 两种发音 丽娜克斯 和 李扭克斯 都可以<br>LaTeX [ˈleɪtɛk] [ˈleɪtɛx] [ˈlɑːtɛx] [ˈlɑːtɛk] 雷泰克，拉泰克 都可以 （根据Knuth的建议，雷泰克斯和拉泰克斯不正确。而且LaTeX的重音是放在雷或拉上。感谢@Rio讨论。另外感谢发音大牛@梁海刚刚指出， [ˈlɑːtɛx] 注音符号里的x发的不是克斯的音，而是接近“巴赫”的那个赫。）<br>GNOME [ɡˈnoʊm] [noʊm] 两种发音 格弄姆 弄姆 都可以<br>App [ˈæp] 念阿破（与爱破也比较像，参见音标），不能把三个字母拆开念成A P P。</p>
+<p>=====一般英语=====<br>null [nʌl] 念 闹<br>jpg [ˈdʒeɪpɛɡ] 念 zhei派个 不念 勾屁记<br>WiFi [ˈwaɪfaɪ] 念 歪fai<br>mobile [moˈbil] [ˈmoˌbil] [ˈməubail] 膜拜哦 和 牟bou 都可以<br>integer [ˈɪntɪdʒə] 念 音剃摺儿 不念 阴太阁儿<br>cache [kæʃ] 念 喀什 不念 卡尺<br>@ 念 at</p>
+<p>=====感谢@Lawrence Li同学的补遗=====<br>Tumblr (Tumbler) 念 贪不勒<br>nginx (Engine X)念 恩静 爱克斯（@Lawrence Li有不同意见）<br>Apache [əˈpætʃiː] 念 阿趴气<br>Lucene [ˈluːsin] 念 鲁信<br>MySQL [maɪ ˌɛskjuːˈɛl] [maɪ ˈsiːkwəl] 念 买S奎儿 或 买吸扣 都可以<br>Exposé [ɛksˈpəʊzeɪ] 念 埃克斯剖Z （重音在Z上）<br>RFID 【本条争议颇大】：有人念af rid, ri fid，但是RFID官方念法依然是四个字母分开读R F I D<br>JSON (jason) 念 zhei森<br>Processing [ˈprəʊsesɪŋ] 重音在Pro上<br>avatar [ˌævə\’tɑr] 念 艾瓦塌儿</p>
+<p>来源:<a href="http://www.zhihu.com/question/19739907" target="_blank" rel="noopener">http://www.zhihu.com/question/19739907</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> KYL </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[layer中的一些属性,设置圆角,阴影等]]></title>
+      <url>/2015/08/09/layer-e4-b8-ad-e7-9a-84-e4-b8-80-e4-ba-9b-e5-b1-9e-e6-80-a7-e8-ae-be-e7-bd-ae-e5-9c-86-e8-a7-92-e9-98-b4-e5-bd-b1-e7-ad-89/</url>
+      <content type="html"><![CDATA[<p><strong>1.设置UIButton的圆角</strong></p>
+<pre>
+btn.layer.cornerRadius = 4;
+</pre>
+
+<p><strong>2.设置边框</strong></p>
+<pre>
+btn.layer.borderWidth = 5;
+</pre>
+
+<p><strong>3.设置边框颜色</strong></p>
+<pre>
+btn.layer.borderColor = [UIColor yellowColor].CGColor;
+</pre>
+
+<p><strong>4.设置阴影</strong></p>
+<pre>
+btn.layer.shadowColor = [UIColor yellowColor].CGColor;
+// 设置阴影颜色
+
+btn.layer.shadowOffset = CGSizeMake{3,3};
+// 设置阴影偏移量
+
+btn.layer.shadowOpacity = 2.0;
+// 设置阴影透明度
+</pre>]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[用宏封装单例创建初始化方法.]]></title>
+      <url>/2015/08/07/e7-94-a8-e5-ae-8f-e5-b0-81-e8-a3-85-e5-8d-95-e4-be-8b-e5-88-9b-e5-bb-ba-e5-88-9d-e5-a7-8b-e5-8c-96-e6-96-b9-e6-b3-95/</url>
+      <content type="html"><![CDATA[<p>\’interfaceSingle(类名)\’ 在单例头文件中(@interface)声明单例方法</p>
+<p>\’implementationSingle(类名)\’ 实现方法,在@implementation中调用,将自动判断是否ARC内存管理方式,</p>
+<pre>
+
+#define interfaceSingle(name)  + (instancetype)share##name
+// 头文件单例方法声明
+
+/**
+ *  判断是否为ARC内存管理方式,如果是则不重写retain release retainCount方法!
+ *  苹果的单例会是一个很大的值,这里重写retainCount是为了与类方法区分.
+ */
+#if __has_feature(objc_arc)
+// 如果是ARC
+#define implementationSingle(name)  + (instancetype)share##name 
+{ 
+    return [[self alloc] init]; 
+} 
+static id _instance; 
++ (instancetype)allocWithZone:(struct _NSZone *)zone 
+{ 
+    static dispatch_once_t onceToken; 
+    dispatch_once(&onceToken, ^{ 
+        _instance = [super allocWithZone:zone]; 
+    }); 
+    return _instance; 
+} 
+- (id)copyWithZone:(NSZone *)zone 
+{ 
+    return _instance; 
+} 
+- (id)mutableCopyWithZone:(NSZone *)zone 
+{ 
+    return _instance; 
+}
+#else
+// 如果不是ARC则重新retain release retainCount
+#define implementationSingle(name)  + (instancetype)share##name 
+{ 
+return [[self alloc] init]; 
+} 
+static id _instance; 
++ (instancetype)allocWithZone:(struct _NSZone *)zone 
+{ 
+static dispatch_once_t onceToken; 
+dispatch_once(&onceToken, ^{ 
+_instance = [super allocWithZone:zone]; 
+}); 
+return _instance; 
+} 
+- (id)copyWithZone:(NSZone *)zone 
+{ 
+return _instance; 
+} 
+- (id)mutableCopyWithZone:(NSZone *)zone 
+{ 
+return _instance; 
+}
+- (oneway void)release 
+{} 
+- (instancetype)retain 
+{ 
+    return _instance; 
+} 
+- (NSUInteger)retainCount 
+{ 
+    return MAXFLOAT; 
+}
+#endif
+</pre>]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[解决illegal configuration错误]]></title>
+      <url>/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/</url>
+      <content type="html"><![CDATA[<p>毫无疑问，我们从来没有像这样喜欢过故事板。从 iOS 5 开始，苹果在其新的IDE版本中提供了故事板编辑器，并在故事板编辑器中“升级”了其 Object Library，尤其是UITableView。新的 UITableView 除了可以用传统的 DataSource 编程方式提供 cell 外，还有两种可以不离开 ViewController设计界面对其进行UI设计的单元格：模板单元格和静态单元格。</p>
+<p>前者毋庸多说，一旦你使用过它，就不会再离不开它了。而对于后者，一直存在着一个巨大的缺陷——静态单元格只能在SDK内置的 UITableViewController  中使用，如果在程序员自己的ViewController中，静态单元格根本不会显示，甚至于编译器会提示错误信息:“Illegal Configuration: Static table views are only valid when embedded in UITableViewControllerinstances”。</p>
+<p>解决方案：将动态表格设置为静态表格。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[CocoaPods简易安装教程!]]></title>
+      <url>/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/</url>
+      <content type="html"><![CDATA[<h3 id="CocoaPods是什么？"><a href="#CocoaPods是什么？" class="headerlink" title="CocoaPods是什么？"></a>CocoaPods是什么？</h3><p>当你开发iOS应用时，会经常使用到很多第三方开源类库，比如JSONKit，AFNetWorking等等。可能某个类库又用到其他类库，所以要使用它，必须得另外下载其他类库，而其他类库又用到其他类库，“子子孙孙无穷尽也”，这也许是比较特殊的情况。总之小编的意思就是，手动一个个去下载所需类库十分麻烦。另外一种常见情况是，你项目中用到的类库有更新，你必须得重新下载新版本，重新加入到项目中，十分麻烦。如果能有什么工具能解决这些恼人的问题，那将“善莫大焉”。所以，你需要 CocoaPods。<br>CocoaPods应该是iOS最常用最有名的类库管理工具了，上述两个烦人的问题，通过cocoaPods，只需要一行命令就可以完全解决，当然前提是你必须正确设置它。重要的是，绝大部分有名<br>的开源类库，都支持CocoaPods。所以，作为iOS程序员的我们，掌握CocoaPods的使用是必不可少的基本技能了。</p>
+<h3 id="怎么安装"><a href="#怎么安装" class="headerlink" title="怎么安装?"></a>怎么安装?</h3><p>1.首先确保你的MaC安装了 Ruby,通常来说,Mac系统是自带ruby环境的.你可以在终端中使用<code>gem -v</code>查看ruby版本.如果出现命令未找到,则需要安装ruby,至于具体安装方法,本文不与讨论,请自行google !</p>
+<p>2.确保安装了ruby环境后,因为官方源被GFW墙了,所以你需要替换源地址(sources),如果你之前已经替换过了可以跳过本步骤.我们需要替换为淘宝ruby镜像源,在终端中输入一下命令:</p>
+<p><code>gem sources --remove https://rubygems.org/</code> 删除官方源</p>
+<p><code>gem sources -a http://ruby.taobao.org/</code> 添加淘宝源</p>
+<p>这两行命令完成后可以输入<code>gem sources -l</code> 命令查看源地址,确认是淘宝源地址后即可进行下一步!</p>
+<p>3.安装CocoaPods,只需要一行命令即可安装好</p>
+<p><code>sudo gem install cocoapods</code></p>
+<pre><code>输完这行命令后你需要输入你的账户密码,输入密码时密码是不会显示的,敲好直接Enter就可以了!
+</code></pre><p>至此你已经安装好CocoaPods了,你可以进入你的项目目录安装你需要的类库.使用<code>pod -help</code>查看cocoapods使用方法.</p>
+<p>&nbsp;</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[自建DNS服务器 可翻Q]]></title>
+      <url>/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/</url>
+      <content type="html"><![CDATA[<p>注：本教程需要有一定的基础知识，我尽量写的清楚一些，方便大家使用本教程。<br>鉴于很多使用者可能对linux不熟悉，我们简单介绍下必须的工具和知识：</p>
+<p>1. vi 是linux默认使用的文本编辑工具，比如我要修改 /etc/hosts这个文件，我可以输入 vi /etc/hosts<br>2. 在vmware中用vi配置完网络设置后，可以直接用Putty这个工具连接。打开Putty，输入IP，确认，然后输入用户名密码，密码不会显示出来，所以输入密码的时候如果看到putty没有任何提示请不要惊讶，输入完密码按确认即可。<br>3. Putty里的复制和粘贴和win不同，复制的话，用鼠标标记需要复制的地方，然后按确认键即可，如果需要粘贴，直接点鼠标右键<br>4. vi 工具，如果需要输入内容，请按i键，输入完按esc，再按：， 输入wq即可，如果不需要保存，输入q！，vi中快速查找可以输入/，然后输入相应内容。<br>5. flashfxp，免费的ftp工具，支持sftp方式连接vps，免费的，百度下载<br><a id="more"></a></p>
+<p>本教程是基于在CentOS系统上配置DNS服务器，但是这两个要求电脑24小时开机，有能力的用户可以租用一台国内的VPS部署，注意，必须是国内的！而且最好是和自己所在地区相同，所用线路相同！ 如果路由是DDwrt之类的，也有一定Linux基础的，可以参考我们的CentOS教程，修改下，在路由上实现</p>
+<p>1. 使用工具：vmware workstation，CentOS6.6</p>
+<p>2. 准备工作：<br>1）下载vmWare workstation并正确安装，附上vmware的下载地址：<a href="http://rj.baidu.com/soft/detail/13808.html?ald" target="_blank" rel="noopener">http://rj.baidu.com/soft/detail/13808.html?ald</a>  序列号可以百度下<br>2）下载CentOS6.6 64位   下载地址：<a href="http://mirrors.sina.cn/centos/6\" target="_blank" rel="noopener">http://mirrors.sina.cn/centos/6\</a>. … -x86_64-minimal.iso<br>3）在vmware workstation中选择创建虚拟机：<br>3-1）配置类型选择自定义（高级）<br>3-2）硬件兼容性选择workstation10<br>3-3）安装来源选择稍后安装系统<br>3-4）客户机操作系统选择： Linux——-CentOS 64位<br>3-5）选择储存位置和虚拟机名称<br>3-6）处理器1个即可<br>3-6）内存128M到512M之间即可，看个人需求以及电脑配置<br>3-7）网络选择桥接模式<br>3-8）一直下一步，硬盘选择SAS，下一步，大小20G， 下一步，选择储存位置，完成。<br>4）vmware中多一个虚拟机，我们点击虚拟机卡片内的CD/DVD，选择我们下载好的centos ISO，开机<br>5）centos的安装网上有较多教程，我们只需要最小化安装即可，一路下一步下去。<br>6）CentOS安装完成后，我们使用root账户登录，注意，centos不会显示你输入的密码，因此输入密码没有看到字符不要惊讶，回车即可<br>下面进入到centos系统的配置和dns服务器的安装环节了<br>1）编辑centos网络</p>
+<ol>
+<li>vi /etc/sysconfig/network-scripts/ifcfg-eth0</li>
+</ol>
+<p>vi控制台使用很容易，按i键即可输入，按ese,然后：，然后输入wq即可保存退出。将文件内容参考下面的内容进行修改<br>DEVICE=eth0<br>TYPE=Ethernet<br>ONBOOT=yes<br>NM_CONTROLLED=yes<br>BOOTPROTO=static<br>IPADDR=192.168.1.221<br>NETMASK=255.255.255.0<br>GATEWAY=192.168.1.1</p>
+<p>保存退出后，我们再输入</p>
+<p>#vi /etc/resolv.conf<br>nameserver 180.76.76.76(注意：如果是本地搭建DNS，可以使用114、百度等，如果是搭建在VPS上，建议百度下您本地运营商的DNS，否则访问部分国内网站可能会比较慢）</p>
+<p>保存退出后输入</p>
+<p>#service network restart</p>
+<p>#yum update -y</p>
+<p>#yum install dnsmasq</p>
+<p>#service dnsmasq start</p>
+<p>Ok，dnsmasq已经可以正常运作，您可以将路由或者电脑dns设置为这台机器的IP地址。<br>接下来我们将讲解如何来访问google,youtube,facebook,twitter等网站。<br>编辑etc目录下的dnsmasq.conf文件,类似于hosts,指定访问翻墙IP.这里就不多叙述了.<br>修改后,在putty中输入</p>
+<ol>
+<li>service dnsmasq restart</li>
+</ol>
+<p>完工！</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Model和View永远不能相互通信，只能通过Controller传递。 Controller可以直接与Model对话（读写调用Model），Model通过Notification和KVO机制与Controller间接通信。 Controller可以直接与View对话，通过outlet 直接操作View outlet直接对应到View中的控件 View通过action向Controller报告事件的发生 如用户Touch我了 。Controller是View的直接数据源（数据很可能是Controller从Model中取得并经过加工了）。Controller是View的代理（delegate...]]></title>
+      <url>/2015/06/28/model-e5-92-8cview-e6-b0-b8-e8-bf-9c-e4-b8-8d-e8-83-bd-e7-9b-b8-e4-ba-92-e9-80-9a-e4-bf-a1-ef-bc-8c-e5-8f-aa-e8-83-bd-e9-80-9a-e8-bf-87controller-e4-bc-a0-e9-80-92-e3-80-82-controller-e5-8f-af/</url>
+      <content type="html"><![CDATA[<p>Model和View永远不能相互通信，只能通过Controller传递。<br>Controller可以直接与Model对话（读写调用Model），Model通过Notification和KVO机制与Controller间接通信。<br>Controller可以直接与View对话，通过outlet,直接操作View,outlet直接对应到View中的控件,View通过action向Controller报告事件的发生(如用户Touch我了)。Controller是View的直接数据源（数据很可能是Controller从Model中取得并经过加工了）。Controller是View的代理（delegate),以同步View与Controller。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Objective C </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[苹果设备各种码查询方式大全！]]></title>
+      <url>/2015/06/22/e8-8b-b9-e6-9e-9c-e8-ae-be-e5-a4-87-e5-90-84-e7-a7-8d-e7-a0-81-e6-9f-a5-e8-af-a2-e6-96-b9-e5-bc-8f-e5-a4-a7-e5-85-a8-ef-bc-81/</url>
+      <content type="html"><![CDATA[<hr>
+<p>iPhone国外高级综合全面查询<br><a href="https://imeidata.net/" target="_blank" rel="noopener">https://imeidata.net/</a></p>
+<p>官方查找序列号、IMEI、MEID<br><a href="https://support.apple.com/zh-cn/HT204073" target="_blank" rel="noopener">https://support.apple.com/zh-cn/HT204073</a></p>
+<p>官方保修服务和支持期限（序列号）查询<br><a href="https://selfsolve.apple.com/" target="_blank" rel="noopener">https://selfsolve.apple.com/</a></p>
+<p>iPhone信息查询<br>www.pingguo110.com</p>
+<p>IEMI国外高级查询（会创建苹果手机售后查询案例无影响）<br><a href="https://imeidata.net/iphone/model-check" target="_blank" rel="noopener">https://imeidata.net/iphone/model-check</a></p>
+<p>得知Policy(激活策略代码)后查询是否有锁<br><a href="https://imeidata.net/iphone/policy-check" target="_blank" rel="noopener">https://imeidata.net/iphone/policy-check</a></p>
+<p>ICCID普通查询<br><a href="http://www.chacha7.com/iccid.html" target="_blank" rel="noopener">http://www.chacha7.com/iccid.html</a></p>
+<p>超雪查询<br><a href="http://www.chinasnow.net/index.php/archives/263" target="_blank" rel="noopener">http://www.chinasnow.net/index.php/archives/263</a></p>
+<p>imei号反查序列号挂机锁查询<br><a href="http://iunlocker.net/check_imei.php" target="_blank" rel="noopener">http://iunlocker.net/check_imei.php</a></p>
+<p>全球运营商黑名单查询：<br><a href="https://imeidata.net/blacklist/check" target="_blank" rel="noopener">https://imeidata.net/blacklist/check</a></p>
+<p>ICCID高级查询_ICCID反查手机号码<br><a href="http://iccidchaxun.com/" target="_blank" rel="noopener">http://iccidchaxun.com/</a></p>
+<p>查到ICCID号的上面的要收费只能看部分，然后直接上联通电信官网免费</p>
+<p>查询（先到上面的查寻归属地然后去个省份的网上营业厅查询）</p>
+<p>联通ICCID查询网址：<a href="http://iservice.10010.com/e3/service/service_web.html" target="_blank" rel="noopener">http://iservice.10010.com/e3/service/service_web.html</a></p>
+<p>电信ICCID查询网址：<a href="http://bj.189.cn/service/commonquery/" target="_blank" rel="noopener">http://bj.189.cn/service/commonquery/</a></p>
+<hr>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> apple </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[我这破网站竟然每天都有 20+ IP 来过的可否留个脚印 让我有动力搞搞这个网站]]></title>
+      <url>/2015/06/18/e6-88-91-e8-bf-99-e7-a0-b4-e7-bd-91-e7-ab-99-e7-ab-9f-e7-84-b6-e6-af-8f-e5-a4-a9-e9-83-bd-e6-9c-89-20-ip-e6-9d-a5-e8-bf-87-e7-9a-84-e5-8f-af-e5-90-a6-e7-95-99-e4-b8-aa-e8-84-9a-e5-8d-b0-e8-ae-a9/</url>
+      <content type="html"><![CDATA[<p>我这破网站竟然每天都有 20+ IP , 来过的可否留个脚印,让我有动力搞搞这个网站?</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[iOS简单的石头剪刀布游戏实现]]></title>
+      <url>/2015/06/18/e7-ae-80-e5-8d-95-e7-9a-84-e7-9f-b3-e5-a4-b4-e5-89-aa-e5-88-80-e5-b8-83-e6-b8-b8-e6-88-8f-e5-ae-9e-e7-8e-b0-uilabel-uiimageview-uiimage-uibutton-objc-viewcontroller-m/</url>
+      <content type="html"><![CDATA[<p>#####简单的石头剪刀布游戏实现</p>
+<p>#####UIlabel UIimageView UIimage UIbutton</p>
+<pre>
+//
+//  ViewController.m
+//  石头剪刀布
+//
+//  Created by hee on 15/6/18.
+//  Copyright (c) 2015年 hee. All rights reserved.
+//
+
+#import "ViewController.h"
+
+@interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet UIImageView *playerImage;
+@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UILabel *computerWinLabel;
+@property (weak, nonatomic) IBOutlet UILabel *playerWinLabel;
+@property (strong, nonatomic) NSArray *pic;
+@property (strong, nonatomic) UIImage *s;
+@property (strong, nonatomic) UIImage *j;
+@property (strong, nonatomic) UIImage *b;
+@property ()NSInteger co;
+@property ()NSInteger co2;
+
+*   (void)compute:(NSInteger)a;
+
+@end
+
+@implementation ViewController
+
+*   (void)viewDidLoad {
+
+    [super viewDidLoad];
+    // 进游戏显示动画
+    _s = [UIImage imageNamed:@"shitou"];
+    _j = [UIImage imageNamed:@"jiandao"];
+    _b = [UIImage imageNamed:@"bu"];
+    _pic = @[_s,_j,_b];
+    [_image setAnimationImages:_pic]; // 设置动画
+    [_playerImage setAnimationImages:_pic];
+    [_image setAnimationRepeatCount:0]; // 设置动画播放次数
+    [_playerImage setAnimationRepeatCount:0];
+    [_image setAnimationDuration:1]; // 设置动画时间
+    [_playerImage setAnimationDuration:1];
+    [_image setContentMode:UIViewContentModeCenter]; // 设置图片居中显示 不会被拉伸
+    [_playerImage setContentMode:UIViewContentModeCenter];
+    [_image startAnimating]; // 开始动画
+    [_playerImage startAnimating];
+}
+
+*   (void)compute:(NSInteger)a{
+
+    NSInteger b = arc4random() % 3; // 设置随机值 0 , 1 , 2 ,分别代表石头,剪刀,布
+
+    if (b == 0 ){
+        [_image stopAnimating];
+        [_image setImage:_s];
+    }
+    else if (b == 1 ){
+        [_image stopAnimating];
+        [_image setImage:_j];
+    }
+    else {
+        [_image stopAnimating];
+        [_image setImage:_b];
+    };
+
+    if(a == 0){
+        [_playerImage stopAnimating];
+        [_playerImage setImage:_s];
+    }
+    else if (a == 1){
+        [_playerImage stopAnimating];
+        [_playerImage setImage:_j];
+    }
+    else {
+        [_playerImage stopAnimating];
+        [_playerImage setImage:_b];
+    };
+
+    if ((a == 0 && b == 1) ||
+        (a == 1 && b == 2) ||
+        (a == 2 && b == 0)){
+        [_label setText:@"恭喜你赢了!"];
+        _co++;
+        NSString *ab = [[NSString alloc]initWithFormat:@"%ld",_co];
+        [_playerWinLabel setText:ab];
+
+    }
+    else if (a == b){
+        [_label setText:@"和局!不亏不亏!"];
+    }
+    else {
+        [_label setText:@"真遗憾,你输咯!"];
+        _co2++;
+        NSString *abc = [[NSString alloc]initWithFormat:@"%ld",_co2];
+        [_computerWinLabel setText:abc];
+    };
+
+    [_image performSelector:@selector(startAnimating) withObject:_image afterDelay:3]; // 一局过后延时3秒 继续动画
+    [_playerImage performSelector:@selector(startAnimating) withObject:_playerImage afterDelay:3];
+}
+
+*   (IBAction)btnShitou{
+
+    [self compute:0];
+
+}
+
+*   (IBAction)btnJiandao {
+
+    [self compute:1];
+
+}
+
+*   (IBAction)btnBu {
+
+    [self compute:2];
+}
+@end
+</pre>]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Objective C </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[解决谷歌打不开,直连IP分享]]></title>
+      <url>/2015/06/11/e8-a7-a3-e5-86-b3-e8-b0-b7-e6-ad-8c-e6-89-93-e4-b8-8d-e5-bc-80-e7-9b-b4-e8-bf-9eip-e5-88-86-e4-ba-ab/</url>
+      <content type="html"><![CDATA[<p><a href="http://4.31.38.26/" target="_blank" rel="noopener">http://4.31.38.26/</a></p>
+<p><a href="http://4.31.38.27/" target="_blank" rel="noopener">http://4.31.38.27/</a></p>
+<p><a href="http://4.31.38.31/" target="_blank" rel="noopener">http://4.31.38.31/</a></p>
+<p><a href="http://58.123.102.23/" target="_blank" rel="noopener">http://58.123.102.23/</a></p>
+<p><a href="http://64.233.189.163/" target="_blank" rel="noopener">http://64.233.189.163/</a><br><a id="more"></a></p>
+<p><a href="http://66.185.84.19/" target="_blank" rel="noopener">http://66.185.84.19/</a></p>
+<p><a href="http://74.125.102.230/" target="_blank" rel="noopener">http://74.125.102.230/</a></p>
+<p><a href="http://74.125.104.113/" target="_blank" rel="noopener">http://74.125.104.113/</a></p>
+<p><a href="http://91.213.30.153/" target="_blank" rel="noopener">http://91.213.30.153/</a></p>
+<p><a href="http://95.173.210.55/" target="_blank" rel="noopener">http://95.173.210.55/</a></p>
+<p><a href="http://118.174.27.112/" target="_blank" rel="noopener">http://118.174.27.112/</a></p>
+<p><a href="http://173.194.1.13/" target="_blank" rel="noopener">http://173.194.1.13/</a></p>
+<p><a href="http://173.194.14.40/" target="_blank" rel="noopener">http://173.194.14.40/</a></p>
+<p><a href="http://173.194.14.41/" target="_blank" rel="noopener">http://173.194.14.41/</a></p>
+<p><a href="http://173.194.14.50/" target="_blank" rel="noopener">http://173.194.14.50/</a></p>
+<p><a href="http://173.194.14.52/" target="_blank" rel="noopener">http://173.194.14.52/</a></p>
+<p><a href="http://173.194.138.103/" target="_blank" rel="noopener">http://173.194.138.103/</a></p>
+<p><a href="http://201.163.0.13/" target="_blank" rel="noopener">http://201.163.0.13/</a></p>
+<p><a href="http://202.152.192.171/" target="_blank" rel="noopener">http://202.152.192.171/</a></p>
+<p><a href="http://203.211.0.100/" target="_blank" rel="noopener">http://203.211.0.100/</a></p>
+<p><a href="http://209.85.225.23/" target="_blank" rel="noopener">http://209.85.225.23/</a></p>
+<p><a href="http://209.85.226.146/" target="_blank" rel="noopener">http://209.85.226.146/</a></p>
+<p><a href="http://209.85.228.11/" target="_blank" rel="noopener">http://209.85.228.11/</a></p>
+<p><a href="http://209.85.228.19/" target="_blank" rel="noopener">http://209.85.228.19/</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[字符串操作,NSString 常用方法总结]]></title>
+      <url>/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/</url>
+      <content type="html"><![CDATA[<p>`<br>1.创建NSString字符串</p>
+<p>NSString 与 char<em> 最大的区别就是 NSString是一个objective对象,而char</em> 是一个字节数组。@+” 字符串 “ 这个符号为objective-c NSString 字符串常量的标准用法，char* 创建的时候 无需添加@</p>
+<ul>
+<li><p>(void)viewDidLoad</p>
+<p>[super viewDidLoad];<br>//经典的字符串赋值<br>NSString <em>str0 = @”my name is justcoding !”;<br>//字符串格式化合并分别包括<br>//NSString</em>类型 int类型 char<em>类型<br>NSString </em>str1 = [NSString stringWithFormat:@”我的名字：%@ 我的年龄：%d 我的邮箱：%s”,@”justcoding”, 25,”justcoding@gmail.com”];<br>//字符串赋值 参数中只可以写一个字符串 和第一种很像<br>NSString <em>str2 = [NSString stringWithString:@”我是字符串”];<br>//字符串转换为utf-8格式 参数为char</em>类型<br>NSString <em>str3 = [NSString stringWithUTF8String:”字符串转换utf-8格式”];<br>//字符串合并<br>int i  = 100;<br>char</em>c = “xuanyusong”;<br>NSString <em>temp = @”我是临时字符串”;<br>//在字符串temp的基础继续添加 int i 与 char</em> c 组成一个新的字符串<br>NSString <em>str4 = [temp stringByAppendingFormat:@”整型： %d 字符型 ：%s”,i,c];<br>//在字符串temp的基础继续添加temp 并组成一个新的字符串<br>NSString </em>str5 = [temp stringByAppendingString:temp];<br>//字符串输出<br>NSLog(@”str0 = %@”, str0);<br>NSLog(@”str1 = %@”, str1);<br>NSLog(@”str2 = %@”, str2);<br>NSLog(@”str3 = %@”, str3);<br>NSLog(@”str4 = %@”, str4);<br>NSLog(@”str5 = %@”, str5);  </p>
+<a id="more"></a>
+<p>2.字符串的遍历 </p>
+</li>
+</ul>
+<p>每一个字符串其实是由若干个char字符组成，字符串的遍历实际上就是将字符串中的每一个字符提取出来。</p>
+<ul>
+<li>(void)viewDidLoad</li>
+</ul>
+<p>{<br>    [super viewDidLoad];</p>
+<pre><code>//经典的字符串赋值
+NSString *str = @&quot;YUSONGMOMO&quot;;
+
+//字符串的长度
+int count = [str length];
+
+NSLog(@&quot;字符串的长度是%d&quot;,count);
+
+//遍历字符串中的每一个字符
+for(int i =0; i &lt; count; i++)
+{
+    char c = [str characterAtIndex:i];
+    NSLog(@&quot;字符串第 %d 位为 %c&quot;,i,c);
+}
+</code></pre><p>}</p>
+<p>3.字符串的比较 </p>
+<p>isEqualToString 比较字符串是否完全相等，大小写不一样也无法完全匹配。</p>
+<p>hasPrefixe 匹配字符串头</p>
+<p>haSuffix     匹配字符串的尾巴</p>
+<ul>
+<li><p>(void)viewDidLoad</p>
+<p>[super viewDidLoad];<br>NSString <em>str0 = @”justcoding”;<br>NSString </em>str1 = @”justcoding”;<br>//字符串完全相等比较<br>if([str0 isEqualToString:str1])  </p>
+<pre><code>NSLog(@&quot;字符串完全相等&quot;);  
+</code></pre><p>//字符串以开头比较<br>if([str0 hasPrefix:@”just”])  </p>
+<pre><code>NSLog(@&quot;字符串str0以just开头&quot;);  
+</code></pre><p>//字符串以结尾比较<br>if([str1 hasSuffix:@”coding”])  </p>
+<pre><code>NSLog(@&quot;str1字符串以coding结尾&quot;);  
+</code></pre></li>
+<li><p>(void)viewDidLoad</p>
+</li>
+</ul>
+<p>{<br>    [super viewDidLoad];</p>
+<pre><code>NSString *str0 = @&quot;justcoding&quot;;
+NSString *str1 = @&quot;justcoding&quot;;
+
+//字符串完全相等比较
+if([str0 isEqualToString:str1])
+{
+    NSLog(@&quot;字符串完全相等&quot;);
+}
+
+//字符串以开头比较
+if([str0 hasPrefix:@&quot;just&quot;])
+{
+    NSLog(@&quot;字符串str0以just开头&quot;);
+}
+
+//字符串以结尾比较
+if([str1 hasSuffix:@&quot;coding&quot;])
+{
+    NSLog(@&quot;str1字符串以coding结尾&quot;);
+}
+</code></pre><p>}</p>
+<p>//isEqualToString方法<br>NSString <em>astring01 = @”This is a String!”;<br>NSString </em>astring02 = @”This is a String!”;<br>BOOL result = [astring01 isEqualToString:astring02];<br>NSLog(@”result:%d”,result);<br>//isEqualToString方法<br>NSString <em>astring01 = @”This is a String!”;<br>NSString </em>astring02 = @”This is a String!”;<br>BOOL result = [astring01 isEqualToString:astring02];<br>NSLog(@”result:%d”,result);</p>
+<p>//compare方法(comparer返回的三种值)<br>NSString <em>astring01 = @”This is a String!”;<br>NSString </em>astring02 = @”This is a String!”;<br>BOOL result = [astring01 compare:astring02] = = NSOrderedSame;<br>NSLog(@”result:%d”,result);<br>//NSOrderedSame 判断两者内容是否相同<br>//compare方法(comparer返回的三种值)<br>NSString <em>astring01 = @”This is a String!”;<br>NSString </em>astring02 = @”This is a String!”;<br>BOOL result = [astring01 compare:astring02] = = NSOrderedSame;<br>NSLog(@”result:%d”,result);<br>//NSOrderedSame 判断两者内容是否相同</p>
+<p>//不考虑大 小写比较字符串1<br>NSString <em>astring01 = @”this is a String!”;<br>NSString </em>astring02 = @”This is a String!”;<br>BOOL result = [astring01 caseInsensitiveCompare:astring02] = = NSOrderedSame;<br>NSLog(@”result:%d”,result);<br>//NSOrderedDescending判断两对象值的大小(按字母顺序进行比较，astring02小于astring01为 真)  </p>
+<p>//NSCaseInsensitiveSearch:不区分大小写比较 NSLiteralSearch:进行完全比较，区分大小写 NSNumericSearch:比较字符串的字符个数，而不是字符值。<br>//不考虑大小写比较字符串2<br>NSString <em>astring01 = @”this is a String!”;<br>NSString </em>astring02 = @”This is a String!”;<br>BOOL result = [astring01 compare:astring02 options:NSCaseInsensitiveSearch | NSNumericSearch] = = NSOrderedSame;<br>NSLog(@”result:%d”,result);<br>//NSCaseInsensitiveSearch:不区分大小写比较 NSLiteralSearch:进行完全比较，区分大小写 NSNumericSearch:比较字符串的字符个数，而不是字符值。<br>判断的方法可以利用 NSString 类别中 caseInsensitiveCompare: 所回传 -1、0 或是 1 的数值，判定两个字串之间得排序关系，其程式玛如下。</p>
+<p>NSString *string = @”0”;<br> NSComparisonResult result = [string caseInsensitiveCompare:@”A”];</p>
+<p> switch (result) {<br> case NSOrderedAscending:<br> NSLog(@”升幂”);<br> break;</p>
+<p> case NSOrderedSame:<br> NSLog(@”忽略大小写相同的字串”);<br> break;</p>
+<p> case NSOrderedDescending:<br> NSLog(@”降幂”);<br> break;</p>
+<p> default:<br> NSLog(@”无法判定”);<br> break;<br> }</p>
+<p>4. 文件字符串操作（读写）</p>
+<p>//从文件读取字符串:initWithContentsOfFile方法<br>NSString <em>path = @”astring.text”;<br>NSString </em>astring = [[NSString alloc] initWithContentsOfFile:path];<br>NSLog(@”astring:%@”,astring);<br>[astring release]; //astring=nil;<br>//从文件读取字符串:initWithContentsOfFile方法<br>NSString <em>path = @”astring.text”;<br>NSString </em>astring = [[NSString alloc] initWithContentsOfFile:path];<br>NSLog(@”astring:%@”,astring);<br>[astring release]; //astring=nil;</p>
+<p>//写字符串到文件:writeToFile方法<br>NSString <em>astring = [[NSString alloc] initWithString:@”This is a String!”];<br>NSLog(@”astring:%@”,astring);<br>NSString </em>path = @”astring.text”;<br>[astring writeToFile: path atomically: YES];<br>[astring release];  //astring=nil;<br>//写字符串到文件:writeToFile方法<br>NSString <em>astring = [[NSString alloc] initWithString:@”This is a String!”];<br>NSLog(@”astring:%@”,astring);<br>NSString </em>path = @”astring.text”;<br>[astring writeToFile: path atomically: YES];<br>[astring release];  //astring=nil;</p>
+<ul>
+<li>ios5 不支持release iOS应用开发：什么是ARC？</li>
+</ul>
+<p>//扩展路径<br>NSString <em>Path = @”~/NSData.txt”;<br>NSString </em>absolutePath = [Path stringByExpandingTildeInPath];<br>NSLog(@”absolutePath:%@”,absolutePath);<br>NSLog(@”Path:%@”,[absolutePath stringByAbbreviatingWithTildeInPath]);<br>//扩展路径<br>NSString <em>Path = @”~/NSData.txt”;<br>NSString </em>absolutePath = [Path stringByExpandingTildeInPath];<br>NSLog(@”absolutePath:%@”,absolutePath);<br>NSLog(@”Path:%@”,[absolutePath stringByAbbreviatingWithTildeInPath]);<br>//文件扩展名<br>NSString <em>Path = @”~/NSData.txt”;<br>NSLog(@”Extension:%@”,[Path pathExtension]);<br>//文件扩展名<br>NSString </em>Path = @”~/NSData.txt”;<br>NSLog(@”Extension:%@”,[Path pathExtension]);</p>
+<p>5. 字符串的截取和大小写</p>
+<p>//改变字符串的大小写<br>NSString <em>string1 = @”A String”;<br>NSString </em>string2 = @”String”;<br>NSLog(@”string1:%@”,[string1 uppercaseString]);//大写<br>NSLog(@”string2:%@”,[string2 lowercaseString]);//小写<br>NSLog(@”string2:%@”,[string2 capitalizedString]);//首字母大小<br>//改变字符串的大小写<br>NSString <em>string1 = @”A String”;<br>NSString </em>string2 = @”String”;<br>NSLog(@”string1:%@”,[string1 uppercaseString]);//大写<br>NSLog(@”string2:%@”,[string2 lowercaseString]);//小写<br>NSLog(@”string2:%@”,[string2 capitalizedString]);//首字母大小</p>
+<pre><code>NSString *str0 = @&quot;中文my name is xuanyusong&quot;;  
+//截取字符串起始点到index为4之间的内容  
+NSString * to = [str0 substringToIndex:4];  
+NSLog(@&quot;to = %@&quot;,to);  
+//截取字符index为2 到结尾之间的内容  
+NSString * from = [str0 substringFromIndex:2];  
+NSLog(@&quot;from = %@&quot;,from);  
+//设置截取字符串的范围   
+//从第二位开始,长度为十  
+NSRange rang = NSMakeRange(2, 10);  
+NSString * strRang = [str0 substringWithRange:rang];  
+NSLog(@&quot;rang = %@&quot;,strRang);  
+//设置字符串首字母大写  
+NSLog(@&quot;str0首字母大写:%@&quot;,[str0 capitalizedString]);  
+//设置字符串全部内容为大写  
+NSLog(@&quot;str0大写:%@&quot;,[str0 uppercaseString]);  
+//设置字符全部内容为小写  
+NSLog(@&quot;str0小写:%@&quot;,[str0 lowercaseString]);  
+</code></pre><ul>
+<li>(void)viewDidLoad</li>
+</ul>
+<p>{<br>    [super viewDidLoad];</p>
+<pre><code>NSString *str0 = @&quot;中文my name is xuanyusong&quot;;
+
+//截取字符串起始点到index为4之间的内容
+NSString * to = [str0 substringToIndex:4];
+
+NSLog(@&quot;to = %@&quot;,to);
+
+//截取字符index为2 到结尾之间的内容
+NSString * from = [str0 substringFromIndex:2];
+
+NSLog(@&quot;from = %@&quot;,from);
+
+//设置截取字符串的范围 
+//从第二位开始,长度为十
+NSRange rang = NSMakeRange(2, 10);
+NSString * strRang = [str0 substringWithRange:rang];
+NSLog(@&quot;rang = %@&quot;,strRang);
+
+//设置字符串首字母大写
+NSLog(@&quot;str0首字母大写:%@&quot;,[str0 capitalizedString]);
+//设置字符串全部内容为大写
+NSLog(@&quot;str0大写:%@&quot;,[str0 uppercaseString]);
+//设置字符全部内容为小写
+NSLog(@&quot;str0小写:%@&quot;,[str0 lowercaseString]);
+</code></pre><p>}</p>
+<p>6.搜索字符串与替换字符串</p>
+<ul>
+<li><p>(void)viewDidLoad</p>
+<p>[super viewDidLoad];<br>NSString <em>str0 = @”中文my name is xuanyusong”;<br>NSString </em>temp = @”is”;<br>NSRange rang = [str0 rangeOfString:temp];<br>NSLog(@”搜索的字符串在str0中起始点的index 为 %d”, rang.location);<br>NSLog(@”搜索的字符串在str0中结束点的index 为 %d”, rang.location + rang.length);<br>//将搜索中的字符串替换成为一个新的字符串<br>NSString <em>str = [str0 stringByReplacingCharactersInRange:rang withString:@”哇咔咔卡卡咔”];<br>NSLog(@”替换后字符串为%@”, str);<br>//将字符串中” “ 全部替换成 </em><br>str = [str0 stringByReplacingOccurrencesOfString :@” “ withString:@”@”];<br>NSLog(@”替换后字符串为%@”, str);  </p>
+</li>
+<li><p>(void)viewDidLoad</p>
+</li>
+</ul>
+<p>{<br>    [super viewDidLoad];</p>
+<pre><code>NSString *str0 = @&quot;中文my name is xuanyusong&quot;;
+NSString *temp = @&quot;is&quot;;
+NSRange rang = [str0 rangeOfString:temp];
+
+NSLog(@&quot;搜索的字符串在str0中起始点的index 为 %d&quot;, rang.location);
+NSLog(@&quot;搜索的字符串在str0中结束点的index 为 %d&quot;, rang.location + rang.length);
+
+//将搜索中的字符串替换成为一个新的字符串
+NSString *str = [str0 stringByReplacingCharactersInRange:rang withString:@&quot;哇咔咔卡卡咔&quot;]; 
+NSLog(@&quot;替换后字符串为%@&quot;, str);
+
+//将字符串中&quot; &quot; 全部替换成 *
+str = [str0 stringByReplacingOccurrencesOfString :@&quot; &quot; withString:@&quot;@&quot;]; 
+NSLog(@&quot;替换后字符串为%@&quot;, str);
+</code></pre><p>}</p>
+<p>拓展：使用下面这个方法整体替换字符串还可以设置替换的区域。 </p>
+<p>stringByReplacingOccurrencesOfString:(NSString <em>)withString:(NSString </em>) options:(NSStringCompareOptions) range:(NSRange)</p>
+<p>7.字符串尾部添加</p>
+<p>使用alloc在内存中创建字符串对象后边可以动态的操作这个字符串，修改与添加等。</p>
+<p>appendstring 方法：向字符串尾部添加一个字符串。</p>
+<p>appendFormat方法：向字符串尾部添加多个类型的字符串，可以添加任意数量与类型的字符串。</p>
+<ul>
+<li><p>(void)viewDidLoad</p>
+<p>[super viewDidLoad];<br>NSMutableString * str = [[NSMutableString alloc] init];<br>//添加普通的字符串<br>[str appendString:@”aaa”];<br>//添加字符串 整型 字符型<br>[str appendFormat:@”我的名字：%@ 我的年龄：%d 我的邮箱：%s”,@”justcoding”, 25,”justcoding@gmail.com”];<br>NSLog(@”str = %@”,str);  </p>
+</li>
+<li><p>(void)viewDidLoad</p>
+</li>
+</ul>
+<p>{<br>    [super viewDidLoad];</p>
+<pre><code>NSMutableString * str = [[NSMutableString alloc] init];
+
+//添加普通的字符串
+[str appendString:@&quot;aaa&quot;];
+
+//添加字符串 整型 字符型
+[str appendFormat:@&quot;我的名字：%@ 我的年龄：%d 我的邮箱：%s&quot;,@&quot;justcoding&quot;, 25,&quot;justcoding@gmail.com&quot;];
+
+NSLog(@&quot;str = %@&quot;,str);
+</code></pre><p>}<br>8. 字符串中删除元素</p>
+<p>stringWithString 方法：用于创建字符串初始化赋值</p>
+<p>rangeOfString方法：传入字符串返回一个在该字符串中的范围 也可以写 NSMakeRange(0, 3) 意思是范围在字符串0位到第3位</p>
+<p>deleteCharactersInRange:删除字符串 参数为Range 就是删除的范围。</p>
+<ul>
+<li><p>(void)viewDidLoad</p>
+<p>[super viewDidLoad];<br>//创建字符串<br>NSMutableString *str = [NSMutableString stringWithString:@”justcoding is best!”];<br>//删除字符串中含”justcoding”的字符<br>[str deleteCharactersInRange: [str rangeOfString: @”justcoding”]];<br>NSLog(@”str = %@”,str);  </p>
+</li>
+<li><p>(void)viewDidLoad</p>
+</li>
+</ul>
+<p>{<br>    [super viewDidLoad];</p>
+<pre><code>//创建字符串
+NSMutableString *str = [NSMutableString stringWithString:@&quot;justcoding is best!&quot;];
+
+//删除字符串中含&quot;justcoding&quot;的字符
+[str deleteCharactersInRange: [str rangeOfString: @&quot;justcoding&quot;]];    
+
+NSLog(@&quot;str = %@&quot;,str);
+</code></pre><p>}</p>
+<p>9. 字符串插入</p>
+<p>stringWithString 方法：用于创建字符串初始化赋值</p>
+<p>insertString方法：第一个参数 插入的字符串对象， 第二个参数 插入的位置。</p>
+<ul>
+<li><p>(void)viewDidLoad</p>
+<p>[super viewDidLoad];<br>//创建字符串<br>NSMutableString *str = [NSMutableString stringWithString:@”justcoding is”];<br>//在str第10位插入字符串<br>[str insertString:@”best man” atIndex:10];<br>NSLog(@”str = %@”,str);  </p>
+</li>
+</ul>
+<p>10. 字符串拷贝</p>
+<ul>
+<li><p>(void)viewDidLoad</p>
+<p>[super viewDidLoad];<br>//创建字符串<br>NSMutableString <em>str1 = [NSMutableString stringWithString: @”字符串1”];<br>NSMutableString </em>str2;<br>//字符串赋值<br>str2 = str1;<br>[str2 appendString: @” 和字符串2”];<br>NSLog (@”str1 = %@”, str1);<br>NSLog (@”str2 = %@”, str2);      </p>
+</li>
+<li><p>(void)viewDidLoad</p>
+</li>
+</ul>
+<p>{<br>    [super viewDidLoad];</p>
+<pre><code>//创建字符串
+NSMutableString *str1 = [NSMutableString stringWithString: @&quot;字符串1&quot;];
+NSMutableString *str2;
+
+//字符串赋值
+str2 = str1;
+
+[str2 appendString: @&quot; 和字符串2&quot;];
+
+NSLog (@&quot;str1 = %@&quot;, str1);
+
+NSLog (@&quot;str2 = %@&quot;, str2);    
+</code></pre><p>}</p>
+<p>为什么给str2添加数据后 str1的数据也改变了？这就是指针的魅力所在，因为我们操作的是指针，str2 = str1  意思是两个指针同时指向一块内存，那么str2指向的内存内容改变以后str1当然跟着改变了。</p>
+<p>11. 字符串与指定类型转换</p>
+<p>如果转换的参数非法的话不会抛出异常，好比用中文去转整型。不会报错 但是转换结果为 0  ，默认值。</p>
+<ul>
+<li><p>(void)viewDidLoad</p>
+<p>[super viewDidLoad];<br>//字符串转整型<br>NSString <em>str0 = @”1121”;<br>//NSString </em>str0 = @”中国”;<br>//把字符串强转成整型<br>int i = [str0 intValue];<br>NSLog (@”转换后：%i”, i);<br>//字符串转interger<br>  NSString <em>str1 = @”1985”;<br>// NSString </em>str1 = @”中国”;<br>//把字符串强转成interger<br>NSInteger ii = [str1 integerValue];<br>NSLog (@”转换后：%i”, ii);<br>//字符串转double<br>NSString <em>str2 = @”3.145926”;<br>//NSString </em>str2 = @”中国”;<br>//把字符串强转成double<br>double d = [str2 doubleValue];<br>NSLog (@”转换后：%f”, d);<br>//字符串转float<br>NSString <em>str3 = @”3.145926”;<br> //NSString </em>str3 = @”中国”;<br>//把字符串强转成float<br>double f = [str3 floatValue];<br>NSLog (@”转换后：%f”, f);   </p>
+</li>
+<li><p>(void)viewDidLoad</p>
+</li>
+</ul>
+<p>{<br>    [super viewDidLoad];</p>
+<pre><code>//字符串转整型
+NSString *str0 = @&quot;1121&quot;;
+//NSString *str0 = @&quot;中国&quot;;
+
+//把字符串强转成整型
+int i = [str0 intValue];
+
+NSLog (@&quot;转换后：%i&quot;, i); 
+
+//字符串转interger
+  NSString *str1 = @&quot;1985&quot;;
+// NSString *str1 = @&quot;中国&quot;;
+
+//把字符串强转成interger
+NSInteger ii = [str1 integerValue];
+
+NSLog (@&quot;转换后：%i&quot;, ii); 
+
+//字符串转double
+NSString *str2 = @&quot;3.145926&quot;;
+//NSString *str2 = @&quot;中国&quot;;
+
+//把字符串强转成double
+double d = [str2 doubleValue];
+
+NSLog (@&quot;转换后：%f&quot;, d); 
+
+//字符串转float
+NSString *str3 = @&quot;3.145926&quot;;
+ //NSString *str3 = @&quot;中国&quot;;
+//把字符串强转成float
+double f = [str3 floatValue];
+
+NSLog (@&quot;转换后：%f&quot;, f); 
+</code></pre><p>}<br>`<br>NSString 常用方法总结</p>
+<p>+(id)stringWithContentsOfFile:path encoding:enc err    创建一个新字符串并将其设置为 path 指定文件的内容，使用字符编码 enc，在err 上返回错误<br>+(id)stringWithContentsOfURL:url encoding:enc err    创建一个新字符串并将其设置为 url 所指向的内容，使用字符编码 enc，在err 上返回错误<br>+(id)string    创建一个新的空字符串<br>+(id)stringWithString:nsstring    创建一个新字符串，将其内容设置为 nsstring 内容<br>-(id)initWithString:nsstring    将字符串内容设置为 nsstring 内容<br>-(id)initWithContentsOfFile:path encoding:enc error:err    将字符串设置为 path 指定文件的内容，使用字符编码 enc，在err 上返回错误<br>-(id)initWithContentsOfURL:url encoding:enc error:err    将字符串设置为 url 所指向的内容，使用字符编码 enc，在err 上返回错误<br>-(UNSigned int)length    返回字符串中字符数目<br>-(unichar)characterAtindex:i    返回索引i 所在UniCode 字符<br>-(NSString<em>)substringFromIndex:i    返回从索引 i 开始到结尾的子字符串<br>-(NSString</em>)substringWithRange:range    根据指定范围返回子字符串<br>-(NSString<em>)substringToIndex:i    返回从字符串开始到 索引 i 的子字符串<br>-(NSComparator</em>)caseInsensitiveCompare:nsstring    比较两个字符串大小，忽略大小写<br>-(NSComparator<em>)compare:nsstring    比较两个字符串大小<br>-(BOOL)hasPrefix:nsstring    测试字符串是否以 nsstring 开始<br>-(BOOL)hasSuffix:nsstring    测试字符串是否以 nsstring 结尾<br>-(BOOL)isEqualToString:nsstring    测试两个字符串是否相等<br>-(NSString</em>)capitalizedString    返回字符串，串中的每个单词的首字母大写，其余字母小写<br>-(NSString<em>)lowercaseString    返回转换为小写的字符串<br>-(NSString</em>)uppercaseString    返回转换为大写的字符串<br>-(const char*)UTF8String    返回UTF8编码格式的字符串<br>-(double)doubleValue    返回转换为double 类型的字符串<br>-(float)floatValue    返回转换为 float 类型的字符串<br>-(NSInteger)integerValue    返回转换为 NSInteger 类型的新字符串<br>-(int)intvalue    返回转换为 int 的字符串<br>NSMutableString 可修改字符串常用方法</p>
+<p>+(id)stringWithCapacity:size    创建一个字符串，容量为size大小<br>-(id)initWithCapacity:size    初始化一个字符串，容量为size<br>-(void)setString:nsstring    将字符串设置为 nsstring<br>-(void)appendString:nsstring    在字符串末尾追加字符串 nsstring<br>-(void)deleteCharatersInRange:range    删除指定range 中的字符<br>-(void)insertString:nsstring atIndex:i    以索引 i 为起始位置插入 nsstring<br>-(void)replaceCharatersInRange;range withString:nsstring    使用 nsstring 替换 range 指定的字符<br>-(void)replaceOccurrencesOfString:nsstring withString:nsstring2 options:opts range:range    根据选项 opts ，使用指定 range 中的nsstring2 替换所有的 nsstring<br>原文地址 <a href="http://justcoding.iteye.com/blog/1405951" target="_blank" rel="noopener">http://justcoding.iteye.com/blog/1405951</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Objective C </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[C语言一个很坑的题目！关于作用域的分析。]]></title>
+      <url>/2015/06/05/c-e8-af-ad-e8-a8-80-e4-b8-80-e4-b8-aa-e5-be-88-e5-9d-91-e7-9a-84-e9-a2-98-e7-9b-ae-ef-bc-81-e5-85-b3-e4-ba-8e-e4-bd-9c-e7-94-a8-e5-9f-9f-e7-9a-84-e5-88-86-e6-9e-90-e3-80-82/</url>
+      <content type="html"><![CDATA[<p>//<br>//  main.c<br>//  (二)1.<br>//<br>//  Created by hee on 15/6/3.<br>//  Copyright (c) 2015年 hee. All rights reserved.<br>//</p>
+<p>#include <stdio.h></stdio.h></p>
+<p>int main()<br>{<br>    int a = 20;<br>    int score = a + 100; //定义一个score = 120<br>    printf(“%d\n”, score);<br>   <a id="more"></a></p>
+<pre><code>{
+    int score = 50; //重新定义 现在score为50
+    {
+        score = 10;//再次重新赋值 score为 10；
+        printf(&quot;%d\n&quot;, score);//打印score为10；
+    }
+    a = 10;//现在a被重新赋值 a为10
+}
+
+{
+    score = a + 250;//score赋值260
+    int score = 30;//score被重新定义为30
+    printf(&quot;%d&quot;, score);//打印被重新定义的score = 30
+}
+
+printf(&quot;%d\n&quot;, score);//由于 int score = 30;这句的作用域在上面的两括号内，所以这里打印的score值为260
+return 0;
+</code></pre><p>}</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> c </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[分享两个翻墙DNS解决DNS污染所导致的国外网站打不开。 电信首选： 121.40.144.82 联通首选123.56.46.123]]></title>
+      <url>/2015/05/23/e5-88-86-e4-ba-ab-e4-b8-a4-e4-b8-aa-e7-bf-bb-e5-a2-99dns-ef-bc-9a-e7-94-b5-e4-bf-a1-e9-a6-96-e9-80-89-ef-bc-9a-121-40-144-82-e8-81-94-e9-80-9a-e9-a6-96-e9-80-89123-56-46-123-e9-80-9f-e5-ba-a6/</url>
+      <content type="html"><![CDATA[<p>分享两个翻墙DNS解决DNS污染所导致的国外网站打不开。<br>电信首选： 121.40.144.82              联通首选123.56.46.123</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[解决win8.1开机出现 explorer.exe Unknown Hard Error]]></title>
+      <url>/2015/05/20/e8-a7-a3-e5-86-b3win8-1-e5-bc-80-e6-9c-ba-e5-87-ba-e7-8e-b0-explorer-exe-unknown-hard-error/</url>
+      <content type="html"><![CDATA[<p>1.win+x 打开 命令提示符（管理员）。<br>2.输入命令 sfc /scannow 。<br>3.打开资源管理器删除C:\Users\你的用户名\AppData\Local\Temp 下的所有文件。<br>4.win+r 打开运行  输入 regedit 回车。<br>5.找到  HKEY_CURRENT_USER\Software\Microsoft\Windows<br>6.选中windows 右击 删除。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> windows </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[MAC OS X下快捷键大全！]]></title>
+      <url>/2015/05/10/mac-os-x-e4-b8-8b-e5-bf-ab-e6-8d-b7-e9-94-ae-e5-a4-a7-e5-85-a8-ef-bc-81/</url>
+      <content type="html"><![CDATA[<ul>
+<li>cmd+C：拷贝</li>
+<li>cmd+V：粘贴</li>
+<li>cmd+W：关闭窗口</li>
+<li>cmd+Q：退出程序</li>
+<li>cmd+I：显示文件/文件夹属性</li>
+<li>cmd+Backspace：删除</li>
+<li>cmd+shift+3：捕获整个屏幕</li>
+<li>cmd+shift+4：捕获选择的区域</li>
+<li>cmd+shift+4+space：捕获某个应用程序的窗口</li>
+<li>cmd+F：在应用程序中搜索</li>
+<li>cmd+Space：用Spotlight进行桌面搜索</li>
+<li>fn+Backspace：相当于Windows里面的Delete键（笔记本键盘专用，台式机键盘有Delete键）</li>
+<li>开机时，听到启动音后，按住Option（相当于Windows的Alt）键，可以选择从Windows或者Mac启动。</li>
+<li>开机时，听到启动音后，按住“T”键，将使计算机进入目标磁盘状态，即通过USB连线，可以将苹果机当作USB硬盘使用。<br>*<a id="more"></a>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>组合键 功能<br>Command-A 选中最前面的 Finder 窗口中的所有项（如果未打开任何窗口则选中桌面内容）<br>Option-Command-A 取消选择所有项<br>Shift-Command-A 打开“应用程序”文件夹<br>Command-C 拷贝所选项/文本至夹纸板<br>Shift-Command-C 打开“电脑”窗口<br>Command-D 复制所选项<br>Shift-Command-D 打开桌面文件夹<br>Command-E 推出<br>Command-F 查找任何匹配 Spotlight 属性的内容<br>Shift-Command-F 查找 Spotlight 文件名匹配项<br>Option-Command-F 导航到已打开的 Spotlight 窗口中的搜索栏<br>Shift-Command-G 前往文件夹<br>Shift-Command-H 打开当前所登录用户帐户的个人文件夹<br>Command-I 显示简介<br>Option-Command-I 显示检查器<br>Control-Command-I 获得摘要信息<br>Shift-Command-I 打开 iDisk<br>Command-J 调出“显示”选项<br>Command-K 连接服务器<br>Shift-Command-K 打开“网络”窗口<br>Command-L 为所选项制作替身<br>Command-M 最小化窗口<br>Option-Command-M 最小化所有窗口<br>Command-N 新建 Finder 窗口<br>Shift-Command-N 新建文件夹<br>Option-Command-N 新建智能文件夹<br>Command-O 打开所选项<br>Shift-Command-Q 注销<br>Option-Shift-Command-Q 立即注销<br>Command-R 显示（替身的）原身<br>Command-T 添加到工具条<br>Shift-Command-T 添加到个人收藏<br>Option-Command-T 在 Finder 窗口中隐藏工具栏/显示工具栏<br>Shift-Command-U 打开“实用工具”文件夹<br>Command-V 粘贴<br>Command-W 关闭窗口<br>Option-Command-W 关闭所有窗口<br>Command-X 剪切<br>Option-Command-Y 幻灯片显示（Mac OS X 10.5 或更高版本）<br>Command-Z 还原/重做<br>Command-1 以图标显示<br>Command-2 列表方式显示<br>Command-3 以分栏方式显示<br>Command-4 以 Cover Flow 方式显示（Mac OS X 10.5 或更高版本）<br>Command-,（Command 加逗号键） 打开 Finder 偏好设置<br>Command-`（重音符键 - 美式英语键盘布局中 Tab 键的上方） 循环显示打开的 Finder 窗口<br>Command-Shift-? 打开 Mac 帮助<br>Option-Shift-Command-Esc（按住三秒钟）- 仅 Mac OS X v10.5、v10.6 或更高版本 强制退出最前面的应用程序<br>Command-[ 后退<br>Command-] 前进<br>Command-上箭头 打开所含文件夹<br>Control-Command-上箭头 在新窗口中打开所含文件夹<br>Command-下箭头 打开高亮显示的项<br>Command-Tab 切换应用程序 - 向前循环<br>Shift-Command-Tab 切换应用程序 - 向后循环<br>Command-Delete 移到废纸篓<br>Shift-Command-Delete 清倒废纸篓</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> hackintosh </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[解决黑苹果出现AppStore登录不了的情况]]></title>
+      <url>/2015/05/10/e8-a7-a3-e5-86-b3-e9-bb-91-e8-8b-b9-e6-9e-9c-e5-87-ba-e7-8e-b0appstore-e7-99-bb-e5-bd-95-e4-b8-8d-e4-ba-86-e7-9a-84-e6-83-85-e5-86-b5/</url>
+      <content type="html"><![CDATA[<p>您必须以管理员身份登录。 点按 Dock 中的 Finder 图标。<br> 按Shift-Command-G    前往文件夹  。<br>键入 /Library/Preferences/SystemConfiguration 将文件 networkinterfaces.plist 拷贝到桌面（进行预先备份）。<br> 删除文件“networkinterfaces.plist”，并重新启动 Mac。<br> 电脑重新启动后，您需要刷新网络设置才能重新连接到互联网： 从 Apple 菜单中，选取系统偏好设置。 从显示菜单中选取网络。 从“位置”弹出式菜单中，选取“新建位置”。 键入位置的名称，然后点按“好”。 点按右下角的“现在应用”接受更改。 如果您的网络连接需要特殊设置，则需要再次输入这些设置。<br> 更改完成后，您便可以重新连接到互联网、打开 App Store 登录并尝试再次购买。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[菜鸟：“除了硬件与结构小组之外，基本上，好像和课本写的软件开发团队也相差无几吧？”PM：“但课本恐怕没跟你说有些组员的工作是跨组的吧！应该这样说，我们团队的状况是，几乎没有人只会或只需要做某个小组的工作。举例来说，项目刚开始时，项目管理组会比较忙，此时，几乎所有人都要帮忙评估规格、进度以及技术可行性，至于设计阶段则几乎是全员参与。当硬件工程师开始找零件、规划硬件架构，固件工程师必须和硬件工程师密切合作。同理，在项目的不同阶段，各有不同的人力瓶颈。前期阶段，上层的人要帮底层的人；中期阶段，固件的人要帮系统的人，系统的人要帮AP 的人；后期阶段则所有的人都要帮忙测试与debug 等。”菜鸟：“一个人负责多件事情不是很容易造成混乱吗？这样工作效率会高吗？”PM：“这也是没有办法的事，我们只能尽量做好时间与人力的配置。在团队的组织表中，每个重要的工作项目都有其对应的小组及负责人，这些小主管必须对项目状态、风险管理及人力调配付出相当多的精力。我就只有这些人力，为了调配他们去追赶几乎无法达成的出货日期，只好把每个人都当成全能在用，这并非我们公司与项目独有的现象，我想多才多艺 4 是业界对‘优秀嵌入式系统工程师’的基本要求。但请注意，我可不是说时间与人力吃紧时就允许草率地执行设计工作，人力短缺就可以不写文件！人少有人少的办法，无视设计与文件工作，不但不能节省时间，反而导致项目失控或失败，但教科书上往往无视这个普遍存在的现实。”菜鸟：“你是说，软件工程那套对嵌入式系统开发不适用啰？”PM：“你还是没搞懂。第一，我从来没有贬低软件工程或对象导向开发模式的意思，它们也都是经验和天才的累积。我的重点是软件工程教科书中无法完全考虑所有的现实状况，偏偏这个状况又是业界普遍的现象。第二，上述的现象并不只发生于嵌入式系统或电子产品开发，我想，一般的软件公司或游戏开发公司也有这种看似漂亮的组织表，但人力永远捉襟见肘的状况 关于嵌入式和运维的一个QA：http www v2ex...]]></title>
+      <url>/2015/05/07/e8-8f-9c-e9-b8-9f-ef-bc-9a-e9-99-a4-e4-ba-86-e7-a1-ac-e4-bb-b6-e4-b8-8e-e7-bb-93-e6-9e-84-e5-b0-8f-e7-bb-84-e4-b9-8b-e5-a4-96-ef-bc-8c-e5-9f-ba-e6-9c-ac-e4-b8-8a-ef-bc-8c-e5-a5-bd-e5-83-8f/</url>
+      <content type="html"><![CDATA[<p>菜鸟：“除了硬件与结构小组之外，基本上，好像和课本写的软件开发团队也相差无几吧？”PM：“但课本恐怕没跟你说有些组员的工作是跨组的吧！应该这样说，我们团队的状况是，几乎没有人只会或只需要做某个小组的工作。举例来说，项目刚开始时，项目管理组会比较忙，此时，几乎所有人都要帮忙评估规格、进度以及技术可行性，至于设计阶段则几乎是全员参与。当硬件工程师开始找零件、规划硬件架构，固件工程师必须和硬件工程师密切合作。同理，在项目的不同阶段，各有不同的人力瓶颈。前期阶段，上层的人要帮底层的人；中期阶段，固件的人要帮系统的人，系统的人要帮AP 的人；后期阶段则所有的人都要帮忙测试与debug 等。”菜鸟：“一个人负责多件事情不是很容易造成混乱吗？这样工作效率会高吗？”PM：“这也是没有办法的事，我们只能尽量做好时间与人力的配置。在团队的组织表中，每个重要的工作项目都有其对应的小组及负责人，这些小主管必须对项目状态、风险管理及人力调配付出相当多的精力。我就只有这些人力，为了调配他们去追赶几乎无法达成的出货日期，只好把每个人都当成全能在用，这并非我们公司与项目独有的现象，我想多才多艺[ 4] 是业界对‘优秀嵌入式系统工程师’的基本要求。但请注意，我可不是说时间与人力吃紧时就允许草率地执行设计工作，人力短缺就可以不写文件！人少有人少的办法，无视设计与文件工作，不但不能节省时间，反而导致项目失控或失败，但教科书上往往无视这个普遍存在的现实。”菜鸟：“你是说，软件工程那套对嵌入式系统开发不适用啰？”PM：“你还是没搞懂。第一，我从来没有贬低软件工程或对象导向开发模式的意思，它们也都是经验和天才的累积。我的重点是软件工程教科书中无法完全考虑所有的现实状况，偏偏这个状况又是业界普遍的现象。第二，上述的现象并不只发生于嵌入式系统或电子产品开发，我想，一般的软件公司或游戏开发公司也有这种看似漂亮的组织表，但人力永远捉襟见肘的状况<br>关于嵌入式和运维的一个QA：<a href="http://www.v2ex.com/t/189002#reply34" target="_blank" rel="noopener">http://www.v2ex.com/t/189002#reply34</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Linux下不能进入windows的NTFS分区之挂载错误问题]]></title>
+      <url>/2015/04/28/linux-e4-b8-8b-e4-b8-8d-e8-83-bd-e8-bf-9b-e5-85-a5windows-e7-9a-84ntfs-e5-88-86-e5-8c-ba-e4-b9-8b-e6-8c-82-e8-bd-bd-e9-94-99-e8-af-af-e9-97-ae-e9-a2-98/</url>
+      <content type="html"><![CDATA[<p>双系统下，linux访问windows磁盘分区出现如下错误：<br>Error mounting /dev/sda6 at /media/xxx/xx: Command-line`mount -t “ntfs” -o”uhelper=udisks2,nodev,nosuid,uid=1000,gid=1000,dmask=0077,fmask=0177””/dev/sda6” “/media/gaoyuan/文檔”‘ exited with non-zero exit status14: The disk contains an unclean file system (0, 0).<br>Metadata kept in Windows cache, refused to mount.<br>Failed to mount ‘/dev/sda6’: Operation not permitted<br>The NTFS partition is in an unsafe state. Please resume andshutdown<br>Windows fully (no hibernation or fast restarting), or mount thevolume<br>read-only with the ‘ro’ mount option.</p>
+<p>解决方法：<br>1.打开终端：如果没有安装ntfs-3g就要安装：sudo apt-get install ntfs-3g<br>2.修复挂载错误的相应的分区如提示中的/dev/sda6，输入：<br>sudo ntfsfix /dev/sda6<br>回车就可以了。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[这些部大片要慢慢看完！]]></title>
+      <url>/2015/04/27/e8-bf-99-e4-ba-9b-e9-83-a8-e5-a4-a7-e7-89-87-e8-a6-81-e6-85-a2-e6-85-a2-e7-9c-8b-e5-ae-8c-ef-bc-81/</url>
+      <content type="html"><![CDATA[<p>闪灵侠</p>
+<p>超胆侠</p>
+<p>绿灯侠</p>
+<p>钢铁侠3</p>
+<p>美国队长2</p>
+<p>超凡蜘蛛侠2</p>
+<p>蝙蝠侠三部曲</p>
+<p>黑客帝国三部曲</p>
+<a id="more"></a>
+<p>星球大战三部曲</p>
+<p>纳尼亚三部曲</p>
+<p>霍比特人三部曲</p>
+<p>加勒比海盗系列</p>
+<p>生化危机系列</p>
+<p>哈利波特系列</p>
+<p>变形金刚系列</p>
+<p>神奇四侠1 2</p>
+<p>金刚狼1 2</p>
+<p>X战警系列</p>
+<p>雷神1 2</p>
+<p>复仇者联盟1 2</p>
+<p>银河护卫队</p>
+<p>木星上行</p>
+<p>星战7</p>
+<p>蚁人</p>
+<p>无敌浩克</p>
+<p>第五元素</p>
+<p>魔法师的学徒</p>
+<p>铁甲钢拳</p>
+<p>七龙珠</p>
+<p>灵魂战车1 2</p>
+<p>忍者神龟</p>
+<p>哥斯拉</p>
+<p>猩球崛起2</p>
+<p>大闹天宫</p>
+<p>指环王</p>
+<p>终结者系列</p>
+<p>波西杰克逊与神火之盗</p>
+<p>地狱男爵1 2</p>
+<p>圣徒</p>
+<p>300勇士</p>
+<p>300勇士：帝国崛起</p>
+<p>饥饿游戏2</p>
+<p>阿凡达</p>
+<p>新机械战警</p>
+<p>创战纪</p>
+<p>明日边缘</p>
+<p>异星战场</p>
+<p>波斯王子：时之刃</p>
+<p>画皮2</p>
+<p>一代宗师</p>
+<p>诸神之怒</p>
+<p>诸神之战</p>
+<p>黑夜传说4</p>
+<p>美少女特工队</p>
+<p>沉睡魔咒</p>
+<p>星际迷航：暗黑无界</p>
+<p>地心历险记2</p>
+<p>超人：钢铁之躯</p>
+<p>环太平洋</p>
+<p>守望者</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[PHP stripos()在一串字符串中查找另外一串字符串]]></title>
+      <url>/2015/04/25/php-stripos-e5-9c-a8-e4-b8-80-e4-b8-b2-e5-ad-97-e7-ac-a6-e4-b8-b2-e4-b8-ad-e6-9f-a5-e6-89-be-e5-8f-a6-e5-a4-96-e4-b8-80-e4-b8-b2-e5-ad-97-e7-ac-a6-e4-b8-b2/</url>
+      <content type="html"><![CDATA[<p>stristripos — 查找字符串首次出现的位置（不区分大小写）；</p>
+<p>我们可以用这个函数进行字符串的判断！</p>
+<p>&nbsp;</p>
+<p>&lt;?php<br>$findme    = ‘a’;<br>$mystring1 = ‘xyz’;<br>$mystring2 = ‘ABC’;</p>
+<p>$pos1 = stripos($mystring1, $findme);<br>$pos2 = stripos($mystring2, $findme);</p>
+<p>// ‘a’ 当然不在 ‘xyz’ 中<br>if ($pos1 === false) {<br>echo “The string ‘$findme’ was not found in the string ‘$mystring1’”;<br>}</p>
+<p>// 注意这里使用的是 ===。简单的 == 不能像我们期望的那样工作，<br>// 因为 ‘a’ 的位置是 0（第一个字符）。<br>if ($pos2 !== false) {<br>echo “We found ‘$findme’ in ‘$mystring2’ at position $pos2”;<br>}<br>?&gt;</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[最近发现电脑磁盘占用率100%，win8.1 解决方法：关闭家庭组功能：WIN+R运行Services msc，找到 HomeGroup Listener 和 HomeGroup Provider...]]></title>
+      <url>/2015/04/20/e6-9c-80-e8-bf-91-e5-8f-91-e7-8e-b0-e7-94-b5-e8-84-91-e7-a3-81-e7-9b-98-e5-8d-a0-e7-94-a8-e7-8e-87100-ef-bc-8cwin8-1-e8-a7-a3-e5-86-b3-e6-96-b9-e6-b3-95-ef-bc-9a-e5-85-b3-e9-97-ad-e5-ae-b6-e5-ba-ad/</url>
+      <content type="html"><![CDATA[<p>最近发现电脑磁盘占用率100%，win8.1.解决方法：关闭家庭组功能：WIN+R运行Services.msc，找到 HomeGroup Listener 和 HomeGroup Provider 服务，分别停止和禁用这2个服务。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[要说最实用的wordpress插件无非是 “谷歌字体与Gravatar头像加速” 这款插件了，有效提高wordpress网站的访问速度！事实上单纯的一个博客用不上多少插件，无非就是写文章看文章，要求没那么高。]]></title>
+      <url>/2015/04/15/e8-a6-81-e8-af-b4-e6-9c-80-e5-ae-9e-e7-94-a8-e7-9a-84wordpress-e6-8f-92-e4-bb-b6-e6-97-a0-e9-9d-9e-e6-98-af-e8-b0-b7-e6-ad-8c-e5-ad-97-e4-bd-93-e4-b8-8egravatar-e5-a4-b4-e5-83-8f-e5-8a-a0/</url>
+      <content type="html"><![CDATA[<p>要说最实用的wordpress插件无非是 “谷歌字体与Gravatar头像加速” 这款插件了，有效提高wordpress网站的访问速度！事实上单纯的一个博客用不上多少插件，无非就是写文章看文章，要求没那么高。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[兄弟连视频教程最新迅雷和百度网盘下载地址汇总]]></title>
+      <url>/2015/04/13/e5-85-84-e5-bc-9f-e8-bf-9e-e8-a7-86-e9-a2-91-e6-95-99-e7-a8-8b-e6-9c-80-e6-96-b0-e8-bf-85-e9-9b-b7-e5-92-8c-e7-99-be-e5-ba-a6-e7-bd-91-e7-9b-98-e4-b8-8b-e8-bd-bd-e5-9c-b0-e5-9d-80-e6-b1-87-e6-80-bb/</url>
+      <content type="html"><![CDATA[<div></div><br><div>## 迅雷下载地址 ##<br></div><br><div> [2015]兄弟连高洛峰 HTML视频教程<br><a href="http://kuai.xunlei.com/d/JmX9CgKeDADJ6v9Ue2b" target="_blank" rel="noopener">http://kuai.xunlei.com/d/JmX9CgKeDADJ6v9Ue2b</a></div><br><div> [2015]兄弟连高洛峰 CSS视频教程<br><a href="http://kuai.xunlei.com/d/JmX9CgKhDADz6v9U8a8" target="_blank" rel="noopener">http://kuai.xunlei.com/d/JmX9CgKhDADz6v9U8a8</a></div><br><div> [2015]兄弟连高洛峰 DIV+CSS视频教程<br><a href="http://kuai.xunlei.com/d/JmX9CgKjDAAS6-9Ud00" target="_blank" rel="noopener">http://kuai.xunlei.com/d/JmX9CgKjDAAS6-9Ud00</a></div><br><div> [2015]兄弟连高洛峰 HTML5视频教程<br><a href="http://kuai.xunlei.com/d/JmX9CgKlDAA66-9U274" target="_blank" rel="noopener">http://kuai.xunlei.com/d/JmX9CgKlDAA66-9U274</a></div><br><div> [2015]兄弟连高洛峰 CSS3视频教程<br><a href="http://kuai.xunlei.com/d/JmX9CgKmDABa6-9Ub69" target="_blank" rel="noopener">http://kuai.xunlei.com/d/JmX9CgKmDABa6-9Ub69</a></div><br><div> [2015]兄弟连高洛峰 Web响应式布局视频教程<br><a href="http://kuai.xunlei.com/d/JmX9CgKzDACd7P9U3ff" target="_blank" rel="noopener">http://kuai.xunlei.com/d/JmX9CgKzDACd7P9U3ff</a></div><br><div> 2015兄弟连张诚UI教程<br><a href="http://kuai.xunlei.com/d/JmX9CgKODABI6f9U643" target="_blank" rel="noopener">http://kuai.xunlei.com/d/JmX9CgKODABI6f9U643</a></div><br><div> Linux视频教程<br><a href="http://kuai.xunlei.com/s/u57BiHopBjyocCJk16nlUA" target="_blank" rel="noopener">http://kuai.xunlei.com/s/u57BiHopBjyocCJk16nlUA</a></div><br><div> PHP新版视频教程<br><a href="http://kuai.xunlei.com/s/kLThHI1R00k4SUAVybVVDA" target="_blank" rel="noopener">http://kuai.xunlei.com/s/kLThHI1R00k4SUAVybVVDA</a></div><br><div></div><br><a id="more"></a><br><div> HTML5视频教程<br><a href="http://kuai.xunlei.com/s/shFhZE06EQ2JZVrjYH11CA" target="_blank" rel="noopener">http://kuai.xunlei.com/s/shFhZE06EQ2JZVrjYH11CA</a></div><br><div> CI视频教程<br><a href="http://kuai.xunlei.com/s/rv7nvCyTaLKP3ZnuQfoNhg" target="_blank" rel="noopener">http://kuai.xunlei.com/s/rv7nvCyTaLKP3ZnuQfoNhg</a></div><br><div> Thinkphp视频教程<br><a href="http://kuai.xunlei.com/s/OKEQIP8044lWz0VxnOjAuA" target="_blank" rel="noopener">http://kuai.xunlei.com/s/OKEQIP8044lWz0VxnOjAuA</a></div><br><div> Smarty2视频教程<br><a href="http://kuai.xunlei.com/s/hQKc38Q2qx9spEt5mYtvdg" target="_blank" rel="noopener">http://kuai.xunlei.com/s/hQKc38Q2qx9spEt5mYtvdg</a></div><br><div> Smarty3视频教程<br><a href="http://kuai.xunlei.com/s/.3YeBOd9sqeiSgRjceZaXQ" target="_blank" rel="noopener">http://kuai.xunlei.com/s/.3YeBOd9sqeiSgRjceZaXQ</a></div><br><div> 经典版PHP视频教程<br><a href="http://kuai.xunlei.com/s/KVU0AYDxwNX5BC8d0ubu3A" target="_blank" rel="noopener">http://kuai.xunlei.com/s/KVU0AYDxwNX5BC8d0ubu3A</a></div><br><div> PHP经典实例<br><a href="http://kuai.xunlei.com/s/iO4gwETRYMBh.Uf5IxCuiQ" target="_blank" rel="noopener">http://kuai.xunlei.com/s/iO4gwETRYMBh.Uf5IxCuiQ</a></div><br><div> 职业素质课<br><a href="http://kuai.xunlei.com/s/pVvdkiUwNxPpvUZW3OJjew" target="_blank" rel="noopener">http://kuai.xunlei.com/s/pVvdkiUwNxPpvUZW3OJjew</a></div><br><div> Java SE视频教程<br><a href="http://kuai.xunlei.com/s/M3pGfE1TWI2V--VdMtnqyQ" target="_blank" rel="noopener">http://kuai.xunlei.com/s/M3pGfE1TWI2V–VdMtnqyQ</a></div><br><div> Java Web视频教程<br><a href="http://kuai.xunlei.com/s/C3gqOINLOwS34JPcjeojLQ" target="_blank" rel="noopener">http://kuai.xunlei.com/s/C3gqOINLOwS34JPcjeojLQ</a></div><br><div> 安卓视频教程<br><a href="http://kuai.xunlei.com/s/5e8UkG9rSMJ2BIo8EcDJGQ" target="_blank" rel="noopener">http://kuai.xunlei.com/s/5e8UkG9rSMJ2BIo8EcDJGQ</a></div><br><div> Cocos2d-x视频教程<br><a href="http://kuai.xunlei.com/s/N0w.5O3O0gq2XQyllJoC-A" target="_blank" rel="noopener">http://kuai.xunlei.com/s/N0w.5O3O0gq2XQyllJoC-A</a></div><br><div> PHP预习视频<br><a href="http://kuai.xunlei.com/s/3P6SDUaBPQB25MSBH7nJNA" target="_blank" rel="noopener">http://kuai.xunlei.com/s/3P6SDUaBPQB25MSBH7nJNA</a><br></div><br><div>兄弟连官网：<a href="http://www.itxdl.cn%20%20%20%20%20%20%20%20%20%20%20%20/" target="_blank" rel="noopener">http://www.itxdl.cn            </a>;<br>兄弟连论坛：<a href="http://bbs.lampbrother.net%20/" target="_blank" rel="noopener">http://bbs.lampbrother.net </a>;<br>兄弟连云课堂：<a href="http://yun.itxdl.cn%20%20%20%20%20%20/" target="_blank" rel="noopener">http://yun.itxdl.cn      </a>;</div><br><div>## 百度网盘下载地址 ##<br></div><br><div> [2015]兄弟连高洛峰 HTML视频教程<br><a href="http://pan.baidu.com/s/1c0o4kpy" target="_blank" rel="noopener">http://pan.baidu.com/s/1c0o4kpy</a></div><br><div> [2015]兄弟连高洛峰 CSS视频教程<br><a href="http://pan.baidu.com/s/1bn3ztjL" target="_blank" rel="noopener">http://pan.baidu.com/s/1bn3ztjL</a></div><br><div> [2015]兄弟连高洛峰 DIV+CSS视频教程<br><a href="http://pan.baidu.com/s/1jG8AHIe" target="_blank" rel="noopener">http://pan.baidu.com/s/1jG8AHIe</a></div><br><div> [2015]兄弟连高洛峰 HTML5视频教程<br><a href="http://pan.baidu.com/s/1nSri2" target="_blank" rel="noopener">http://pan.baidu.com/s/1nSri2</a></div><br><div> [2015]兄弟连高洛峰 CSS3视频教程<br><a href="http://pan.baidu.com/s/1bnpmhQZ" target="_blank" rel="noopener">http://pan.baidu.com/s/1bnpmhQZ</a></div><br><div> [2015]兄弟连高洛峰 Web响应式布局视频教程<br><a href="http://pan.baidu.com/s/1gds1Ne7" target="_blank" rel="noopener">http://pan.baidu.com/s/1gds1Ne7</a></div><br><div> 2015兄弟连张诚UI教程<br><a href="http://pan.baidu.com/s/1eQGQ00q" target="_blank" rel="noopener">http://pan.baidu.com/s/1eQGQ00q</a></div><br><div> Linux视频教程<br><a href="http://pan.baidu.com/s/1gdy2hRt" target="_blank" rel="noopener">http://pan.baidu.com/s/1gdy2hRt</a></div><br><div> PHP新版视频教程<br><a href="http://pan.baidu.com/s/1pJuOdXT" target="_blank" rel="noopener">http://pan.baidu.com/s/1pJuOdXT</a></div><br><div> 经典版PHP视频教程<br><a href="http://pan.baidu.com/s/1hqnacDm" target="_blank" rel="noopener">http://pan.baidu.com/s/1hqnacDm</a></div><br><div> 《细说PHP》第二版 光盘内容<br><a href="http://pan.baidu.com/s/1nt9P3O9" target="_blank" rel="noopener">http://pan.baidu.com/s/1nt9P3O9</a></div><br><div> 职业素质课<br><a href="http://pan.baidu.com/s/1tEDMK" target="_blank" rel="noopener">http://pan.baidu.com/s/1tEDMK</a></div>]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[简单写的一个base64解码编码工具]]></title>
+      <url>/2015/04/09/e7-ae-80-e5-8d-95-e5-86-99-e7-9a-84-e4-b8-80-e4-b8-aabase64-e8-a7-a3-e7-a0-81-e7-bc-96-e7-a0-81-e5-b7-a5-e5-85-b7/</url>
+      <content type="html"><![CDATA[<p>使用PHP自带的base64_encode();编码 函数写的。</p>
+<p>base64_decode();解码</p>
+<p>功能简单，不过这个东西还要研究研究。</p>
+<p>&nbsp;</p>
+<p>代码：<a href="https://git.oschina.net/heegit/Base64-decoding-encoding.git" title="代码" target="_blank" rel="noopener">https://git.oschina.net/heegit/Base64-decoding-encoding.git</a></p>
+<p>demo: <a href="http://base64.oschina.mopaas.com/" title="演示" target="_blank" rel="noopener">http://base64.oschina.mopaas.com/</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> PHP </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[教你如何用chrome安装安卓APK软件，非转crx安装。]]></title>
+      <url>/2015/04/05/e6-95-99-e4-bd-a0-e5-a6-82-e4-bd-95-e7-94-a8chrome-e5-ae-89-e8-a3-85-e5-ae-89-e5-8d-93apk-e8-bd-af-e4-bb-b6-ef-bc-8c-e9-9d-9e-e8-bd-accrx-e5-ae-89-e8-a3-85-e3-80-82/</url>
+      <content type="html"><![CDATA[<p>Google 让Chrome OS运行Android app的想法早已有之，并在去年的9月份付诸行动，推出了App Runtime for Chrome，简称ARC，是一个运行在Chrome OS上的Android虚拟机，它本身是一个Chrome Web商店的应用程序，名为ARC Welder。</p>
+<a id="more"></a>
+<p>之前有装过archon，相对ARC Welder来说更为麻烦，事实上我感觉他们实现原理可能差不多，但是ARC Welder是可以直接安装APK文件的。</p>
+<p>首先你需要在电脑上安装 chrome<strong>最新</strong>版本，教程所装的是chrome  41.0.2272.89 (64-bit)，windows 8.1 64位系统，ARC Welder 同时兼容Mac linux，官方是这么说的但是我自己没测试。</p>
+<p>要下载ARC Welder的话在chrome 商店是搜不到ARC Welder的，具体原因我也不清楚，不知道是不是我自己的电脑上面才出现这个问题。</p>
+<p>用chrome打开项目网址：<a href="https://developer.chrome.com/apps/getstarted_arc" target="_blank" rel="noopener">https://developer.chrome.com/apps/getstarted_arc</a> 网址是需要翻墙才可以打开的，并且下载ARCwelder也是需要翻墙的！翻墙方法自行百度！</p>
+<p>进入页面后可以看到官方的介绍以及安装方法，我们点击The ARC Welder apps .</p>
+<p><a href="http://blog.ixizi.cn/wp-content/uploads/2015/04/QQ截图20150405182300.png" target="_blank" rel="noopener"><img src="http://blog.ixizi.cn/wp-content/uploads/2015/04/QQ截图20150405182300-300x213.png" alt="QQ截图20150405182300"></a></p>
+<p>&nbsp;</p>
+<p>页面跳转到chrome商店，你会发现现在可以下载安装 ARC welder了。</p>
+<p>然后安装ARC Welder  ，下载速度可能比较慢(这个得看你翻墙方式)，耐心等待。</p>
+<p>安装完成后我们可以在地址栏输入chrome://apps/ 所安装的ARC welder！</p>
+<p><a href="http://blog.ixizi.cn/wp-content/uploads/2015/04/QQ截图20150405183111.png" target="_blank" rel="noopener"><img src="http://blog.ixizi.cn/wp-content/uploads/2015/04/QQ截图20150405183111-300x241.png" alt="QQ截图20150405183111"></a></p>
+<p>&nbsp;</p>
+<p>接着打开ARC Welder，第一次使用会提示你 设置一个APK安装目录！自己新建一个文件夹就好了！</p>
+<p>完成这一步就可以开始安装APK了。点击 Add  your APK！添加你已经下载好的APK安卓应用程序！</p>
+<p><a href="http://blog.ixizi.cn/wp-content/uploads/2015/04/QQ截图20150405183521.png" target="_blank" rel="noopener"><img src="http://blog.ixizi.cn/wp-content/uploads/2015/04/QQ截图20150405183521-166x300.png" alt="QQ截图20150405183521"></a></p>
+<p>&nbsp;</p>
+<p>然后设置应用启动界面</p>
+<p>&nbsp;</p>
+<p><a href="http://blog.ixizi.cn/wp-content/uploads/2015/04/QQ截图20150405183751.png" target="_blank" rel="noopener"><img src="http://blog.ixizi.cn/wp-content/uploads/2015/04/QQ截图20150405183751-166x300.png" alt="QQ截图20150405183751"></a></p>
+<p>点击Launch App就可以启动你安装的安卓应用程序拉、你安装的应用程序可以在地址栏输入chrome://apps/找到！</p>
+<p><a href="http://blog.ixizi.cn/wp-content/uploads/2015/04/QQ截图20150405184039.png" target="_blank" rel="noopener"><img src="http://blog.ixizi.cn/wp-content/uploads/2015/04/QQ截图20150405184039-161x300.png" alt="QQ截图20150405184039"></a></p>
+<p>据其他人测试部分应用不可用：</p>
+<p>Google 所有，因为没有google服务<br><img src="http://imgsrc.baidu.com/forum/w%3D580/sign=b65fa40c6881800a6ee58906813433d6/46e6fc88d43f8794c3c515add61b0ef41ad53a9a.jpg" alt=""><br>以及其他需要google服务的应用：比如部落冲突、TED（这个竟然也需要）</p>
+<p>腾讯所有:<br>QQ, 微信，QQ音乐，腾讯视频，都直接崩溃</p>
+<p>哔哩哔哩出现加载弹幕之后就崩溃；</p>
+<p>WPS（非HD）可以安装并打开，但是无法打开文件，打开就崩溃。</p>
+<p>Skype崩溃、facebook崩溃</p>
+<p>&nbsp;</p>
+<p>但是大部分应用还是正常的！</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[工程师们,不要想一辈子靠技术混饭吃[转]]]></title>
+      <url>/2015/04/04/e5-b7-a5-e7-a8-8b-e5-b8-88-e4-bb-ac-e4-b8-8d-e8-a6-81-e6-83-b3-e4-b8-80-e8-be-88-e5-ad-90-e9-9d-a0-e6-8a-80-e6-9c-af-e6-b7-b7-e9-a5-ad-e5-90-83-e8-bd-ac/</url>
+      <content type="html"><![CDATA[<p>也许我说的不好，你不赞同但看在我真心的份上别扔砖头啊。<br>一、在中国你千万不要因为学习技术就可以换来稳定的生活和高的薪水待遇，你千万更不要认为哪些从事市场开发，跑腿的人，没有前途 。<span id="more-301"></span></p>
+<p>不知道你是不是知道，咱们中国有相当大的一部分软件公司，他们的软件开发团队都小的可怜，甚至只有1-3个人，连一个项目小组都算不上，而这样的团队却要承担一个软件公司所有的软件开发任务，在软件上线和开发的关键阶段需要团队的成员没日没夜的加班，还需要为测试出的BUG和不能按时提交的软件模块功能而心怀忐忑，有的时候如果你不幸加入现场开发的团队你则需要背井离乡告别你的女友，进行封闭开发，你平时除了编码之外就是吃饭和睡觉（有钱的公司甚至请个保姆为你做饭，以让你节省出更多的时间来投入到工作中，让你一直在那种累了就休息，不累就立即工作的状态）. 更可怕的是，会让你接触的人际关系非常单一，除了有限的技术人员之外你几乎见不到做其他行业工作和职位的人，你的朋友圈子小且单一，甚至破坏你原有的爱情（想象一下，你在外地做现场开发2个月以上，却从没跟女友见过一面的话，你的女友是不是会对你呲牙裂嘴）。<a id="more"></a></p>
+<p>也许你拿到了所谓的白领的工资，但你却从此失去享受生活的自由，如果你想做技术人员尤其是开发人员，我想你很快就会理解，你多么想在一个地方长期待一段时间，认识一些朋友，多一些生活时间的愿望。</p>
+<p>比之于我们的生活和人际关系及工作，那些从事售前和市场开发的朋友，却有比我们多的多的工作之外的时间，甚至他们工作的时间有的时候是和生活的时间是可以兼顾的，他们可以通过市场开发，认识各个行业的人士，可以认识各种各样的朋友，他们比我们坦率说更有发财和发展的机会，只要他们跟我们一样勤奋。（有一种勤奋的普通人，如果给他换个地方，他马上会成为一个勤奋且出众的人。）</p>
+<p>二、在学习技术的时候千万不要认为如果做到技术最强，就可以成为100%受尊重的人。<br>有一次一个人在面试项目经理的时候说了这么一段话：我只用最听话的人，按照我的要求做只要是听话就要，如果不听话不管他技术再好也不要。随后这个人得到了试用机会，如果没意外的话，他一定会是下一个项目经理的继任者。</p>
+<p>朋友们你知道吗？不管你技术有多强，你也不可能自由的腾出时间象别人那样研究一下LINUX源码，甚至写一个LINUX样的杰作来表现你的才能。你需要做的就是按照要求写代码，写代码的含义就是都规定好，你按照规定写，你很快就会发现你昨天写的代码，跟今天写的代码有很多类似，等你写过一段时间的代码，你将领略：复制，拷贝，粘贴那样的技术对你来说是何等重要。（如果你没有做过1年以上的真正意义上的开发不要反驳我）。</p>
+<p>如果你幸运的能够听到市场人员的谈话，或是领导们的谈话，你会隐约觉得他们都在把技术人员当作编码的机器来看，你的价值并没有你想象的那么重要。而在你所在的团队内部，你可能正在为一个技术问题的讨论再跟同事搞内耗，因为他不服你，你也不服他，你们都认为自己的对，其实你们两个都对，而争论的目的就是为了在关键场合证明一下自己比对方技术好，比对方强。（在一个项目开发中，没有人愿意长期听别人的，总想换个位置领导别人。）</p>
+<p>三、你更不要认为，如果我技术够好，我就自己创业，自己有创业的资本，因为自己是搞技术的。<br>如果你那样认为，真的是大错特错了，你可以做个调查在非技术人群中，没有几个人知道C#与JAVA的，更谈不上来欣赏你的技术是好还是不好。一句话，技术仅仅是一个工具，善于运用这个工具为别人干活的人，却往往不太擅长用这个工具来为自己创业，因为这是两个概念，训练的技能也是完全不同的。</p>
+<p>创业最开始的时候，你的人际关系，你处理人际关系的能力，你对社会潜规则的认识，还有你明白不明白别人的心，你会不会说让人喜欢的话，还有你对自己所提供的服务的策划和推销等等，也许有一万，一百万个值得我们重视的问题，但你会发现技术却很少有可能包含在这一万或一百万之内，如果你创业到了一个快成功的阶段，你会这样告诉自己：我干吗要亲自做技术，我聘一个人不就行了，这时候你才真正会理解技术的作用，和你以前做技术人员的作用。</p>
+<p>小结<br>基于上面的讨论，我奉劝那些学习技术的朋友，千万不要拿科举考试样的心态去学习技术,对技术的学习几近的痴迷，想掌握所有所有的技术，以让自己成为技术领域的权威和专家，以在必要的时候或是心里不畅快的时候到网上对着菜鸟说自己是前辈。</p>
+<p>技术仅仅是一个工具，是你在人生一个阶段生存的工具，你可以一辈子喜欢他，但最好不要一辈子靠它生存。<br>掌握技术的唯一目的就是拿它找工作（如果你不想把技术当作你第二生命的话），就是干活。所以你在学习的时候千万不要去做那些所谓的技术习题或是研究那些帽泡算法，最大数算法了，什么叫干活？</p>
+<p>就是做一个东西让别人用，别人用了，可以提高他们的工作效率，想象吧，你做1万道技术习题有什么用？只会让人觉得酸腐，还是在学习的时候，多培养些自己务实的态度吧，比如研究一下当地市场目前有哪些软件公司用人，自己离他们的要求到底有多远，自己具体应该怎么做才可以达到他们的要求。等你分析完这些，你就会发现，找工作成功，技术的贡献率其实并没有你原来想象的那么高。</p>
+<p>不管你是学习技术为了找工作还是创业，你都要对技术本身有个清醒的 认识，在中国不会出现BILL GATES，因为，中国目前还不是十分的尊重技术人才，还仅仅的停留在把软件技术人才当作人才机器来用的尴尬境地。（如果你不理解，一种可能是你目前仅仅从事过技术工作，你的朋友圈子里技术类的朋友占了大多数，一种可能是你还没有工作，但喜欢读比尔。盖茨的传记）。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[事实上只要给文章加入 more标签就可以截断文章！并且在首页显示摘要！]]></title>
+      <url>/2015/04/04/e4-ba-8b-e5-ae-9e-e4-b8-8a-e5-8f-aa-e8-a6-81-e7-bb-99-e6-96-87-e7-ab-a0-e5-8a-a0-e5-85-a5-e6-a0-87-e7-ad-be-e5-b0-b1-e5-8f-af-e4-bb-a5-e6-88-aa-e6-96-ad-e6-96-87-e7-ab-a0/</url>
+      <content type="html"><![CDATA[<p>事实上只要给文章加入 more标签就可以截断文章！并且在首页显示摘要！</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[美国各州的邮政缩写，英中文全称以及首府]]></title>
+      <url>/2015/04/04/e7-be-8e-e5-9b-bd-e5-90-84-e5-b7-9e-e7-9a-84-e9-82-ae-e6-94-bf-e7-bc-a9-e5-86-99-ef-bc-8c-e8-8b-b1-e4-b8-ad-e6-96-87-e5-85-a8-e7-a7-b0-e4-bb-a5-e5-8f-8a-e9-a6-96-e5-ba-9c/</url>
+      <content type="html"><![CDATA[<p>美国共有50个州.<br>美国各州的邮政缩写，英中文全称以及首府，按英文缩写排列：<br>AL Alabama 亚拉巴马州 蒙哥马利<br>AK Alaska 阿拉斯加州 朱诺<br>AZ Arizona 亚利桑那州 凤凰城<br>AR Arkansas 阿肯色州 小石城<br>CA California 加利福尼亚州 沙加缅度<br>CO Colorado 科罗拉多州 丹佛<br>CT Connecticut 康涅狄格州 哈特福德<br>DE Delaware 特拉华州 多佛<br>FL Florida 佛罗里达州 塔拉哈西<br>GA Georgia 佐治亚州 亚特兰大<br>HI Hawaii 夏威夷州 檀香山<br>ID Idaho 爱达荷州 博伊西<br>IL Illinois 伊利诺州 斯普林菲尔德<br>IN Indiana 印地安那州 印地安那波利斯<br>IA Iowa 艾奥瓦州 得梅因<br>KS Kansas 堪萨斯州 托皮卡<br>KY Kentucky 肯塔基州 法兰克福<br>LA Lousiana 路易斯安那州 巴吞鲁日<br>ME Maine 缅因州 奥古斯塔<br>MD Maryland 马里兰州 安那波利斯<br>MA Massachusetts 马萨诸塞州 波士顿<br>MI Michigan 密歇根州 兰辛<br>MN Minnesota 明尼苏达州 圣保罗<br>MS Mississippi 密西西比州 杰克逊<br>MO Missouri 密苏里州 杰弗逊市<br>MT Montana 蒙大拿州 海伦那<br>NE Nebraska 内布拉斯加州 林肯<br>NV Nevada 内华达州 卡森市<br>NH New Hampshire 新罕布什尔州 康科德<br>NJ New Jersey 新泽西州 特伦顿<br>NM New Mexico 新墨西哥州 圣大非<br>NY New York 纽约州 奥尔巴尼<br>NC North Carolina 北卡罗来纳州 罗利<br>ND North Dakota 北达科他州 俾斯麦<br>OH Ohio 俄亥俄州 哥伦布<br>OK Oklahoma 俄克拉何马州 奥克拉荷马市<br>OR Oregon 俄勒冈州 塞勒姆<br>PA Pennsylvania 宾夕法尼亚州 哈里斯堡<br>RI Rhode Island 罗得岛州 普罗维登斯<br>SC South Carolina 南卡罗莱那州 哥伦比亚<br>SD South Dakota 南达科他州 皮尔<br>TN Tennessee 田纳西州 纳什维尔<br>TX Texas 得克萨斯州 奥斯汀<br>UT Utah 犹他州 盐湖城<br>VT Vermont 佛蒙特州 蒙比利埃<br>VA Virginia 弗吉尼亚州 里士满<br>WA Washington 华盛顿州 奥林匹亚<br>WV West Virginia 西弗吉尼亚州 查尔斯顿<br>WI Wisconsin 威斯康星州 麦迪逊<br>WY Wyoming 怀俄明州 夏延</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> KYL </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[我不得不说这个主题略微有点不适合写长篇博文！文章会直接在首页完整显示！ 感觉还是得自己写一个主题比较好！或者修改一下这个主题！？]]></title>
+      <url>/2015/04/03/e6-88-91-e4-b8-8d-e5-be-97-e4-b8-8d-e8-af-b4-e8-bf-99-e4-b8-aa-e4-b8-bb-e9-a2-98-e7-95-a5-e5-be-ae-e6-9c-89-e7-82-b9-e4-b8-8d-e9-80-82-e5-90-88-e5-86-99-e9-95-bf-e7-af-87-e5-8d-9a-e6-96-87-ef-bc-81/</url>
+      <content type="html"><![CDATA[<p>我不得不说这个主题略微有点不适合写长篇博文！文章会直接在首页完整显示！<br>感觉还是得自己写一个主题比较好！或者修改一下这个主题！？</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[学生信息管理系统]]></title>
+      <url>/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/</url>
+      <content type="html"><![CDATA[<p>/<em>—————————————————————————————–<br>程序名：stu_management.c<br>程序功能：<br>1.鉴别root权限，设置管理员和学生权限，管理员和学生可以异步登录<br>（如果加入网络模块就可以实现多用户同步登录）<br>2.管理员可以设置/查询/修改学生所有账户信息，也可以增加新的管理员<br>3.学生只有查询账户/课程/奖学金的权限<br>4.自动生成配置文件，退出时并保存配置文件，防止信息丢失<br>5.移植程序只需将可执行程序和配置文件移植即可，信息不会丢失<br>程序实现：采用链表加文件操作库函数结合过程控制实现<br>编译：gcc stu_management.c -o stu_management<br>编译环境：gcc 版本 4.5.1 20100924 (Red Hat 4.5.1-4) (GCC)<br>作者：张峰 [mailto:frankzhang02010@gmail.com]<br>修改日期：2013-12-8<br>—————————————————————————————–</em>/<br><a id="more"></a></p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>#include &lt;stdlib.h&gt;</p>
+<p>#include &lt;string.h&gt;</p>
+<p>#include &lt;unistd.h&gt;</p>
+<p>#define N 3 //课程和奖学金种类的总数量和</p>
+<p>typedef struct SCORE{<br>char course_name[32];<br>float score;<br>}Score;</p>
+<p>typedef struct node{<br>int auth;<br>char usr_name[32];<br>char password[18];<br>int id;<br>char stu_name[32];<br>char major[32];<br>Score s[N];<br>struct node* next;<br>}Node;</p>
+<p>Node <em>head,</em>last;<br>int usr_type;<br>char usr_name[32],password[18];<br>const char* f_name=”usr_info.conf”;</p>
+<p>void load_data(),save_data(),export_data(),check_admin(),add_admin(),login();<br>void add_student(),search_student(),del(),modify(),modify_password(),logout();<br>void show_score(),search_course();</p>
+<p>void title_win(),msg_win();</p>
+<p>int main()<br>{<br>int ch;<br>load_data();<br>title_win();<br>check_admin();</p>
+<p>loop:<br>printf(“请选择用户类型:”);<br>scanf(“%d”,&amp;usr_type);<br>if(usr_type!=1 &amp;&amp; usr_type!=2)<br>{<br>msg_win(“没有该用户类型，请重新输入，1表示admin，2表示student\n”);<br>goto loop;<br>}</p>
+<p>if(usr_type==1)<br>{<br>title_win();<br>login();<br>while(1)<br>{<br>msg_win(“User Type:Admin”);<br>msg_win(“Add/Srch/Del/Mdfy/M_Psd/Quit/Exp/Save”);<br>printf(“&gt;”);<br>scanf(“%d”,&amp;ch);</p>
+<p>switch(ch)<br>{<br>case 1:add_student();break;<br>case 2:search_student();break;<br>case 3:del();break;<br>case 4:modify();break;<br>case 5:modify_password();break;<br>case 6:logout();break;<br>case 7:export_data();break;<br>case 8:save_data();break;<br>case 9:add_admin();break;<br>default:break;<br>}<br>getchar();<br>msg_win(“按任意键返回”);<br>getchar();<br>system(“clear”);<br>}</p>
+<p>}<br>else<br>{<br>title_win();<br>login();<br>while(1)<br>{<br>msg_win(“User Type:Student”);<br>msg_win(“ShowScore/SrchCourse/M_Pwd/Quit”);<br>printf(“&gt;”);<br>scanf(“%d”,&amp;ch);</p>
+<p>switch(ch)<br>{<br>case 1:show_score();break;<br>case 2:search_course();break;<br>case 3:modify_password();break;<br>case 4:logout();break;<br>default:break;<br>}<br>getchar();<br>msg_win(“按任意键返回”);<br>getchar();<br>system(“clear”);<br>}</p>
+<p>}<br>return 0;<br>}</p>
+<p>void load_data()<br>{<br>FILE* fp=NULL;</p>
+<p>if(!(fp=fopen(f_name,”a”)))<br>{<br>msg_win(“Open file fail”);<br>return;<br>}</p>
+<p>fclose(fp);<br>fp=NULL;</p>
+<p>if(!(fp=fopen(f_name,”r+”)))<br>{<br>msg_win(“Open file fail”);<br>return;<br>}</p>
+<p>Node<em> p;<br>while(1)<br>{<br>p=(Node</em>)malloc(sizeof(Node));<br>if(!p) continue;<br>if(!fread(p,sizeof(Node),1,fp))<br>break;<br>if(head==NULL)<br>{<br>head=last=p;<br>head-&gt;next=NULL;<br>}<br>else<br>{<br>last-&gt;next=p;<br>last=p;<br>last-&gt;next=NULL;<br>}<br>}<br>fclose(fp);<br>fp=NULL;<br>}</p>
+<p>void save_data()<br>{<br>FILE* fp=NULL;<br>if(!(fp=fopen(f_name,”w+”)))<br>{<br>msg_win(“Open file fail”);<br>return;<br>}</p>
+<p>Node* p;<br>p=head;<br>while(p)<br>{<br>fwrite(p,sizeof(Node),1,fp);<br>p=p-&gt;next;<br>}<br>fclose(fp);<br>fp=NULL;<br>}</p>
+<p>void export_data()<br>{<br>FILE* fp;<br>if(!(fp=fopen(“export.log”,”w+”)))<br>{<br>msg_win(“Open file fail”);<br>return;<br>}</p>
+<p>Node* p;<br>int i;<br>p=head;<br>while(p)<br>{<br>fprintf(fp,”%-2d|%-15s|%-18s|%-15s|%-10d|%-18s|\n”,p-&gt;auth,p-&gt;usr_name,p-&gt;password,p-&gt;stu_name,p-&gt;id,p-&gt;major);<br>for(i=0;i&lt;N;i++)<br>fprintf(fp,”%s:%-5.1f|”,p-&gt;s[i].course_name,p-&gt;s[i].score);<br>fprintf(fp,”\n”);<br>p=p-&gt;next;<br>}<br>fclose(fp);<br>}</p>
+<p>void check_admin()<br>{<br>Node<em> p;<br>p=head;<br>while(p)<br>{<br>if(p-&gt;auth==1)<br>return;<br>p=p-&gt;next;<br>}<br>p=(Node</em>)malloc(sizeof(Node));<br>p-&gt;auth=1;<br>msg_win(“请设置管理员账户”);<br>printf(“用户名:”);<br>scanf(“%s”,p-&gt;usr_name);<br>printf(“密码:”);<br>scanf(“%s”,p-&gt;password);</p>
+<p>if(head==NULL)<br>{<br>head=last=p;<br>head-&gt;next=NULL;<br>}<br>else<br>{<br>last-&gt;next=p;<br>last=p;<br>last-&gt;next=NULL;<br>}<br>msg_win(“管理员账户设置成功”);<br>sleep(1);<br>system(“clear”);<br>}</p>
+<p>void add_admin()<br>{<br>Node<em> p;<br>p=(Node</em>)malloc(sizeof(Node));<br>p-&gt;auth=1;<br>msg_win(“添加管理员账户”);<br>printf(“用户名:”);<br>scanf(“%s”,p-&gt;usr_name);<br>printf(“密码:”);<br>scanf(“%s”,p-&gt;password);</p>
+<p>if(head==NULL)<br>{<br>head=last=p;<br>head-&gt;next=NULL;<br>}<br>else<br>{<br>last-&gt;next=p;<br>last=p;<br>last-&gt;next=NULL;<br>}<br>msg_win(“新管理员账户设置成功”);</p>
+<p>}</p>
+<p>void login()<br>{<br>login: system(“clear”);<br>msg_win(“登录”);<br>printf(“用户名:”);<br>scanf(“%s”,usr_name);<br>printf(“密码:”);<br>scanf(“%s”,password);</p>
+<p>Node* p;<br>p=head;<br>while(p)</p>
+<p>{<br>if(!strcmp(p-&gt;usr_name,usr_name) &amp;&amp; !strcmp(p-&gt;password,password) &amp;&amp; p-&gt;auth==usr_type)<br>{<br>msg_win(“登录成功”);<br>sleep(1);<br>system(“clear”);<br>return;<br>}<br>p=p-&gt;next;<br>}<br>msg_win(“用户名或密码不正确,按任意键重新登录”);<br>getchar();getchar();<br>goto login;<br>}</p>
+<p>void add_student()<br>{<br>Node<em> p=(Node</em>)malloc(sizeof(Node));<br>if(!p) return ;</p>
+<p>p-&gt;auth=2;<br>msg_win(“添加学生账户”);<br>printf(“用户名:”);<br>scanf(“%s”,p-&gt;usr_name);<br>printf(“密码:”);<br>scanf(“%s”,p-&gt;password);<br>printf(“姓名:”);<br>scanf(“%s”,p-&gt;stu_name);<br>printf(“学号:”);<br>scanf(“%d”,&amp;(p-&gt;id));<br>printf(“专业:”);<br>scanf(“%s”,p-&gt;major);</p>
+<p>if(head==NULL)<br>{<br>head=last=p;<br>head-&gt;next=NULL;<br>}<br>else<br>{<br>last-&gt;next=p;<br>last=p;<br>last-&gt;next=NULL;<br>}<br>msg_win(“学生账户设置成功”);<br>}</p>
+<p>void search_student()<br>{<br>msg_win(“搜索账户信息”);<br>int stu_id,i;<br>printf(“请输入学号:”);<br>scanf(“%d”,&amp;stu_id);</p>
+<p>Node* p;<br>p=head;<br>while(p)<br>{<br>if(p-&gt;id==stu_id)<br>{<br>printf(“%d %s %s %s %d %s\n”,p-&gt;auth,p-&gt;usr_name,p-&gt;password,p-&gt;stu_name,p-&gt;id,p-&gt;major);<br>for(i=0;i&lt;N;i++)<br>printf(“%s:%-5.1f”,p-&gt;s[i].course_name,p-&gt;s[i].score);<br>printf(“\n”);<br>return;<br>}<br>p=p-&gt;next;<br>}<br>msg_win(“系统中没有该学号”);<br>}</p>
+<p>void del()<br>{<br>Node <em>p,</em>q;<br>int stu_id;</p>
+<p>msg_win(“删除账户信息”);<br>printf(“请输入学号:”);<br>scanf(“%d”,&amp;stu_id);</p>
+<p>p=head;<br>while(p)<br>{<br>if(p-&gt;id==stu_id)<br>{<br>if(head==p)<br>head=head-&gt;next;<br>else<br>q-&gt;next=p-&gt;next;</p>
+<p>free(p);<br>msg_win(“删除成功！”);<br>return;<br>}<br>q=p;<br>p=p-&gt;next;<br>}<br>msg_win(“删除失败！系统中没有该学号”);<br>}</p>
+<p>void modify()<br>{<br>int stu_id,i;</p>
+<p>msg_win(“修改课程成绩和奖学金”);<br>printf(“请输入学号:”);<br>scanf(“%d”,&amp;stu_id);</p>
+<p>Node* p;<br>p=head;<br>while(p)<br>{<br>if(p-&gt;id==stu_id)<br>{<br>for(i=0;i&lt;N;i++)<br>scanf(“%s %f”,p-&gt;s[i].course_name,&amp;(p-&gt;s[i].score));<br>return;<br>}<br>p=p-&gt;next;<br>}<br>msg_win(“系统中没有该学号”);<br>}</p>
+<p>void modify_password()<br>{<br>char temp[18],new_password[18];</p>
+<p>msg_win(“修改密码”);</p>
+<p>printf(“请输入旧密码:”);<br>scanf(“%s”,temp);</p>
+<p>printf(“请输入新密码:”);<br>scanf(“%s”,new_password);<br>printf(“请确认新密码:”);<br>scanf(“%s”,password);</p>
+<p>Node* p;<br>p=head;<br>while(p)<br>{<br>if(!strcmp(usr_name,p-&gt;usr_name))<br>{<br>if(!strcmp(p-&gt;password,temp)&amp;&amp; !strcmp(new_password,password))<br>{<br>strcpy(password,new_password);<br>strcpy(p-&gt;password,password);<br>msg_win(“密码修改成功”);<br>return;<br>}<br>else<br>{<br>msg_win(“输入有误，自动退出”);<br>return;<br>}<br>}<br>p=p-&gt;next;<br>}<br>}</p>
+<p>void logout()<br>{<br>save_data();<br>msg_win(“成功退出”);<br>exit(1);<br>}</p>
+<p>void show_score()<br>{<br>int i;<br>Node* p;<br>p=head;<br>msg_win(“所有课程成绩和奖学金”);<br>while(p)<br>{<br>if(!strcmp(usr_name,p-&gt;usr_name))<br>{<br>printf(“%d %s %s %s %d %s\n”,p-&gt;auth,p-&gt;usr_name,p-&gt;password,p-&gt;stu_name,p-&gt;id,p-&gt;major);<br>for(i=0;i&lt;N;i++)<br>printf(“%s:%-5.1f”,p-&gt;s[i].course_name,p-&gt;s[i].score);<br>printf(“\n”);<br>return;<br>}<br>p=p-&gt;next;<br>}<br>}</p>
+<p>void search_course()<br>{<br>char course_name[32];<br>int i;<br>msg_win(“输入要查询的课程”);<br>printf(“&gt;”);<br>scanf(“%s”,course_name);</p>
+<p>Node* p;<br>p=head;<br>while(p)<br>{<br>if(!strcmp(usr_name,p-&gt;usr_name))<br>{<br>for(i=0;i&lt;N;i++)<br>{<br>if(!strcmp(course_name,p-&gt;s[i].course_name))<br>{<br>printf(“%s:%-5.1f\n”,p-&gt;s[i].course_name,p-&gt;s[i].score);<br>return;<br>}<br>}<br>}<br>p=p-&gt;next;<br>}<br>}</p>
+<p>char str1[]=”Student Information Management System”;</p>
+<p>void title_win()<br>{<br>int i,M;</p>
+<p>M=strlen(str1);<br>for(i=0;i&lt;M;i++) printf(“-“);<br>printf(“\n”);<br>printf(“%s\n”,str1);<br>for(i=0;i&lt;M;i++) printf(“-“);<br>printf(“\n”);<br>}</p>
+<p>void msg_win(const char* str)<br>{<br>int i,M;</p>
+<p>M=strlen(str1);<br>printf(“\n”);<br>printf(“%s\n”,str);<br>for(i=0;i&lt;M;i++) printf(“-“);<br>printf(“\n”);<br>}</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> c </tag>
+            
+            <tag> linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[世界，你好！]]></title>
+      <url>/2015/03/29/hello-world-1/</url>
+      <content type="html"><![CDATA[<p>欢迎使用WordPress。这是系统自动生成的演示文章。编辑或者删除它，然后开始您的博客！</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 未分类 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+  
+  
+</search>

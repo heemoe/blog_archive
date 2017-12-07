@@ -7,11 +7,12 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta property="og:type" content="website">
-<meta property="og:title" content="ZSMS_HEE">
-<meta property="og:url" content="http://www.zsms.me/tags/shell/index.html">
+<meta property="og:title" content="Search">
+<meta property="og:url" content="http://www.zsms.me/Search/index.html">
 <meta property="og:site_name" content="ZSMS_HEE">
+<meta property="og:updated_time" content="2017-12-07T08:56:53.074Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ZSMS_HEE">
+<meta name="twitter:title" content="Search">
     
     
         
@@ -31,7 +32,7 @@
         
     
     <!-- title -->
-    <title>ZSMS_HEE</title>
+    <title>Search</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- rss -->
@@ -75,121 +76,23 @@
 </header>
 
         
-        <div id="archive">
-  <ul class="post-list">
-    
-    
-    
-      
-      
-      
-      
-        <h2>2017</h2>
-      
-      <li class="post-item">
-        
-    <div class="meta">
-        <time datetime="2017-03-04T05:57:03.000Z" itemprop="datePublished">2017-03-04</time>
-    </div>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  
+    <section id="search">
+  <form>
+    <input type="text" class="search-input" id="search-input" placeholder="search...">
+  </form>
+  <div id="search-result"></div>
+  <p class="search-no-result">No results found</p>
+</section>
 
-
-        <span>
-    
-        <a class="" href="/2017/03/04/shell-find-path-that-contains-whitespace/">shell find path that contains whitespace</a>
-    
-
-
-<span>
-      </li>
-    
-      
-      
-      
-      
-        <h2>2016</h2>
-      
-      <li class="post-item">
-        
-    <div class="meta">
-        <time datetime="2016-11-10T01:39:14.000Z" itemprop="datePublished">2016-11-10</time>
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2016/11/10/a-shell-script-for-automation-test/">a shell script for automation test.</a>
-    
-
-
-<span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-        <time datetime="2016-09-05T03:20:26.000Z" itemprop="datePublished">2016-09-05</time>
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2016/09/05/space-in-shell/">space in shell</a>
-    
-
-
-<span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-        <time datetime="2016-09-01T09:35:32.000Z" itemprop="datePublished">2016-09-01</time>
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2016/09/01/a-log-parse-shell-script-for-google-earlgrey-ui-automation-test/">a log parse shell script for Google EarlGrey UI Automation Test</a>
-    
-
-
-<span>
-      </li>
-    
-      
-      
-      
-      
-        <h2>2015</h2>
-      
-      <li class="post-item">
-        
-    <div class="meta">
-        <time datetime="2015-09-11T22:52:26.000Z" itemprop="datePublished">2015-09-12</time>
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2015/09/12/e5-86-99-e4-ba-86-e4-b8-aashell-e8-84-9a-e6-9c-ac-e7-94-a8-e4-ba-8e-e5-bf-ab-e9-80-9f-e5-88-9b-e5-bb-baxcode-e9-a1-b9-e7-9b-ae-e5-88-86-e7-b1-bb-e6-96-87-e4-bb-b6-e5-a4-b9/">写了个shell脚本,用于快速创建Xcode项目分类文件夹</a>
-    
-
-
-<span>
-      </li>
-    
-  </ul>
+  
   
 
-</div>
+  <div class="content" itemprop="articleBody">
+    
+  </div>
+</article>
 
     </div>
     
@@ -229,6 +132,35 @@
 <script src="/js/main.js"></script>
 <!-- search -->
 
+  <script src="/js/search.js"></script>
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input");
+    var $resultArea = $("#search-result");
+
+    inputArea.onfocus = function() {
+      var search_path = "search.xml";
+      if (search_path.length == 0) {
+        search_path = "search.xml";
+      }
+      var path = "/" + search_path;
+      searchFunc(path, 'search-input', 'search-result');
+    }
+
+    inputArea.onkeydown = function(){
+        if(event.keyCode==13){
+            return false
+        }
+    }
+
+    $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
+        if (!$(e.target).text()) {
+            $(".search-no-result").show(200);
+        } else {
+            $(".search-no-result").hide();
+        }
+    })
+  </script>
+
 <!-- Google Analytics -->
 
     <script type="text/javascript">
@@ -249,7 +181,7 @@
             var dsq = document.createElement('script');
             dsq.type = 'text/javascript';
             dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         }());
     </script>
