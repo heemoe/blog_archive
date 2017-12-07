@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="毫无疑问，我们从来没有像这样喜欢过故事板。从 iOS 5 开始，苹果在其新的IDE版本中提供了故事板编辑器，并在故事板编辑器中“升级”了其 Object Library，尤其是UITableView。新的 UITableView 除了可以用传统的 DataSource 编程方式提供 cell 外，还有两种可以不离开 ViewController设计界面对其进行UI设计的单元格：模板单元格和静态单元">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决illegal configuration错误">
+<meta property="og:url" content="http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/index.html">
+<meta property="og:site_name" content="ZSMS_HEE">
+<meta property="og:description" content="毫无疑问，我们从来没有像这样喜欢过故事板。从 iOS 5 开始，苹果在其新的IDE版本中提供了故事板编辑器，并在故事板编辑器中“升级”了其 Object Library，尤其是UITableView。新的 UITableView 除了可以用传统的 DataSource 编程方式提供 cell 外，还有两种可以不离开 ViewController设计界面对其进行UI设计的单元格：模板单元格和静态单元">
+<meta property="og:updated_time" content="2017-12-07T07:20:21.178Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="解决illegal configuration错误">
+<meta name="twitter:description" content="毫无疑问，我们从来没有像这样喜欢过故事板。从 iOS 5 开始，苹果在其新的IDE版本中提供了故事板编辑器，并在故事板编辑器中“升级”了其 Object Library，尤其是UITableView。新的 UITableView 除了可以用传统的 DataSource 编程方式提供 cell 外，还有两种可以不离开 ViewController设计界面对其进行UI设计的单元格：模板单元格和静态单元">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>解决illegal configuration错误</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2015/08/07/e7-94-a8-e5-ae-8f-e5-b0-81-e8-a3-85-e5-8d-95-e4-be-8b-e5-88-9b-e5-bb-ba-e5-88-9d-e5-a7-8b-e5-8c-96-e6-96-b9-e6-b3-95/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/&text=解决illegal configuration错误"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/&title=解决illegal configuration错误"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/&is_video=false&description=解决illegal configuration错误"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=解决illegal configuration错误&body=Check out this article: http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/&title=解决illegal configuration错误"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/&title=解决illegal configuration错误"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/&title=解决illegal configuration错误"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/&title=解决illegal configuration错误"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/&name=解决illegal configuration错误&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        解决illegal configuration错误
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">ZSMS_HEE</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2015-07-10T00:23:22.000Z" itemprop="datePublished">2015-07-10</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/iOS/">iOS</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>毫无疑问，我们从来没有像这样喜欢过故事板。从 iOS 5 开始，苹果在其新的IDE版本中提供了故事板编辑器，并在故事板编辑器中“升级”了其 Object Library，尤其是UITableView。新的 UITableView 除了可以用传统的 DataSource 编程方式提供 cell 外，还有两种可以不离开 ViewController设计界面对其进行UI设计的单元格：模板单元格和静态单元格。</p>
+<p>前者毋庸多说，一旦你使用过它，就不会再离不开它了。而对于后者，一直存在着一个巨大的缺陷——静态单元格只能在SDK内置的 UITableViewController  中使用，如果在程序员自己的ViewController中，静态单元格根本不会显示，甚至于编译器会提示错误信息:“Illegal Configuration: Static table views are only valid when embedded in UITableViewControllerinstances”。</p>
+<p>解决方案：将动态表格设置为静态表格。</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/&text=解决illegal configuration错误"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/&title=解决illegal configuration错误"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/&is_video=false&description=解决illegal configuration错误"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=解决illegal configuration错误&body=Check out this article: http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/&title=解决illegal configuration错误"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/&title=解决illegal configuration错误"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/&title=解决illegal configuration错误"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/&title=解决illegal configuration错误"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2015/07/10/e8-a7-a3-e5-86-b3illegal-configuration-e9-94-99-e8-af-af/&name=解决illegal configuration错误&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Hee
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+

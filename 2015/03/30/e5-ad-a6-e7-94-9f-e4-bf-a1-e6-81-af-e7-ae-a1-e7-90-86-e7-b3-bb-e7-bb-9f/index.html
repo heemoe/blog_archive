@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="/—————————————————————————————–程序名：stu_management.c程序功能：1.鉴别root权限，设置管理员和学生权限，管理员和学生可以异步登录（如果加入网络模块就可以实现多用户同步登录）2.管理员可以设置/查询/修改学生所有账户信息，也可以增加新的管理员3.学生只有查询账户/课程/奖学金的权限4.自动生成配置文件，退出时并保存配置文件，防止信息丢失5.移植程序">
+<meta name="keywords" content="c,linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学生信息管理系统">
+<meta property="og:url" content="http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/index.html">
+<meta property="og:site_name" content="ZSMS_HEE">
+<meta property="og:description" content="/—————————————————————————————–程序名：stu_management.c程序功能：1.鉴别root权限，设置管理员和学生权限，管理员和学生可以异步登录（如果加入网络模块就可以实现多用户同步登录）2.管理员可以设置/查询/修改学生所有账户信息，也可以增加新的管理员3.学生只有查询账户/课程/奖学金的权限4.自动生成配置文件，退出时并保存配置文件，防止信息丢失5.移植程序">
+<meta property="og:updated_time" content="2017-12-07T07:20:21.176Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学生信息管理系统">
+<meta name="twitter:description" content="/—————————————————————————————–程序名：stu_management.c程序功能：1.鉴别root权限，设置管理员和学生权限，管理员和学生可以异步登录（如果加入网络模块就可以实现多用户同步登录）2.管理员可以设置/查询/修改学生所有账户信息，也可以增加新的管理员3.学生只有查询账户/课程/奖学金的权限4.自动生成配置文件，退出时并保存配置文件，防止信息丢失5.移植程序">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>学生信息管理系统</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2015/04/03/e6-88-91-e4-b8-8d-e5-be-97-e4-b8-8d-e8-af-b4-e8-bf-99-e4-b8-aa-e4-b8-bb-e9-a2-98-e7-95-a5-e5-be-ae-e6-9c-89-e7-82-b9-e4-b8-8d-e9-80-82-e5-90-88-e5-86-99-e9-95-bf-e7-af-87-e5-8d-9a-e6-96-87-ef-bc-81/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2015/03/29/hello-world-1/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/&text=学生信息管理系统"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/&title=学生信息管理系统"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/&is_video=false&description=学生信息管理系统"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=学生信息管理系统&body=Check out this article: http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/&title=学生信息管理系统"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/&title=学生信息管理系统"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/&title=学生信息管理系统"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/&title=学生信息管理系统"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/&name=学生信息管理系统&description=&lt;p&gt;/&lt;em&gt;—————————————————————————————–&lt;br&gt;程序名：stu_management.c&lt;br&gt;程序功能：&lt;br&gt;1.鉴别root权限，设置管理员和学生权限，管理员和学生可以异步登录&lt;br&gt;（如果加入网络模块就可以实现多用户同步登录）&lt;br&gt;2.管理员可以设置/查询/修改学生所有账户信息，也可以增加新的管理员&lt;br&gt;3.学生只有查询账户/课程/奖学金的权限&lt;br&gt;4.自动生成配置文件，退出时并保存配置文件，防止信息丢失&lt;br&gt;5.移植程序只需将可执行程序和配置文件移植即可，信息不会丢失&lt;br&gt;程序实现：采用链表加文件操作库函数结合过程控制实现&lt;br&gt;编译：gcc stu_management.c -o stu_management&lt;br&gt;编译环境：gcc 版本 4.5.1 20100924 (Red Hat 4.5.1-4) (GCC)&lt;br&gt;作者：张峰 [mailto:frankzhang02010@gmail.com]&lt;br&gt;修改日期：2013-12-8&lt;br&gt;—————————————————————————————–&lt;/em&gt;/&lt;br&gt;"><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        学生信息管理系统
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">ZSMS_HEE</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2015-03-29T18:00:50.000Z" itemprop="datePublished">2015-03-30</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/c/">c</a>, <a class="tag-link" href="/tags/linux/">linux</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>/<em>—————————————————————————————–<br>程序名：stu_management.c<br>程序功能：<br>1.鉴别root权限，设置管理员和学生权限，管理员和学生可以异步登录<br>（如果加入网络模块就可以实现多用户同步登录）<br>2.管理员可以设置/查询/修改学生所有账户信息，也可以增加新的管理员<br>3.学生只有查询账户/课程/奖学金的权限<br>4.自动生成配置文件，退出时并保存配置文件，防止信息丢失<br>5.移植程序只需将可执行程序和配置文件移植即可，信息不会丢失<br>程序实现：采用链表加文件操作库函数结合过程控制实现<br>编译：gcc stu_management.c -o stu_management<br>编译环境：gcc 版本 4.5.1 20100924 (Red Hat 4.5.1-4) (GCC)<br>作者：张峰 [mailto:frankzhang02010@gmail.com]<br>修改日期：2013-12-8<br>—————————————————————————————–</em>/<br><a id="more"></a></p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>#include &lt;stdlib.h&gt;</p>
+<p>#include &lt;string.h&gt;</p>
+<p>#include &lt;unistd.h&gt;</p>
+<p>#define N 3 //课程和奖学金种类的总数量和</p>
+<p>typedef struct SCORE{<br>char course_name[32];<br>float score;<br>}Score;</p>
+<p>typedef struct node{<br>int auth;<br>char usr_name[32];<br>char password[18];<br>int id;<br>char stu_name[32];<br>char major[32];<br>Score s[N];<br>struct node* next;<br>}Node;</p>
+<p>Node <em>head,</em>last;<br>int usr_type;<br>char usr_name[32],password[18];<br>const char* f_name=”usr_info.conf”;</p>
+<p>void load_data(),save_data(),export_data(),check_admin(),add_admin(),login();<br>void add_student(),search_student(),del(),modify(),modify_password(),logout();<br>void show_score(),search_course();</p>
+<p>void title_win(),msg_win();</p>
+<p>int main()<br>{<br>int ch;<br>load_data();<br>title_win();<br>check_admin();</p>
+<p>loop:<br>printf(“请选择用户类型:”);<br>scanf(“%d”,&amp;usr_type);<br>if(usr_type!=1 &amp;&amp; usr_type!=2)<br>{<br>msg_win(“没有该用户类型，请重新输入，1表示admin，2表示student\n”);<br>goto loop;<br>}</p>
+<p>if(usr_type==1)<br>{<br>title_win();<br>login();<br>while(1)<br>{<br>msg_win(“User Type:Admin”);<br>msg_win(“Add/Srch/Del/Mdfy/M_Psd/Quit/Exp/Save”);<br>printf(“&gt;”);<br>scanf(“%d”,&amp;ch);</p>
+<p>switch(ch)<br>{<br>case 1:add_student();break;<br>case 2:search_student();break;<br>case 3:del();break;<br>case 4:modify();break;<br>case 5:modify_password();break;<br>case 6:logout();break;<br>case 7:export_data();break;<br>case 8:save_data();break;<br>case 9:add_admin();break;<br>default:break;<br>}<br>getchar();<br>msg_win(“按任意键返回”);<br>getchar();<br>system(“clear”);<br>}</p>
+<p>}<br>else<br>{<br>title_win();<br>login();<br>while(1)<br>{<br>msg_win(“User Type:Student”);<br>msg_win(“ShowScore/SrchCourse/M_Pwd/Quit”);<br>printf(“&gt;”);<br>scanf(“%d”,&amp;ch);</p>
+<p>switch(ch)<br>{<br>case 1:show_score();break;<br>case 2:search_course();break;<br>case 3:modify_password();break;<br>case 4:logout();break;<br>default:break;<br>}<br>getchar();<br>msg_win(“按任意键返回”);<br>getchar();<br>system(“clear”);<br>}</p>
+<p>}<br>return 0;<br>}</p>
+<p>void load_data()<br>{<br>FILE* fp=NULL;</p>
+<p>if(!(fp=fopen(f_name,”a”)))<br>{<br>msg_win(“Open file fail”);<br>return;<br>}</p>
+<p>fclose(fp);<br>fp=NULL;</p>
+<p>if(!(fp=fopen(f_name,”r+”)))<br>{<br>msg_win(“Open file fail”);<br>return;<br>}</p>
+<p>Node<em> p;<br>while(1)<br>{<br>p=(Node</em>)malloc(sizeof(Node));<br>if(!p) continue;<br>if(!fread(p,sizeof(Node),1,fp))<br>break;<br>if(head==NULL)<br>{<br>head=last=p;<br>head-&gt;next=NULL;<br>}<br>else<br>{<br>last-&gt;next=p;<br>last=p;<br>last-&gt;next=NULL;<br>}<br>}<br>fclose(fp);<br>fp=NULL;<br>}</p>
+<p>void save_data()<br>{<br>FILE* fp=NULL;<br>if(!(fp=fopen(f_name,”w+”)))<br>{<br>msg_win(“Open file fail”);<br>return;<br>}</p>
+<p>Node* p;<br>p=head;<br>while(p)<br>{<br>fwrite(p,sizeof(Node),1,fp);<br>p=p-&gt;next;<br>}<br>fclose(fp);<br>fp=NULL;<br>}</p>
+<p>void export_data()<br>{<br>FILE* fp;<br>if(!(fp=fopen(“export.log”,”w+”)))<br>{<br>msg_win(“Open file fail”);<br>return;<br>}</p>
+<p>Node* p;<br>int i;<br>p=head;<br>while(p)<br>{<br>fprintf(fp,”%-2d|%-15s|%-18s|%-15s|%-10d|%-18s|\n”,p-&gt;auth,p-&gt;usr_name,p-&gt;password,p-&gt;stu_name,p-&gt;id,p-&gt;major);<br>for(i=0;i&lt;N;i++)<br>fprintf(fp,”%s:%-5.1f|”,p-&gt;s[i].course_name,p-&gt;s[i].score);<br>fprintf(fp,”\n”);<br>p=p-&gt;next;<br>}<br>fclose(fp);<br>}</p>
+<p>void check_admin()<br>{<br>Node<em> p;<br>p=head;<br>while(p)<br>{<br>if(p-&gt;auth==1)<br>return;<br>p=p-&gt;next;<br>}<br>p=(Node</em>)malloc(sizeof(Node));<br>p-&gt;auth=1;<br>msg_win(“请设置管理员账户”);<br>printf(“用户名:”);<br>scanf(“%s”,p-&gt;usr_name);<br>printf(“密码:”);<br>scanf(“%s”,p-&gt;password);</p>
+<p>if(head==NULL)<br>{<br>head=last=p;<br>head-&gt;next=NULL;<br>}<br>else<br>{<br>last-&gt;next=p;<br>last=p;<br>last-&gt;next=NULL;<br>}<br>msg_win(“管理员账户设置成功”);<br>sleep(1);<br>system(“clear”);<br>}</p>
+<p>void add_admin()<br>{<br>Node<em> p;<br>p=(Node</em>)malloc(sizeof(Node));<br>p-&gt;auth=1;<br>msg_win(“添加管理员账户”);<br>printf(“用户名:”);<br>scanf(“%s”,p-&gt;usr_name);<br>printf(“密码:”);<br>scanf(“%s”,p-&gt;password);</p>
+<p>if(head==NULL)<br>{<br>head=last=p;<br>head-&gt;next=NULL;<br>}<br>else<br>{<br>last-&gt;next=p;<br>last=p;<br>last-&gt;next=NULL;<br>}<br>msg_win(“新管理员账户设置成功”);</p>
+<p>}</p>
+<p>void login()<br>{<br>login: system(“clear”);<br>msg_win(“登录”);<br>printf(“用户名:”);<br>scanf(“%s”,usr_name);<br>printf(“密码:”);<br>scanf(“%s”,password);</p>
+<p>Node* p;<br>p=head;<br>while(p)</p>
+<p>{<br>if(!strcmp(p-&gt;usr_name,usr_name) &amp;&amp; !strcmp(p-&gt;password,password) &amp;&amp; p-&gt;auth==usr_type)<br>{<br>msg_win(“登录成功”);<br>sleep(1);<br>system(“clear”);<br>return;<br>}<br>p=p-&gt;next;<br>}<br>msg_win(“用户名或密码不正确,按任意键重新登录”);<br>getchar();getchar();<br>goto login;<br>}</p>
+<p>void add_student()<br>{<br>Node<em> p=(Node</em>)malloc(sizeof(Node));<br>if(!p) return ;</p>
+<p>p-&gt;auth=2;<br>msg_win(“添加学生账户”);<br>printf(“用户名:”);<br>scanf(“%s”,p-&gt;usr_name);<br>printf(“密码:”);<br>scanf(“%s”,p-&gt;password);<br>printf(“姓名:”);<br>scanf(“%s”,p-&gt;stu_name);<br>printf(“学号:”);<br>scanf(“%d”,&amp;(p-&gt;id));<br>printf(“专业:”);<br>scanf(“%s”,p-&gt;major);</p>
+<p>if(head==NULL)<br>{<br>head=last=p;<br>head-&gt;next=NULL;<br>}<br>else<br>{<br>last-&gt;next=p;<br>last=p;<br>last-&gt;next=NULL;<br>}<br>msg_win(“学生账户设置成功”);<br>}</p>
+<p>void search_student()<br>{<br>msg_win(“搜索账户信息”);<br>int stu_id,i;<br>printf(“请输入学号:”);<br>scanf(“%d”,&amp;stu_id);</p>
+<p>Node* p;<br>p=head;<br>while(p)<br>{<br>if(p-&gt;id==stu_id)<br>{<br>printf(“%d %s %s %s %d %s\n”,p-&gt;auth,p-&gt;usr_name,p-&gt;password,p-&gt;stu_name,p-&gt;id,p-&gt;major);<br>for(i=0;i&lt;N;i++)<br>printf(“%s:%-5.1f”,p-&gt;s[i].course_name,p-&gt;s[i].score);<br>printf(“\n”);<br>return;<br>}<br>p=p-&gt;next;<br>}<br>msg_win(“系统中没有该学号”);<br>}</p>
+<p>void del()<br>{<br>Node <em>p,</em>q;<br>int stu_id;</p>
+<p>msg_win(“删除账户信息”);<br>printf(“请输入学号:”);<br>scanf(“%d”,&amp;stu_id);</p>
+<p>p=head;<br>while(p)<br>{<br>if(p-&gt;id==stu_id)<br>{<br>if(head==p)<br>head=head-&gt;next;<br>else<br>q-&gt;next=p-&gt;next;</p>
+<p>free(p);<br>msg_win(“删除成功！”);<br>return;<br>}<br>q=p;<br>p=p-&gt;next;<br>}<br>msg_win(“删除失败！系统中没有该学号”);<br>}</p>
+<p>void modify()<br>{<br>int stu_id,i;</p>
+<p>msg_win(“修改课程成绩和奖学金”);<br>printf(“请输入学号:”);<br>scanf(“%d”,&amp;stu_id);</p>
+<p>Node* p;<br>p=head;<br>while(p)<br>{<br>if(p-&gt;id==stu_id)<br>{<br>for(i=0;i&lt;N;i++)<br>scanf(“%s %f”,p-&gt;s[i].course_name,&amp;(p-&gt;s[i].score));<br>return;<br>}<br>p=p-&gt;next;<br>}<br>msg_win(“系统中没有该学号”);<br>}</p>
+<p>void modify_password()<br>{<br>char temp[18],new_password[18];</p>
+<p>msg_win(“修改密码”);</p>
+<p>printf(“请输入旧密码:”);<br>scanf(“%s”,temp);</p>
+<p>printf(“请输入新密码:”);<br>scanf(“%s”,new_password);<br>printf(“请确认新密码:”);<br>scanf(“%s”,password);</p>
+<p>Node* p;<br>p=head;<br>while(p)<br>{<br>if(!strcmp(usr_name,p-&gt;usr_name))<br>{<br>if(!strcmp(p-&gt;password,temp)&amp;&amp; !strcmp(new_password,password))<br>{<br>strcpy(password,new_password);<br>strcpy(p-&gt;password,password);<br>msg_win(“密码修改成功”);<br>return;<br>}<br>else<br>{<br>msg_win(“输入有误，自动退出”);<br>return;<br>}<br>}<br>p=p-&gt;next;<br>}<br>}</p>
+<p>void logout()<br>{<br>save_data();<br>msg_win(“成功退出”);<br>exit(1);<br>}</p>
+<p>void show_score()<br>{<br>int i;<br>Node* p;<br>p=head;<br>msg_win(“所有课程成绩和奖学金”);<br>while(p)<br>{<br>if(!strcmp(usr_name,p-&gt;usr_name))<br>{<br>printf(“%d %s %s %s %d %s\n”,p-&gt;auth,p-&gt;usr_name,p-&gt;password,p-&gt;stu_name,p-&gt;id,p-&gt;major);<br>for(i=0;i&lt;N;i++)<br>printf(“%s:%-5.1f”,p-&gt;s[i].course_name,p-&gt;s[i].score);<br>printf(“\n”);<br>return;<br>}<br>p=p-&gt;next;<br>}<br>}</p>
+<p>void search_course()<br>{<br>char course_name[32];<br>int i;<br>msg_win(“输入要查询的课程”);<br>printf(“&gt;”);<br>scanf(“%s”,course_name);</p>
+<p>Node* p;<br>p=head;<br>while(p)<br>{<br>if(!strcmp(usr_name,p-&gt;usr_name))<br>{<br>for(i=0;i&lt;N;i++)<br>{<br>if(!strcmp(course_name,p-&gt;s[i].course_name))<br>{<br>printf(“%s:%-5.1f\n”,p-&gt;s[i].course_name,p-&gt;s[i].score);<br>return;<br>}<br>}<br>}<br>p=p-&gt;next;<br>}<br>}</p>
+<p>char str1[]=”Student Information Management System”;</p>
+<p>void title_win()<br>{<br>int i,M;</p>
+<p>M=strlen(str1);<br>for(i=0;i&lt;M;i++) printf(“-“);<br>printf(“\n”);<br>printf(“%s\n”,str1);<br>for(i=0;i&lt;M;i++) printf(“-“);<br>printf(“\n”);<br>}</p>
+<p>void msg_win(const char* str)<br>{<br>int i,M;</p>
+<p>M=strlen(str1);<br>printf(“\n”);<br>printf(“%s\n”,str);<br>for(i=0;i&lt;M;i++) printf(“-“);<br>printf(“\n”);<br>}</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/&text=学生信息管理系统"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/&title=学生信息管理系统"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/&is_video=false&description=学生信息管理系统"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=学生信息管理系统&body=Check out this article: http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/&title=学生信息管理系统"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/&title=学生信息管理系统"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/&title=学生信息管理系统"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/&title=学生信息管理系统"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2015/03/30/e5-ad-a6-e7-94-9f-e4-bf-a1-e6-81-af-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f/&name=学生信息管理系统&description=&lt;p&gt;/&lt;em&gt;—————————————————————————————–&lt;br&gt;程序名：stu_management.c&lt;br&gt;程序功能：&lt;br&gt;1.鉴别root权限，设置管理员和学生权限，管理员和学生可以异步登录&lt;br&gt;（如果加入网络模块就可以实现多用户同步登录）&lt;br&gt;2.管理员可以设置/查询/修改学生所有账户信息，也可以增加新的管理员&lt;br&gt;3.学生只有查询账户/课程/奖学金的权限&lt;br&gt;4.自动生成配置文件，退出时并保存配置文件，防止信息丢失&lt;br&gt;5.移植程序只需将可执行程序和配置文件移植即可，信息不会丢失&lt;br&gt;程序实现：采用链表加文件操作库函数结合过程控制实现&lt;br&gt;编译：gcc stu_management.c -o stu_management&lt;br&gt;编译环境：gcc 版本 4.5.1 20100924 (Red Hat 4.5.1-4) (GCC)&lt;br&gt;作者：张峰 [mailto:frankzhang02010@gmail.com]&lt;br&gt;修改日期：2013-12-8&lt;br&gt;—————————————————————————————–&lt;/em&gt;/&lt;br&gt;"><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Hee
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+

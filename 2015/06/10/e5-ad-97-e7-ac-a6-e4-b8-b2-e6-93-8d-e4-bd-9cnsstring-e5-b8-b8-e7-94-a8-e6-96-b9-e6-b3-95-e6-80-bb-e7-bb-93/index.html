@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="`1.创建NSString字符串 NSString 与 char 最大的区别就是 NSString是一个objective对象,而char 是一个字节数组。@+” 字符串 “ 这个符号为objective-c NSString 字符串常量的标准用法，char* 创建的时候 无需添加@  (void)viewDidLoad [super viewDidLoad];//经典的字符串赋值NSString">
+<meta name="keywords" content="Objective C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符串操作,NSString 常用方法总结">
+<meta property="og:url" content="http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/index.html">
+<meta property="og:site_name" content="ZSMS_HEE">
+<meta property="og:description" content="`1.创建NSString字符串 NSString 与 char 最大的区别就是 NSString是一个objective对象,而char 是一个字节数组。@+” 字符串 “ 这个符号为objective-c NSString 字符串常量的标准用法，char* 创建的时候 无需添加@  (void)viewDidLoad [super viewDidLoad];//经典的字符串赋值NSString">
+<meta property="og:updated_time" content="2017-12-07T07:20:21.178Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="字符串操作,NSString 常用方法总结">
+<meta name="twitter:description" content="`1.创建NSString字符串 NSString 与 char 最大的区别就是 NSString是一个objective对象,而char 是一个字节数组。@+” 字符串 “ 这个符号为objective-c NSString 字符串常量的标准用法，char* 创建的时候 无需添加@  (void)viewDidLoad [super viewDidLoad];//经典的字符串赋值NSString">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>字符串操作,NSString 常用方法总结</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2015/06/11/e8-a7-a3-e5-86-b3-e8-b0-b7-e6-ad-8c-e6-89-93-e4-b8-8d-e5-bc-80-e7-9b-b4-e8-bf-9eip-e5-88-86-e4-ba-ab/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2015/06/05/c-e8-af-ad-e8-a8-80-e4-b8-80-e4-b8-aa-e5-be-88-e5-9d-91-e7-9a-84-e9-a2-98-e7-9b-ae-ef-bc-81-e5-85-b3-e4-ba-8e-e4-bd-9c-e7-94-a8-e5-9f-9f-e7-9a-84-e5-88-86-e6-9e-90-e3-80-82/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/&text=字符串操作,NSString 常用方法总结"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/&title=字符串操作,NSString 常用方法总结"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/&is_video=false&description=字符串操作,NSString 常用方法总结"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=字符串操作,NSString 常用方法总结&body=Check out this article: http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/&title=字符串操作,NSString 常用方法总结"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/&title=字符串操作,NSString 常用方法总结"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/&title=字符串操作,NSString 常用方法总结"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/&title=字符串操作,NSString 常用方法总结"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/&name=字符串操作,NSString 常用方法总结&description=&lt;p&gt;`&lt;br&gt;1.创建NSString字符串&lt;/p&gt;
+&lt;p&gt;NSString 与 char&lt;em&gt; 最大的区别就是 NSString是一个objective对象,而char&lt;/em&gt; 是一个字节数组。@+” 字符串 “ 这个符号为objective-c NSString 字符串常量的标准用法，char* 创建的时候 无需添加@&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;(void)viewDidLoad&lt;/p&gt;
+&lt;p&gt;[super viewDidLoad];&lt;br&gt;//经典的字符串赋值&lt;br&gt;NSString &lt;em&gt;str0 = @”my name is justcoding !”;&lt;br&gt;//字符串格式化合并分别包括&lt;br&gt;//NSString&lt;/em&gt;类型 int类型 char&lt;em&gt;类型&lt;br&gt;NSString &lt;/em&gt;str1 = [NSString stringWithFormat:@”我的名字：%@ 我的年龄：%d 我的邮箱：%s”,@”justcoding”, 25,”justcoding@gmail.com”];&lt;br&gt;//字符串赋值 参数中只可以写一个字符串 和第一种很像&lt;br&gt;NSString &lt;em&gt;str2 = [NSString stringWithString:@”我是字符串”];&lt;br&gt;//字符串转换为utf-8格式 参数为char&lt;/em&gt;类型&lt;br&gt;NSString &lt;em&gt;str3 = [NSString stringWithUTF8String:”字符串转换utf-8格式”];&lt;br&gt;//字符串合并&lt;br&gt;int i  = 100;&lt;br&gt;char&lt;/em&gt;c = “xuanyusong”;&lt;br&gt;NSString &lt;em&gt;temp = @”我是临时字符串”;&lt;br&gt;//在字符串temp的基础继续添加 int i 与 char&lt;/em&gt; c 组成一个新的字符串&lt;br&gt;NSString &lt;em&gt;str4 = [temp stringByAppendingFormat:@”整型： %d 字符型 ：%s”,i,c];&lt;br&gt;//在字符串temp的基础继续添加temp 并组成一个新的字符串&lt;br&gt;NSString &lt;/em&gt;str5 = [temp stringByAppendingString:temp];&lt;br&gt;//字符串输出&lt;br&gt;NSLog(@”str0 = %@”, str0);&lt;br&gt;NSLog(@”str1 = %@”, str1);&lt;br&gt;NSLog(@”str2 = %@”, str2);&lt;br&gt;NSLog(@”str3 = %@”, str3);&lt;br&gt;NSLog(@”str4 = %@”, str4);&lt;br&gt;NSLog(@”str5 = %@”, str5);  &lt;/p&gt;"><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        字符串操作,NSString 常用方法总结
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">ZSMS_HEE</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2015-06-10T04:10:25.000Z" itemprop="datePublished">2015-06-10</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Objective-C/">Objective C</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>`<br>1.创建NSString字符串</p>
+<p>NSString 与 char<em> 最大的区别就是 NSString是一个objective对象,而char</em> 是一个字节数组。@+” 字符串 “ 这个符号为objective-c NSString 字符串常量的标准用法，char* 创建的时候 无需添加@</p>
+<ul>
+<li><p>(void)viewDidLoad</p>
+<p>[super viewDidLoad];<br>//经典的字符串赋值<br>NSString <em>str0 = @”my name is justcoding !”;<br>//字符串格式化合并分别包括<br>//NSString</em>类型 int类型 char<em>类型<br>NSString </em>str1 = [NSString stringWithFormat:@”我的名字：%@ 我的年龄：%d 我的邮箱：%s”,@”justcoding”, 25,”justcoding@gmail.com”];<br>//字符串赋值 参数中只可以写一个字符串 和第一种很像<br>NSString <em>str2 = [NSString stringWithString:@”我是字符串”];<br>//字符串转换为utf-8格式 参数为char</em>类型<br>NSString <em>str3 = [NSString stringWithUTF8String:”字符串转换utf-8格式”];<br>//字符串合并<br>int i  = 100;<br>char</em>c = “xuanyusong”;<br>NSString <em>temp = @”我是临时字符串”;<br>//在字符串temp的基础继续添加 int i 与 char</em> c 组成一个新的字符串<br>NSString <em>str4 = [temp stringByAppendingFormat:@”整型： %d 字符型 ：%s”,i,c];<br>//在字符串temp的基础继续添加temp 并组成一个新的字符串<br>NSString </em>str5 = [temp stringByAppendingString:temp];<br>//字符串输出<br>NSLog(@”str0 = %@”, str0);<br>NSLog(@”str1 = %@”, str1);<br>NSLog(@”str2 = %@”, str2);<br>NSLog(@”str3 = %@”, str3);<br>NSLog(@”str4 = %@”, str4);<br>NSLog(@”str5 = %@”, str5);  </p>
+<a id="more"></a>
+<p>2.字符串的遍历 </p>
+</li>
+</ul>
+<p>每一个字符串其实是由若干个char字符组成，字符串的遍历实际上就是将字符串中的每一个字符提取出来。</p>
+<ul>
+<li>(void)viewDidLoad</li>
+</ul>
+<p>{<br>    [super viewDidLoad];</p>
+<pre><code>//经典的字符串赋值
+NSString *str = @&quot;YUSONGMOMO&quot;;
+
+//字符串的长度
+int count = [str length];
+
+NSLog(@&quot;字符串的长度是%d&quot;,count);
+
+//遍历字符串中的每一个字符
+for(int i =0; i &lt; count; i++)
+{
+    char c = [str characterAtIndex:i];
+    NSLog(@&quot;字符串第 %d 位为 %c&quot;,i,c);
+}
+</code></pre><p>}</p>
+<p>3.字符串的比较 </p>
+<p>isEqualToString 比较字符串是否完全相等，大小写不一样也无法完全匹配。</p>
+<p>hasPrefixe 匹配字符串头</p>
+<p>haSuffix     匹配字符串的尾巴</p>
+<ul>
+<li><p>(void)viewDidLoad</p>
+<p>[super viewDidLoad];<br>NSString <em>str0 = @”justcoding”;<br>NSString </em>str1 = @”justcoding”;<br>//字符串完全相等比较<br>if([str0 isEqualToString:str1])  </p>
+<pre><code>NSLog(@&quot;字符串完全相等&quot;);  
+</code></pre><p>//字符串以开头比较<br>if([str0 hasPrefix:@”just”])  </p>
+<pre><code>NSLog(@&quot;字符串str0以just开头&quot;);  
+</code></pre><p>//字符串以结尾比较<br>if([str1 hasSuffix:@”coding”])  </p>
+<pre><code>NSLog(@&quot;str1字符串以coding结尾&quot;);  
+</code></pre></li>
+<li><p>(void)viewDidLoad</p>
+</li>
+</ul>
+<p>{<br>    [super viewDidLoad];</p>
+<pre><code>NSString *str0 = @&quot;justcoding&quot;;
+NSString *str1 = @&quot;justcoding&quot;;
+
+//字符串完全相等比较
+if([str0 isEqualToString:str1])
+{
+    NSLog(@&quot;字符串完全相等&quot;);
+}
+
+//字符串以开头比较
+if([str0 hasPrefix:@&quot;just&quot;])
+{
+    NSLog(@&quot;字符串str0以just开头&quot;);
+}
+
+//字符串以结尾比较
+if([str1 hasSuffix:@&quot;coding&quot;])
+{
+    NSLog(@&quot;str1字符串以coding结尾&quot;);
+}
+</code></pre><p>}</p>
+<p>//isEqualToString方法<br>NSString <em>astring01 = @”This is a String!”;<br>NSString </em>astring02 = @”This is a String!”;<br>BOOL result = [astring01 isEqualToString:astring02];<br>NSLog(@”result:%d”,result);<br>//isEqualToString方法<br>NSString <em>astring01 = @”This is a String!”;<br>NSString </em>astring02 = @”This is a String!”;<br>BOOL result = [astring01 isEqualToString:astring02];<br>NSLog(@”result:%d”,result);</p>
+<p>//compare方法(comparer返回的三种值)<br>NSString <em>astring01 = @”This is a String!”;<br>NSString </em>astring02 = @”This is a String!”;<br>BOOL result = [astring01 compare:astring02] = = NSOrderedSame;<br>NSLog(@”result:%d”,result);<br>//NSOrderedSame 判断两者内容是否相同<br>//compare方法(comparer返回的三种值)<br>NSString <em>astring01 = @”This is a String!”;<br>NSString </em>astring02 = @”This is a String!”;<br>BOOL result = [astring01 compare:astring02] = = NSOrderedSame;<br>NSLog(@”result:%d”,result);<br>//NSOrderedSame 判断两者内容是否相同</p>
+<p>//不考虑大 小写比较字符串1<br>NSString <em>astring01 = @”this is a String!”;<br>NSString </em>astring02 = @”This is a String!”;<br>BOOL result = [astring01 caseInsensitiveCompare:astring02] = = NSOrderedSame;<br>NSLog(@”result:%d”,result);<br>//NSOrderedDescending判断两对象值的大小(按字母顺序进行比较，astring02小于astring01为 真)  </p>
+<p>//NSCaseInsensitiveSearch:不区分大小写比较 NSLiteralSearch:进行完全比较，区分大小写 NSNumericSearch:比较字符串的字符个数，而不是字符值。<br>//不考虑大小写比较字符串2<br>NSString <em>astring01 = @”this is a String!”;<br>NSString </em>astring02 = @”This is a String!”;<br>BOOL result = [astring01 compare:astring02 options:NSCaseInsensitiveSearch | NSNumericSearch] = = NSOrderedSame;<br>NSLog(@”result:%d”,result);<br>//NSCaseInsensitiveSearch:不区分大小写比较 NSLiteralSearch:进行完全比较，区分大小写 NSNumericSearch:比较字符串的字符个数，而不是字符值。<br>判断的方法可以利用 NSString 类别中 caseInsensitiveCompare: 所回传 -1、0 或是 1 的数值，判定两个字串之间得排序关系，其程式玛如下。</p>
+<p>NSString *string = @”0”;<br> NSComparisonResult result = [string caseInsensitiveCompare:@”A”];</p>
+<p> switch (result) {<br> case NSOrderedAscending:<br> NSLog(@”升幂”);<br> break;</p>
+<p> case NSOrderedSame:<br> NSLog(@”忽略大小写相同的字串”);<br> break;</p>
+<p> case NSOrderedDescending:<br> NSLog(@”降幂”);<br> break;</p>
+<p> default:<br> NSLog(@”无法判定”);<br> break;<br> }</p>
+<p>4. 文件字符串操作（读写）</p>
+<p>//从文件读取字符串:initWithContentsOfFile方法<br>NSString <em>path = @”astring.text”;<br>NSString </em>astring = [[NSString alloc] initWithContentsOfFile:path];<br>NSLog(@”astring:%@”,astring);<br>[astring release]; //astring=nil;<br>//从文件读取字符串:initWithContentsOfFile方法<br>NSString <em>path = @”astring.text”;<br>NSString </em>astring = [[NSString alloc] initWithContentsOfFile:path];<br>NSLog(@”astring:%@”,astring);<br>[astring release]; //astring=nil;</p>
+<p>//写字符串到文件:writeToFile方法<br>NSString <em>astring = [[NSString alloc] initWithString:@”This is a String!”];<br>NSLog(@”astring:%@”,astring);<br>NSString </em>path = @”astring.text”;<br>[astring writeToFile: path atomically: YES];<br>[astring release];  //astring=nil;<br>//写字符串到文件:writeToFile方法<br>NSString <em>astring = [[NSString alloc] initWithString:@”This is a String!”];<br>NSLog(@”astring:%@”,astring);<br>NSString </em>path = @”astring.text”;<br>[astring writeToFile: path atomically: YES];<br>[astring release];  //astring=nil;</p>
+<ul>
+<li>ios5 不支持release iOS应用开发：什么是ARC？</li>
+</ul>
+<p>//扩展路径<br>NSString <em>Path = @”~/NSData.txt”;<br>NSString </em>absolutePath = [Path stringByExpandingTildeInPath];<br>NSLog(@”absolutePath:%@”,absolutePath);<br>NSLog(@”Path:%@”,[absolutePath stringByAbbreviatingWithTildeInPath]);<br>//扩展路径<br>NSString <em>Path = @”~/NSData.txt”;<br>NSString </em>absolutePath = [Path stringByExpandingTildeInPath];<br>NSLog(@”absolutePath:%@”,absolutePath);<br>NSLog(@”Path:%@”,[absolutePath stringByAbbreviatingWithTildeInPath]);<br>//文件扩展名<br>NSString <em>Path = @”~/NSData.txt”;<br>NSLog(@”Extension:%@”,[Path pathExtension]);<br>//文件扩展名<br>NSString </em>Path = @”~/NSData.txt”;<br>NSLog(@”Extension:%@”,[Path pathExtension]);</p>
+<p>5. 字符串的截取和大小写</p>
+<p>//改变字符串的大小写<br>NSString <em>string1 = @”A String”;<br>NSString </em>string2 = @”String”;<br>NSLog(@”string1:%@”,[string1 uppercaseString]);//大写<br>NSLog(@”string2:%@”,[string2 lowercaseString]);//小写<br>NSLog(@”string2:%@”,[string2 capitalizedString]);//首字母大小<br>//改变字符串的大小写<br>NSString <em>string1 = @”A String”;<br>NSString </em>string2 = @”String”;<br>NSLog(@”string1:%@”,[string1 uppercaseString]);//大写<br>NSLog(@”string2:%@”,[string2 lowercaseString]);//小写<br>NSLog(@”string2:%@”,[string2 capitalizedString]);//首字母大小</p>
+<pre><code>NSString *str0 = @&quot;中文my name is xuanyusong&quot;;  
+//截取字符串起始点到index为4之间的内容  
+NSString * to = [str0 substringToIndex:4];  
+NSLog(@&quot;to = %@&quot;,to);  
+//截取字符index为2 到结尾之间的内容  
+NSString * from = [str0 substringFromIndex:2];  
+NSLog(@&quot;from = %@&quot;,from);  
+//设置截取字符串的范围   
+//从第二位开始,长度为十  
+NSRange rang = NSMakeRange(2, 10);  
+NSString * strRang = [str0 substringWithRange:rang];  
+NSLog(@&quot;rang = %@&quot;,strRang);  
+//设置字符串首字母大写  
+NSLog(@&quot;str0首字母大写:%@&quot;,[str0 capitalizedString]);  
+//设置字符串全部内容为大写  
+NSLog(@&quot;str0大写:%@&quot;,[str0 uppercaseString]);  
+//设置字符全部内容为小写  
+NSLog(@&quot;str0小写:%@&quot;,[str0 lowercaseString]);  
+</code></pre><ul>
+<li>(void)viewDidLoad</li>
+</ul>
+<p>{<br>    [super viewDidLoad];</p>
+<pre><code>NSString *str0 = @&quot;中文my name is xuanyusong&quot;;
+
+//截取字符串起始点到index为4之间的内容
+NSString * to = [str0 substringToIndex:4];
+
+NSLog(@&quot;to = %@&quot;,to);
+
+//截取字符index为2 到结尾之间的内容
+NSString * from = [str0 substringFromIndex:2];
+
+NSLog(@&quot;from = %@&quot;,from);
+
+//设置截取字符串的范围 
+//从第二位开始,长度为十
+NSRange rang = NSMakeRange(2, 10);
+NSString * strRang = [str0 substringWithRange:rang];
+NSLog(@&quot;rang = %@&quot;,strRang);
+
+//设置字符串首字母大写
+NSLog(@&quot;str0首字母大写:%@&quot;,[str0 capitalizedString]);
+//设置字符串全部内容为大写
+NSLog(@&quot;str0大写:%@&quot;,[str0 uppercaseString]);
+//设置字符全部内容为小写
+NSLog(@&quot;str0小写:%@&quot;,[str0 lowercaseString]);
+</code></pre><p>}</p>
+<p>6.搜索字符串与替换字符串</p>
+<ul>
+<li><p>(void)viewDidLoad</p>
+<p>[super viewDidLoad];<br>NSString <em>str0 = @”中文my name is xuanyusong”;<br>NSString </em>temp = @”is”;<br>NSRange rang = [str0 rangeOfString:temp];<br>NSLog(@”搜索的字符串在str0中起始点的index 为 %d”, rang.location);<br>NSLog(@”搜索的字符串在str0中结束点的index 为 %d”, rang.location + rang.length);<br>//将搜索中的字符串替换成为一个新的字符串<br>NSString <em>str = [str0 stringByReplacingCharactersInRange:rang withString:@”哇咔咔卡卡咔”];<br>NSLog(@”替换后字符串为%@”, str);<br>//将字符串中” “ 全部替换成 </em><br>str = [str0 stringByReplacingOccurrencesOfString :@” “ withString:@”@”];<br>NSLog(@”替换后字符串为%@”, str);  </p>
+</li>
+<li><p>(void)viewDidLoad</p>
+</li>
+</ul>
+<p>{<br>    [super viewDidLoad];</p>
+<pre><code>NSString *str0 = @&quot;中文my name is xuanyusong&quot;;
+NSString *temp = @&quot;is&quot;;
+NSRange rang = [str0 rangeOfString:temp];
+
+NSLog(@&quot;搜索的字符串在str0中起始点的index 为 %d&quot;, rang.location);
+NSLog(@&quot;搜索的字符串在str0中结束点的index 为 %d&quot;, rang.location + rang.length);
+
+//将搜索中的字符串替换成为一个新的字符串
+NSString *str = [str0 stringByReplacingCharactersInRange:rang withString:@&quot;哇咔咔卡卡咔&quot;]; 
+NSLog(@&quot;替换后字符串为%@&quot;, str);
+
+//将字符串中&quot; &quot; 全部替换成 *
+str = [str0 stringByReplacingOccurrencesOfString :@&quot; &quot; withString:@&quot;@&quot;]; 
+NSLog(@&quot;替换后字符串为%@&quot;, str);
+</code></pre><p>}</p>
+<p>拓展：使用下面这个方法整体替换字符串还可以设置替换的区域。 </p>
+<p>stringByReplacingOccurrencesOfString:(NSString <em>)withString:(NSString </em>) options:(NSStringCompareOptions) range:(NSRange)</p>
+<p>7.字符串尾部添加</p>
+<p>使用alloc在内存中创建字符串对象后边可以动态的操作这个字符串，修改与添加等。</p>
+<p>appendstring 方法：向字符串尾部添加一个字符串。</p>
+<p>appendFormat方法：向字符串尾部添加多个类型的字符串，可以添加任意数量与类型的字符串。</p>
+<ul>
+<li><p>(void)viewDidLoad</p>
+<p>[super viewDidLoad];<br>NSMutableString * str = [[NSMutableString alloc] init];<br>//添加普通的字符串<br>[str appendString:@”aaa”];<br>//添加字符串 整型 字符型<br>[str appendFormat:@”我的名字：%@ 我的年龄：%d 我的邮箱：%s”,@”justcoding”, 25,”justcoding@gmail.com”];<br>NSLog(@”str = %@”,str);  </p>
+</li>
+<li><p>(void)viewDidLoad</p>
+</li>
+</ul>
+<p>{<br>    [super viewDidLoad];</p>
+<pre><code>NSMutableString * str = [[NSMutableString alloc] init];
+
+//添加普通的字符串
+[str appendString:@&quot;aaa&quot;];
+
+//添加字符串 整型 字符型
+[str appendFormat:@&quot;我的名字：%@ 我的年龄：%d 我的邮箱：%s&quot;,@&quot;justcoding&quot;, 25,&quot;justcoding@gmail.com&quot;];
+
+NSLog(@&quot;str = %@&quot;,str);
+</code></pre><p>}<br>8. 字符串中删除元素</p>
+<p>stringWithString 方法：用于创建字符串初始化赋值</p>
+<p>rangeOfString方法：传入字符串返回一个在该字符串中的范围 也可以写 NSMakeRange(0, 3) 意思是范围在字符串0位到第3位</p>
+<p>deleteCharactersInRange:删除字符串 参数为Range 就是删除的范围。</p>
+<ul>
+<li><p>(void)viewDidLoad</p>
+<p>[super viewDidLoad];<br>//创建字符串<br>NSMutableString *str = [NSMutableString stringWithString:@”justcoding is best!”];<br>//删除字符串中含”justcoding”的字符<br>[str deleteCharactersInRange: [str rangeOfString: @”justcoding”]];<br>NSLog(@”str = %@”,str);  </p>
+</li>
+<li><p>(void)viewDidLoad</p>
+</li>
+</ul>
+<p>{<br>    [super viewDidLoad];</p>
+<pre><code>//创建字符串
+NSMutableString *str = [NSMutableString stringWithString:@&quot;justcoding is best!&quot;];
+
+//删除字符串中含&quot;justcoding&quot;的字符
+[str deleteCharactersInRange: [str rangeOfString: @&quot;justcoding&quot;]];    
+
+NSLog(@&quot;str = %@&quot;,str);
+</code></pre><p>}</p>
+<p>9. 字符串插入</p>
+<p>stringWithString 方法：用于创建字符串初始化赋值</p>
+<p>insertString方法：第一个参数 插入的字符串对象， 第二个参数 插入的位置。</p>
+<ul>
+<li><p>(void)viewDidLoad</p>
+<p>[super viewDidLoad];<br>//创建字符串<br>NSMutableString *str = [NSMutableString stringWithString:@”justcoding is”];<br>//在str第10位插入字符串<br>[str insertString:@”best man” atIndex:10];<br>NSLog(@”str = %@”,str);  </p>
+</li>
+</ul>
+<p>10. 字符串拷贝</p>
+<ul>
+<li><p>(void)viewDidLoad</p>
+<p>[super viewDidLoad];<br>//创建字符串<br>NSMutableString <em>str1 = [NSMutableString stringWithString: @”字符串1”];<br>NSMutableString </em>str2;<br>//字符串赋值<br>str2 = str1;<br>[str2 appendString: @” 和字符串2”];<br>NSLog (@”str1 = %@”, str1);<br>NSLog (@”str2 = %@”, str2);      </p>
+</li>
+<li><p>(void)viewDidLoad</p>
+</li>
+</ul>
+<p>{<br>    [super viewDidLoad];</p>
+<pre><code>//创建字符串
+NSMutableString *str1 = [NSMutableString stringWithString: @&quot;字符串1&quot;];
+NSMutableString *str2;
+
+//字符串赋值
+str2 = str1;
+
+[str2 appendString: @&quot; 和字符串2&quot;];
+
+NSLog (@&quot;str1 = %@&quot;, str1);
+
+NSLog (@&quot;str2 = %@&quot;, str2);    
+</code></pre><p>}</p>
+<p>为什么给str2添加数据后 str1的数据也改变了？这就是指针的魅力所在，因为我们操作的是指针，str2 = str1  意思是两个指针同时指向一块内存，那么str2指向的内存内容改变以后str1当然跟着改变了。</p>
+<p>11. 字符串与指定类型转换</p>
+<p>如果转换的参数非法的话不会抛出异常，好比用中文去转整型。不会报错 但是转换结果为 0  ，默认值。</p>
+<ul>
+<li><p>(void)viewDidLoad</p>
+<p>[super viewDidLoad];<br>//字符串转整型<br>NSString <em>str0 = @”1121”;<br>//NSString </em>str0 = @”中国”;<br>//把字符串强转成整型<br>int i = [str0 intValue];<br>NSLog (@”转换后：%i”, i);<br>//字符串转interger<br>  NSString <em>str1 = @”1985”;<br>// NSString </em>str1 = @”中国”;<br>//把字符串强转成interger<br>NSInteger ii = [str1 integerValue];<br>NSLog (@”转换后：%i”, ii);<br>//字符串转double<br>NSString <em>str2 = @”3.145926”;<br>//NSString </em>str2 = @”中国”;<br>//把字符串强转成double<br>double d = [str2 doubleValue];<br>NSLog (@”转换后：%f”, d);<br>//字符串转float<br>NSString <em>str3 = @”3.145926”;<br> //NSString </em>str3 = @”中国”;<br>//把字符串强转成float<br>double f = [str3 floatValue];<br>NSLog (@”转换后：%f”, f);   </p>
+</li>
+<li><p>(void)viewDidLoad</p>
+</li>
+</ul>
+<p>{<br>    [super viewDidLoad];</p>
+<pre><code>//字符串转整型
+NSString *str0 = @&quot;1121&quot;;
+//NSString *str0 = @&quot;中国&quot;;
+
+//把字符串强转成整型
+int i = [str0 intValue];
+
+NSLog (@&quot;转换后：%i&quot;, i); 
+
+//字符串转interger
+  NSString *str1 = @&quot;1985&quot;;
+// NSString *str1 = @&quot;中国&quot;;
+
+//把字符串强转成interger
+NSInteger ii = [str1 integerValue];
+
+NSLog (@&quot;转换后：%i&quot;, ii); 
+
+//字符串转double
+NSString *str2 = @&quot;3.145926&quot;;
+//NSString *str2 = @&quot;中国&quot;;
+
+//把字符串强转成double
+double d = [str2 doubleValue];
+
+NSLog (@&quot;转换后：%f&quot;, d); 
+
+//字符串转float
+NSString *str3 = @&quot;3.145926&quot;;
+ //NSString *str3 = @&quot;中国&quot;;
+//把字符串强转成float
+double f = [str3 floatValue];
+
+NSLog (@&quot;转换后：%f&quot;, f); 
+</code></pre><p>}<br>`<br>NSString 常用方法总结</p>
+<p>+(id)stringWithContentsOfFile:path encoding:enc err    创建一个新字符串并将其设置为 path 指定文件的内容，使用字符编码 enc，在err 上返回错误<br>+(id)stringWithContentsOfURL:url encoding:enc err    创建一个新字符串并将其设置为 url 所指向的内容，使用字符编码 enc，在err 上返回错误<br>+(id)string    创建一个新的空字符串<br>+(id)stringWithString:nsstring    创建一个新字符串，将其内容设置为 nsstring 内容<br>-(id)initWithString:nsstring    将字符串内容设置为 nsstring 内容<br>-(id)initWithContentsOfFile:path encoding:enc error:err    将字符串设置为 path 指定文件的内容，使用字符编码 enc，在err 上返回错误<br>-(id)initWithContentsOfURL:url encoding:enc error:err    将字符串设置为 url 所指向的内容，使用字符编码 enc，在err 上返回错误<br>-(UNSigned int)length    返回字符串中字符数目<br>-(unichar)characterAtindex:i    返回索引i 所在UniCode 字符<br>-(NSString<em>)substringFromIndex:i    返回从索引 i 开始到结尾的子字符串<br>-(NSString</em>)substringWithRange:range    根据指定范围返回子字符串<br>-(NSString<em>)substringToIndex:i    返回从字符串开始到 索引 i 的子字符串<br>-(NSComparator</em>)caseInsensitiveCompare:nsstring    比较两个字符串大小，忽略大小写<br>-(NSComparator<em>)compare:nsstring    比较两个字符串大小<br>-(BOOL)hasPrefix:nsstring    测试字符串是否以 nsstring 开始<br>-(BOOL)hasSuffix:nsstring    测试字符串是否以 nsstring 结尾<br>-(BOOL)isEqualToString:nsstring    测试两个字符串是否相等<br>-(NSString</em>)capitalizedString    返回字符串，串中的每个单词的首字母大写，其余字母小写<br>-(NSString<em>)lowercaseString    返回转换为小写的字符串<br>-(NSString</em>)uppercaseString    返回转换为大写的字符串<br>-(const char*)UTF8String    返回UTF8编码格式的字符串<br>-(double)doubleValue    返回转换为double 类型的字符串<br>-(float)floatValue    返回转换为 float 类型的字符串<br>-(NSInteger)integerValue    返回转换为 NSInteger 类型的新字符串<br>-(int)intvalue    返回转换为 int 的字符串<br>NSMutableString 可修改字符串常用方法</p>
+<p>+(id)stringWithCapacity:size    创建一个字符串，容量为size大小<br>-(id)initWithCapacity:size    初始化一个字符串，容量为size<br>-(void)setString:nsstring    将字符串设置为 nsstring<br>-(void)appendString:nsstring    在字符串末尾追加字符串 nsstring<br>-(void)deleteCharatersInRange:range    删除指定range 中的字符<br>-(void)insertString:nsstring atIndex:i    以索引 i 为起始位置插入 nsstring<br>-(void)replaceCharatersInRange;range withString:nsstring    使用 nsstring 替换 range 指定的字符<br>-(void)replaceOccurrencesOfString:nsstring withString:nsstring2 options:opts range:range    根据选项 opts ，使用指定 range 中的nsstring2 替换所有的 nsstring<br>原文地址 <a href="http://justcoding.iteye.com/blog/1405951" target="_blank" rel="noopener">http://justcoding.iteye.com/blog/1405951</a></p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/&text=字符串操作,NSString 常用方法总结"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/&title=字符串操作,NSString 常用方法总结"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/&is_video=false&description=字符串操作,NSString 常用方法总结"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=字符串操作,NSString 常用方法总结&body=Check out this article: http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/&title=字符串操作,NSString 常用方法总结"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/&title=字符串操作,NSString 常用方法总结"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/&title=字符串操作,NSString 常用方法总结"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/&title=字符串操作,NSString 常用方法总结"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2015/06/10/e5-ad-97-e7-ac-a6-e4-b8-b2-e6-93-8d-e4-bd-9cnsstring-e5-b8-b8-e7-94-a8-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/&name=字符串操作,NSString 常用方法总结&description=&lt;p&gt;`&lt;br&gt;1.创建NSString字符串&lt;/p&gt;
+&lt;p&gt;NSString 与 char&lt;em&gt; 最大的区别就是 NSString是一个objective对象,而char&lt;/em&gt; 是一个字节数组。@+” 字符串 “ 这个符号为objective-c NSString 字符串常量的标准用法，char* 创建的时候 无需添加@&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;(void)viewDidLoad&lt;/p&gt;
+&lt;p&gt;[super viewDidLoad];&lt;br&gt;//经典的字符串赋值&lt;br&gt;NSString &lt;em&gt;str0 = @”my name is justcoding !”;&lt;br&gt;//字符串格式化合并分别包括&lt;br&gt;//NSString&lt;/em&gt;类型 int类型 char&lt;em&gt;类型&lt;br&gt;NSString &lt;/em&gt;str1 = [NSString stringWithFormat:@”我的名字：%@ 我的年龄：%d 我的邮箱：%s”,@”justcoding”, 25,”justcoding@gmail.com”];&lt;br&gt;//字符串赋值 参数中只可以写一个字符串 和第一种很像&lt;br&gt;NSString &lt;em&gt;str2 = [NSString stringWithString:@”我是字符串”];&lt;br&gt;//字符串转换为utf-8格式 参数为char&lt;/em&gt;类型&lt;br&gt;NSString &lt;em&gt;str3 = [NSString stringWithUTF8String:”字符串转换utf-8格式”];&lt;br&gt;//字符串合并&lt;br&gt;int i  = 100;&lt;br&gt;char&lt;/em&gt;c = “xuanyusong”;&lt;br&gt;NSString &lt;em&gt;temp = @”我是临时字符串”;&lt;br&gt;//在字符串temp的基础继续添加 int i 与 char&lt;/em&gt; c 组成一个新的字符串&lt;br&gt;NSString &lt;em&gt;str4 = [temp stringByAppendingFormat:@”整型： %d 字符型 ：%s”,i,c];&lt;br&gt;//在字符串temp的基础继续添加temp 并组成一个新的字符串&lt;br&gt;NSString &lt;/em&gt;str5 = [temp stringByAppendingString:temp];&lt;br&gt;//字符串输出&lt;br&gt;NSLog(@”str0 = %@”, str0);&lt;br&gt;NSLog(@”str1 = %@”, str1);&lt;br&gt;NSLog(@”str2 = %@”, str2);&lt;br&gt;NSLog(@”str3 = %@”, str3);&lt;br&gt;NSLog(@”str4 = %@”, str4);&lt;br&gt;NSLog(@”str5 = %@”, str5);  &lt;/p&gt;"><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Hee
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+

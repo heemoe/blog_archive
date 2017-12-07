@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Tip:如果下面每一条你都能扯个10分钟拿个15K+是没问题了.靠前面本人被问得越多.都是一个点开始,延伸很多问题,各种被追问… UI的东西,CALayer和View的关系,CoreAnimation,Core Graphics,Quartz 2D,自动布局,面试时较多的情况还是打开一个APP问你这个界面怎么搭建的,动态Cell之类的.某些公司对动画,绘图是比较严格的. SDWebImage的原理">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS面试重点,供参考.">
+<meta property="og:url" content="http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/index.html">
+<meta property="og:site_name" content="ZSMS_HEE">
+<meta property="og:description" content="Tip:如果下面每一条你都能扯个10分钟拿个15K+是没问题了.靠前面本人被问得越多.都是一个点开始,延伸很多问题,各种被追问… UI的东西,CALayer和View的关系,CoreAnimation,Core Graphics,Quartz 2D,自动布局,面试时较多的情况还是打开一个APP问你这个界面怎么搭建的,动态Cell之类的.某些公司对动画,绘图是比较严格的. SDWebImage的原理">
+<meta property="og:updated_time" content="2017-12-07T07:20:21.179Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS面试重点,供参考.">
+<meta name="twitter:description" content="Tip:如果下面每一条你都能扯个10分钟拿个15K+是没问题了.靠前面本人被问得越多.都是一个点开始,延伸很多问题,各种被追问… UI的东西,CALayer和View的关系,CoreAnimation,Core Graphics,Quartz 2D,自动布局,面试时较多的情况还是打开一个APP问你这个界面怎么搭建的,动态Cell之类的.某些公司对动画,绘图是比较严格的. SDWebImage的原理">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>iOS面试重点,供参考.</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2015/11/03/e5-9e-83-e5-9c-be-e8-af-84-e8-ae-ba-e5-a4-aa-e5-a4-9a-e4-ba-86-e7-9b-b4-e6-8e-a5-e6-8a-8a-e6-95-b0-e6-8d-ae-e5-ba-93-e9-87-8c-e9-9d-a2-e7-9a-84-e8-af-84-e8-ae-ba-e8-a1-a8-e6-b8-85-e7-a9-ba-e4-ba-86/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2015/10/12/e5-bf-ab-e9-80-9f-e5-85-a5-e9-97-a83d-touch-e9-9b-86-e6-88-90/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&text=iOS面试重点,供参考."><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&is_video=false&description=iOS面试重点,供参考."><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=iOS面试重点,供参考.&body=Check out this article: http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&name=iOS面试重点,供参考.&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        iOS面试重点,供参考.
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">ZSMS_HEE</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2015-10-13T05:14:50.000Z" itemprop="datePublished">2015-10-13</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/iOS/">iOS</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Tip:如果下面每一条你都能扯个10分钟拿个15K+是没问题了.靠前面本人被问得越多.都是一个点开始,延伸很多问题,各种被追问…</p>
+<p>UI的东西,CALayer和View的关系,CoreAnimation,Core Graphics,Quartz 2D,自动布局,面试时较多的情况还是打开一个APP问你这个界面怎么搭建的,动态Cell之类的.某些公司对动画,绘图是比较严格的.</p>
+<p>SDWebImage的原理,实现机制,也就是缓存怎么做,如何解决TableView卡的问题,Cell重用机制,多图片加载.</p>
+<p>多线程,特别是NSOperation 和 GCD 的内部原理,以及NSThread和他们的区别,实际应用.</p>
+<p>设计模式,mvc模式,单利模式,工厂模式,代理模式等的应用场景,实现方法原理.</p>
+<p>内存管理,ARC,MRC区别,优缺点.计数器,内存释放,内存泄露(某次面试说的是OOM,out of memory).</p>
+<p>block和代理的,通知的区别,应用场景.block的用法需要注意些什么.还有KVO经常会被拿到一起问.</p>
+<p>第三方框架,即时通讯,云推送,云短信验证码之类的,支付宝,百度地图,第三方登录等.这是一大块东西,看面什么公司再来准备.</p>
+<p>然后就是数据库sqlite,本地存储方式.什么样的文件适合用那种方式存储.</p>
+<p>strong,weak,retain,assign,readonly,readwrite,copy,nonatomic,atomic等的区别,xcode7出的Nonnull可以拿出来装逼.还有getter.</p>
+<p>运行时(Runtime)机制的原理和应用场景,上面很多点其实都关系到runtime.</p>
+<p>NSString 用copy和strong的区别.浅拷贝,深拷贝.</p>
+<p>程序运行循环(Runloop)机制的原理,Mode作用,应用场景.事件传递,响应者链.</p>
+<p>单例的写法,在单例中应该注意些什么,iOS中有哪些系统的单例,单例坏处.</p>
+<p>网络,AFN怎么实现的,HTTP协议,Socket,TCP/IP,长连接短连接,三次握手什么的.</p>
+<p>git,svn代码管理会不会,先update再commit.</p>
+<p>Instruments调试,断点什么的.</p>
+<p>另外欢迎补充…….</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&text=iOS面试重点,供参考."><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&is_video=false&description=iOS面试重点,供参考."><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=iOS面试重点,供参考.&body=Check out this article: http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&name=iOS面试重点,供参考.&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Hee
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+

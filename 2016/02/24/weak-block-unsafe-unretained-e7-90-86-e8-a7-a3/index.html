@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="一些关键字的作用__weak __block unsafe_unretained __unsafe_unretained的问题unsafe_unretained和weak类似，weak会自己所指向的内存释放并且置空（nil），但是unsafe_unretained所指向的内存被释放后并不知道自己指向的内存地址被销毁了，所以会造成野指针是不安全的。 strong会给计数器+1，有可能会造成不会释放。">
+<meta name="keywords" content="iOS,Objective C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="__weak __block __unsafe_unretained理解">
+<meta property="og:url" content="http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/index.html">
+<meta property="og:site_name" content="ZSMS_HEE">
+<meta property="og:description" content="一些关键字的作用__weak __block unsafe_unretained __unsafe_unretained的问题unsafe_unretained和weak类似，weak会自己所指向的内存释放并且置空（nil），但是unsafe_unretained所指向的内存被释放后并不知道自己指向的内存地址被销毁了，所以会造成野指针是不安全的。 strong会给计数器+1，有可能会造成不会释放。">
+<meta property="og:updated_time" content="2017-12-07T07:20:21.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="__weak __block __unsafe_unretained理解">
+<meta name="twitter:description" content="一些关键字的作用__weak __block unsafe_unretained __unsafe_unretained的问题unsafe_unretained和weak类似，weak会自己所指向的内存释放并且置空（nil），但是unsafe_unretained所指向的内存被释放后并不知道自己指向的内存地址被销毁了，所以会造成野指针是不安全的。 strong会给计数器+1，有可能会造成不会释放。">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>__weak __block __unsafe_unretained理解</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2016/03/24/mvc-e5-88-86-e6-96-87-e4-bb-b6-e5-a4-b9-e4-bd-93-e7-8e-b0-e5-87-ba-e7-9a-84-e4-b8-a4-e7-a7-8d-e6-b5-81-e6-b4-be-e3-80-82/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/&text=__weak __block __unsafe_unretained理解"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/&title=__weak __block __unsafe_unretained理解"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/&is_video=false&description=__weak __block __unsafe_unretained理解"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=__weak __block __unsafe_unretained理解&body=Check out this article: http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/&title=__weak __block __unsafe_unretained理解"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/&title=__weak __block __unsafe_unretained理解"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/&title=__weak __block __unsafe_unretained理解"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/&title=__weak __block __unsafe_unretained理解"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/&name=__weak __block __unsafe_unretained理解&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一些关键字的作用"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x4E00;&#x4E9B;&#x5173;&#x952E;&#x5B57;&#x7684;&#x4F5C;&#x7528;" class="headerlink" title="&#x4E00;&#x4E9B;&#x5173;&#x952E;&#x5B57;&#x7684;&#x4F5C;&#x7528;"></a>&#x4E00;&#x4E9B;&#x5173;&#x952E;&#x5B57;&#x7684;&#x4F5C;&#x7528;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#unsafe-unretained的问题"><span class="toc-number">1.0.1.</span> <span class="toc-text"><a href="#unsafe-unretained&#x7684;&#x95EE;&#x9898;" class="headerlink" title="__unsafe_unretained&#x7684;&#x95EE;&#x9898;"></a>__unsafe_unretained&#x7684;&#x95EE;&#x9898;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么weak不能给int用？和block的区别？"><span class="toc-number">1.0.2.</span> <span class="toc-text"><a href="#&#x4E3A;&#x4EC0;&#x4E48;weak&#x4E0D;&#x80FD;&#x7ED9;int&#x7528;&#xFF1F;&#x548C;block&#x7684;&#x533A;&#x522B;&#xFF1F;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;weak&#x4E0D;&#x80FD;&#x7ED9;int&#x7528;&#xFF1F;&#x548C;block&#x7684;&#x533A;&#x522B;&#xFF1F;"></a>&#x4E3A;&#x4EC0;&#x4E48;<strong>weak&#x4E0D;&#x80FD;&#x7ED9;int&#x7528;&#xFF1F;&#x548C;</strong>block&#x7684;&#x533A;&#x522B;&#xFF1F;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么有block循环引用？"><span class="toc-number">1.0.3.</span> <span class="toc-text"><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x6709;block&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#xFF1F;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;&#x6709;block&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#xFF1F;"></a>&#x4E3A;&#x4EC0;&#x4E48;&#x6709;block&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#xFF1F;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么block不能修改外部变量？"><span class="toc-number">1.0.4.</span> <span class="toc-text"><a href="#&#x4E3A;&#x4EC0;&#x4E48;block&#x4E0D;&#x80FD;&#x4FEE;&#x6539;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#xFF1F;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;block&#x4E0D;&#x80FD;&#x4FEE;&#x6539;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#xFF1F;"></a>&#x4E3A;&#x4EC0;&#x4E48;block&#x4E0D;&#x80FD;&#x4FEE;&#x6539;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#xFF1F;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么系统和AFN的block不会造成循环引用？"><span class="toc-number">1.0.5.</span> <span class="toc-text"><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x7CFB;&#x7EDF;&#x548C;AFN&#x7684;block&#x4E0D;&#x4F1A;&#x9020;&#x6210;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#xFF1F;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;&#x7CFB;&#x7EDF;&#x548C;AFN&#x7684;block&#x4E0D;&#x4F1A;&#x9020;&#x6210;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#xFF1F;"></a>&#x4E3A;&#x4EC0;&#x4E48;&#x7CFB;&#x7EDF;&#x548C;AFN&#x7684;block&#x4E0D;&#x4F1A;&#x9020;&#x6210;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#xFF1F;</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        __weak __block __unsafe_unretained理解
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">ZSMS_HEE</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2016-02-23T22:05:40.000Z" itemprop="datePublished">2016-02-24</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Objective-C/">Objective C</a>, <a class="tag-link" href="/tags/iOS/">iOS</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="一些关键字的作用"><a href="#一些关键字的作用" class="headerlink" title="一些关键字的作用"></a>一些关键字的作用</h2><p><code>__weak</code> <code>__block</code> <code>unsafe_unretained</code></p>
+<h4 id="unsafe-unretained的问题"><a href="#unsafe-unretained的问题" class="headerlink" title="__unsafe_unretained的问题"></a>__unsafe_unretained的问题</h4><p><strong>unsafe_unretained和</strong>weak类似，<strong>weak会自己所指向的内存释放并且置空（nil），但是</strong>unsafe_unretained所指向的内存被释放后并不知道自己指向的内存地址被销毁了，所以会造成野指针是不安全的。</p>
+<p>strong会给计数器+1，有可能会造成不会释放。</p>
+<p>声明为weak的指针，指针指向的地址一旦被释放，这些指针都将被赋值为nil。这样的好处能有效的防止野指针</p>
+<p>unsafe_unretained会将指针指向的地址赋值nil，但是unsafe_unretained声明的变量并不会知道自己所指向的指针被释放了。所以会造成野指针，访问野指针会出现崩溃。</p>
+<p><strong>unsafe_unretained修饰符可以被视为iOS SDK 4.3以前版本的</strong>weak的替代品，不过不会被自动置空为nil。所以尽可能不要使用这个修饰符。</p>
+<h4 id="为什么weak不能给int用？和block的区别？"><a href="#为什么weak不能给int用？和block的区别？" class="headerlink" title="为什么weak不能给int用？和block的区别？"></a>为什么<strong>weak不能给int用？和</strong>block的区别？</h4><p><strong>weak不增加引用，</strong>block增加引用</p>
+<p>1.<strong>block不管是ARC还是MRC模式下都可以使用，可以修饰对象，还可以修饰基本数据类型。<br>2.</strong>weak只能在ARC模式下使用，也只能修饰对象（NSString），不能修饰基本数据类型（int）。<br>3.<strong>block对象可以在block中被重新赋值，</strong>weak不可以。<br>4.<strong>block对象在ARC下可能会导致循环引用，非ARC下会避免循环引用，</strong>weak只在ARC下使用，可以避免循环引用。</p>
+<h4 id="为什么有block循环引用？"><a href="#为什么有block循环引用？" class="headerlink" title="为什么有block循环引用？"></a>为什么有block循环引用？</h4><p>因为self指向控制器，控制器又指向block，而block又指向self。</p>
+<h4 id="为什么block不能修改外部变量？"><a href="#为什么block不能修改外部变量？" class="headerlink" title="为什么block不能修改外部变量？"></a>为什么block不能修改外部变量？</h4><p>因为block通常是作为参数传递以供后续回调执行的，通常在这些情况下，block被执行时，定义时所在的函数栈已经被展开，局部变量已经不在栈中了，所以访问不到了。<br>block内变量ISA指针指向的存储域<br>_NSConcreteStackBlock 保存在栈中的block，出栈时会被销毁<br>_NSConcreteGlobalBlock 全局的静态block，不会访问任何外部变量<br>_NSConcreteMallocBlock 保存在堆中的block，当引用计数为0时会被销毁</p>
+<p>使用了__block关键字的变量会将变量从栈上复制到堆上。栈上那个变量会指向复制到堆上的变量。</p>
+<h4 id="为什么系统和AFN的block不会造成循环引用？"><a href="#为什么系统和AFN的block不会造成循环引用？" class="headerlink" title="为什么系统和AFN的block不会造成循环引用？"></a>为什么系统和AFN的block不会造成循环引用？</h4><p>著作权归作者所有。<br>商业转载请联系作者获得授权，非商业转载请注明出处。<br>作者：精致的developer<br>链接：<a href="http://www.zhihu.com/question/36358590/answer/67885408" target="_blank" rel="noopener">http://www.zhihu.com/question/36358590/answer/67885408</a><br>来源：知乎</p>
+<p>其实只要抓住循环引用的本质，就不难理解。所谓循环引用，是因为当前控制器在引用着block，而block又引用着self即当前控制器，这样就造成了循环引用。系统的block或者AFN等block的调用并不在当前控制器中调用，那么这个self就不代表当前控制器，那自然也就没有循环引用的问题。以上引用均指强引用。<br>著作权归作者所有。<br>商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<p>作者：七夕之雪<br>链接：<a href="http://www.zhihu.com/question/36358590/answer/68135219" target="_blank" rel="noopener">http://www.zhihu.com/question/36358590/answer/68135219</a><br>来源：知乎</p>
+<p>关于这个问题，UIView和AFN还是不一样的。首先循环引用发生的条件就是持有这个block的对象，被block里边加入的对象持有。当然是强引用。所以UIView的动画block不会造成循环引用的原因就是，这是个类方法，当前控制器不可能强引用一个类，所以循环无法形成。而AFN无循环是因为绝大部分情况下，你的网络类对象是不会被当前控制器引用的，这时就不会形成引用环。当然我不知道AFN是否做了别的处理，按照这样来说的话，如果你的控制器强引用了这个网络类的对象，而且在block里面引用了当前控制器，也是会发生循环引用的。</p>
+<p>####相关文章<br><a href="http://www.cocoachina.com/ios/20150106/10850.html" target="_blank" rel="noopener">http://www.cocoachina.com/ios/20150106/10850.html</a><br><a href="https://www.mgenware.com/blog/?p=1493" target="_blank" rel="noopener">https://www.mgenware.com/blog/?p=1493</a><br><a href="http://tanqisen.github.io/blog/2013/04/19/gcd-block-cycle-retain/" target="_blank" rel="noopener">http://tanqisen.github.io/blog/2013/04/19/gcd-block-cycle-retain/</a><br><a href="http://blog.csdn.net/abc649395594/article/details/45476925" target="_blank" rel="noopener">http://blog.csdn.net/abc649395594/article/details/45476925</a><br><a href="http://draveness.me/guan-yu-xie-ios-wen-ti-de-jie-da/" target="_blank" rel="noopener">http://draveness.me/guan-yu-xie-ios-wen-ti-de-jie-da/</a><br><a href="http://blog.sina.com.cn/s/blog_a843a8850101b6b9.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_a843a8850101b6b9.html</a></p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一些关键字的作用"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x4E00;&#x4E9B;&#x5173;&#x952E;&#x5B57;&#x7684;&#x4F5C;&#x7528;" class="headerlink" title="&#x4E00;&#x4E9B;&#x5173;&#x952E;&#x5B57;&#x7684;&#x4F5C;&#x7528;"></a>&#x4E00;&#x4E9B;&#x5173;&#x952E;&#x5B57;&#x7684;&#x4F5C;&#x7528;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#unsafe-unretained的问题"><span class="toc-number">1.0.1.</span> <span class="toc-text"><a href="#unsafe-unretained&#x7684;&#x95EE;&#x9898;" class="headerlink" title="__unsafe_unretained&#x7684;&#x95EE;&#x9898;"></a>__unsafe_unretained&#x7684;&#x95EE;&#x9898;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么weak不能给int用？和block的区别？"><span class="toc-number">1.0.2.</span> <span class="toc-text"><a href="#&#x4E3A;&#x4EC0;&#x4E48;weak&#x4E0D;&#x80FD;&#x7ED9;int&#x7528;&#xFF1F;&#x548C;block&#x7684;&#x533A;&#x522B;&#xFF1F;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;weak&#x4E0D;&#x80FD;&#x7ED9;int&#x7528;&#xFF1F;&#x548C;block&#x7684;&#x533A;&#x522B;&#xFF1F;"></a>&#x4E3A;&#x4EC0;&#x4E48;<strong>weak&#x4E0D;&#x80FD;&#x7ED9;int&#x7528;&#xFF1F;&#x548C;</strong>block&#x7684;&#x533A;&#x522B;&#xFF1F;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么有block循环引用？"><span class="toc-number">1.0.3.</span> <span class="toc-text"><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x6709;block&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#xFF1F;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;&#x6709;block&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#xFF1F;"></a>&#x4E3A;&#x4EC0;&#x4E48;&#x6709;block&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#xFF1F;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么block不能修改外部变量？"><span class="toc-number">1.0.4.</span> <span class="toc-text"><a href="#&#x4E3A;&#x4EC0;&#x4E48;block&#x4E0D;&#x80FD;&#x4FEE;&#x6539;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#xFF1F;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;block&#x4E0D;&#x80FD;&#x4FEE;&#x6539;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#xFF1F;"></a>&#x4E3A;&#x4EC0;&#x4E48;block&#x4E0D;&#x80FD;&#x4FEE;&#x6539;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#xFF1F;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么系统和AFN的block不会造成循环引用？"><span class="toc-number">1.0.5.</span> <span class="toc-text"><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x7CFB;&#x7EDF;&#x548C;AFN&#x7684;block&#x4E0D;&#x4F1A;&#x9020;&#x6210;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#xFF1F;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;&#x7CFB;&#x7EDF;&#x548C;AFN&#x7684;block&#x4E0D;&#x4F1A;&#x9020;&#x6210;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#xFF1F;"></a>&#x4E3A;&#x4EC0;&#x4E48;&#x7CFB;&#x7EDF;&#x548C;AFN&#x7684;block&#x4E0D;&#x4F1A;&#x9020;&#x6210;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#xFF1F;</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/&text=__weak __block __unsafe_unretained理解"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/&title=__weak __block __unsafe_unretained理解"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/&is_video=false&description=__weak __block __unsafe_unretained理解"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=__weak __block __unsafe_unretained理解&body=Check out this article: http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/&title=__weak __block __unsafe_unretained理解"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/&title=__weak __block __unsafe_unretained理解"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/&title=__weak __block __unsafe_unretained理解"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/&title=__weak __block __unsafe_unretained理解"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/&name=__weak __block __unsafe_unretained理解&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Hee
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+

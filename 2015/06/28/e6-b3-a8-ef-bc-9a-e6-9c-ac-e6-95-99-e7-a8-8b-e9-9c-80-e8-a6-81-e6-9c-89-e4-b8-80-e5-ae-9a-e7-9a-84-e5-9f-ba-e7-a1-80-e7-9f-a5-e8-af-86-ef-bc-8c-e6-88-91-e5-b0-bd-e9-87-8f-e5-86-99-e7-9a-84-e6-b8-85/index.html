@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="注：本教程需要有一定的基础知识，我尽量写的清楚一些，方便大家使用本教程。鉴于很多使用者可能对linux不熟悉，我们简单介绍下必须的工具和知识： 1. vi 是linux默认使用的文本编辑工具，比如我要修改 /etc/hosts这个文件，我可以输入 vi /etc/hosts2. 在vmware中用vi配置完网络设置后，可以直接用Putty这个工具连接。打开Putty，输入IP，确认，然后输入用户名">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自建DNS服务器 可翻Q">
+<meta property="og:url" content="http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/index.html">
+<meta property="og:site_name" content="ZSMS_HEE">
+<meta property="og:description" content="注：本教程需要有一定的基础知识，我尽量写的清楚一些，方便大家使用本教程。鉴于很多使用者可能对linux不熟悉，我们简单介绍下必须的工具和知识： 1. vi 是linux默认使用的文本编辑工具，比如我要修改 /etc/hosts这个文件，我可以输入 vi /etc/hosts2. 在vmware中用vi配置完网络设置后，可以直接用Putty这个工具连接。打开Putty，输入IP，确认，然后输入用户名">
+<meta property="og:updated_time" content="2017-12-07T07:20:21.178Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自建DNS服务器 可翻Q">
+<meta name="twitter:description" content="注：本教程需要有一定的基础知识，我尽量写的清楚一些，方便大家使用本教程。鉴于很多使用者可能对linux不熟悉，我们简单介绍下必须的工具和知识： 1. vi 是linux默认使用的文本编辑工具，比如我要修改 /etc/hosts这个文件，我可以输入 vi /etc/hosts2. 在vmware中用vi配置完网络设置后，可以直接用Putty这个工具连接。打开Putty，输入IP，确认，然后输入用户名">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>自建DNS服务器 可翻Q</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2015/06/28/model-e5-92-8cview-e6-b0-b8-e8-bf-9c-e4-b8-8d-e8-83-bd-e7-9b-b8-e4-ba-92-e9-80-9a-e4-bf-a1-ef-bc-8c-e5-8f-aa-e8-83-bd-e9-80-9a-e8-bf-87controller-e4-bc-a0-e9-80-92-e3-80-82-controller-e5-8f-af/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/&text=自建DNS服务器 可翻Q"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/&title=自建DNS服务器 可翻Q"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/&is_video=false&description=自建DNS服务器 可翻Q"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=自建DNS服务器 可翻Q&body=Check out this article: http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/&title=自建DNS服务器 可翻Q"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/&title=自建DNS服务器 可翻Q"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/&title=自建DNS服务器 可翻Q"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/&title=自建DNS服务器 可翻Q"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/&name=自建DNS服务器 可翻Q&description=&lt;p&gt;注：本教程需要有一定的基础知识，我尽量写的清楚一些，方便大家使用本教程。&lt;br&gt;鉴于很多使用者可能对linux不熟悉，我们简单介绍下必须的工具和知识：&lt;/p&gt;
+&lt;p&gt;1. vi 是linux默认使用的文本编辑工具，比如我要修改 /etc/hosts这个文件，我可以输入 vi /etc/hosts&lt;br&gt;2. 在vmware中用vi配置完网络设置后，可以直接用Putty这个工具连接。打开Putty，输入IP，确认，然后输入用户名密码，密码不会显示出来，所以输入密码的时候如果看到putty没有任何提示请不要惊讶，输入完密码按确认即可。&lt;br&gt;3. Putty里的复制和粘贴和win不同，复制的话，用鼠标标记需要复制的地方，然后按确认键即可，如果需要粘贴，直接点鼠标右键&lt;br&gt;4. vi 工具，如果需要输入内容，请按i键，输入完按esc，再按：， 输入wq即可，如果不需要保存，输入q！，vi中快速查找可以输入/，然后输入相应内容。&lt;br&gt;5. flashfxp，免费的ftp工具，支持sftp方式连接vps，免费的，百度下载&lt;br&gt;"><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        自建DNS服务器 可翻Q
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">ZSMS_HEE</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2015-06-28T06:24:52.000Z" itemprop="datePublished">2015-06-28</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>注：本教程需要有一定的基础知识，我尽量写的清楚一些，方便大家使用本教程。<br>鉴于很多使用者可能对linux不熟悉，我们简单介绍下必须的工具和知识：</p>
+<p>1. vi 是linux默认使用的文本编辑工具，比如我要修改 /etc/hosts这个文件，我可以输入 vi /etc/hosts<br>2. 在vmware中用vi配置完网络设置后，可以直接用Putty这个工具连接。打开Putty，输入IP，确认，然后输入用户名密码，密码不会显示出来，所以输入密码的时候如果看到putty没有任何提示请不要惊讶，输入完密码按确认即可。<br>3. Putty里的复制和粘贴和win不同，复制的话，用鼠标标记需要复制的地方，然后按确认键即可，如果需要粘贴，直接点鼠标右键<br>4. vi 工具，如果需要输入内容，请按i键，输入完按esc，再按：， 输入wq即可，如果不需要保存，输入q！，vi中快速查找可以输入/，然后输入相应内容。<br>5. flashfxp，免费的ftp工具，支持sftp方式连接vps，免费的，百度下载<br><a id="more"></a></p>
+<p>本教程是基于在CentOS系统上配置DNS服务器，但是这两个要求电脑24小时开机，有能力的用户可以租用一台国内的VPS部署，注意，必须是国内的！而且最好是和自己所在地区相同，所用线路相同！ 如果路由是DDwrt之类的，也有一定Linux基础的，可以参考我们的CentOS教程，修改下，在路由上实现</p>
+<p>1. 使用工具：vmware workstation，CentOS6.6</p>
+<p>2. 准备工作：<br>1）下载vmWare workstation并正确安装，附上vmware的下载地址：<a href="http://rj.baidu.com/soft/detail/13808.html?ald" target="_blank" rel="noopener">http://rj.baidu.com/soft/detail/13808.html?ald</a>  序列号可以百度下<br>2）下载CentOS6.6 64位   下载地址：<a href="http://mirrors.sina.cn/centos/6\" target="_blank" rel="noopener">http://mirrors.sina.cn/centos/6\</a>. … -x86_64-minimal.iso<br>3）在vmware workstation中选择创建虚拟机：<br>3-1）配置类型选择自定义（高级）<br>3-2）硬件兼容性选择workstation10<br>3-3）安装来源选择稍后安装系统<br>3-4）客户机操作系统选择： Linux——-CentOS 64位<br>3-5）选择储存位置和虚拟机名称<br>3-6）处理器1个即可<br>3-6）内存128M到512M之间即可，看个人需求以及电脑配置<br>3-7）网络选择桥接模式<br>3-8）一直下一步，硬盘选择SAS，下一步，大小20G， 下一步，选择储存位置，完成。<br>4）vmware中多一个虚拟机，我们点击虚拟机卡片内的CD/DVD，选择我们下载好的centos ISO，开机<br>5）centos的安装网上有较多教程，我们只需要最小化安装即可，一路下一步下去。<br>6）CentOS安装完成后，我们使用root账户登录，注意，centos不会显示你输入的密码，因此输入密码没有看到字符不要惊讶，回车即可<br>下面进入到centos系统的配置和dns服务器的安装环节了<br>1）编辑centos网络</p>
+<ol>
+<li>vi /etc/sysconfig/network-scripts/ifcfg-eth0</li>
+</ol>
+<p>vi控制台使用很容易，按i键即可输入，按ese,然后：，然后输入wq即可保存退出。将文件内容参考下面的内容进行修改<br>DEVICE=eth0<br>TYPE=Ethernet<br>ONBOOT=yes<br>NM_CONTROLLED=yes<br>BOOTPROTO=static<br>IPADDR=192.168.1.221<br>NETMASK=255.255.255.0<br>GATEWAY=192.168.1.1</p>
+<p>保存退出后，我们再输入</p>
+<p>#vi /etc/resolv.conf<br>nameserver 180.76.76.76(注意：如果是本地搭建DNS，可以使用114、百度等，如果是搭建在VPS上，建议百度下您本地运营商的DNS，否则访问部分国内网站可能会比较慢）</p>
+<p>保存退出后输入</p>
+<p>#service network restart</p>
+<p>#yum update -y</p>
+<p>#yum install dnsmasq</p>
+<p>#service dnsmasq start</p>
+<p>Ok，dnsmasq已经可以正常运作，您可以将路由或者电脑dns设置为这台机器的IP地址。<br>接下来我们将讲解如何来访问google,youtube,facebook,twitter等网站。<br>编辑etc目录下的dnsmasq.conf文件,类似于hosts,指定访问翻墙IP.这里就不多叙述了.<br>修改后,在putty中输入</p>
+<ol>
+<li>service dnsmasq restart</li>
+</ol>
+<p>完工！</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/&text=自建DNS服务器 可翻Q"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/&title=自建DNS服务器 可翻Q"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/&is_video=false&description=自建DNS服务器 可翻Q"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=自建DNS服务器 可翻Q&body=Check out this article: http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/&title=自建DNS服务器 可翻Q"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/&title=自建DNS服务器 可翻Q"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/&title=自建DNS服务器 可翻Q"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/&title=自建DNS服务器 可翻Q"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2015/06/28/e6-b3-a8-ef-bc-9a-e6-9c-ac-e6-95-99-e7-a8-8b-e9-9c-80-e8-a6-81-e6-9c-89-e4-b8-80-e5-ae-9a-e7-9a-84-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86-ef-bc-8c-e6-88-91-e5-b0-bd-e9-87-8f-e5-86-99-e7-9a-84-e6-b8-85/&name=自建DNS服务器 可翻Q&description=&lt;p&gt;注：本教程需要有一定的基础知识，我尽量写的清楚一些，方便大家使用本教程。&lt;br&gt;鉴于很多使用者可能对linux不熟悉，我们简单介绍下必须的工具和知识：&lt;/p&gt;
+&lt;p&gt;1. vi 是linux默认使用的文本编辑工具，比如我要修改 /etc/hosts这个文件，我可以输入 vi /etc/hosts&lt;br&gt;2. 在vmware中用vi配置完网络设置后，可以直接用Putty这个工具连接。打开Putty，输入IP，确认，然后输入用户名密码，密码不会显示出来，所以输入密码的时候如果看到putty没有任何提示请不要惊讶，输入完密码按确认即可。&lt;br&gt;3. Putty里的复制和粘贴和win不同，复制的话，用鼠标标记需要复制的地方，然后按确认键即可，如果需要粘贴，直接点鼠标右键&lt;br&gt;4. vi 工具，如果需要输入内容，请按i键，输入完按esc，再按：， 输入wq即可，如果不需要保存，输入q！，vi中快速查找可以输入/，然后输入相应内容。&lt;br&gt;5. flashfxp，免费的ftp工具，支持sftp方式连接vps，免费的，百度下载&lt;br&gt;"><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Hee
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+

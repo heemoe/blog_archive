@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="遵从：UI 能够帮助用户理解内容并与之互动，但却不会分散用户对内容的注意力 清晰：每种大小的文字都必须是易读的，界面中的图标醒目且无多余的修饰，在功能上有突出的重点，很好地突显了设计理念。 深度：视觉层次和生动的交互操作赋予了 UI 生命力，不仅能够帮助用户更好的理解 UI，还能让用户在使用过程中感到惊喜 然后再看看自己的做的项目,真是惨不忍睹.">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="看iOS人机交互指南,几句话印象很深">
+<meta property="og:url" content="http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/index.html">
+<meta property="og:site_name" content="ZSMS_HEE">
+<meta property="og:description" content="遵从：UI 能够帮助用户理解内容并与之互动，但却不会分散用户对内容的注意力 清晰：每种大小的文字都必须是易读的，界面中的图标醒目且无多余的修饰，在功能上有突出的重点，很好地突显了设计理念。 深度：视觉层次和生动的交互操作赋予了 UI 生命力，不仅能够帮助用户更好的理解 UI，还能让用户在使用过程中感到惊喜 然后再看看自己的做的项目,真是惨不忍睹.">
+<meta property="og:updated_time" content="2017-12-07T07:20:21.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="看iOS人机交互指南,几句话印象很深">
+<meta name="twitter:description" content="遵从：UI 能够帮助用户理解内容并与之互动，但却不会分散用户对内容的注意力 清晰：每种大小的文字都必须是易读的，界面中的图标醒目且无多余的修饰，在功能上有突出的重点，很好地突显了设计理念。 深度：视觉层次和生动的交互操作赋予了 UI 生命力，不仅能够帮助用户更好的理解 UI，还能让用户在使用过程中感到惊喜 然后再看看自己的做的项目,真是惨不忍睹.">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>看iOS人机交互指南,几句话印象很深</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/01/12/videocore-e9-9b-86-e6-88-90-e5-87-ba-e7-8e-b0-e7-9a-84-e4-b8-80-e4-ba-9b-e9-97-ae-e9-a2-98-e6-80-bb-e7-bb-93/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/&text=看iOS人机交互指南,几句话印象很深"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/&title=看iOS人机交互指南,几句话印象很深"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/&is_video=false&description=看iOS人机交互指南,几句话印象很深"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=看iOS人机交互指南,几句话印象很深&body=Check out this article: http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/&title=看iOS人机交互指南,几句话印象很深"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/&title=看iOS人机交互指南,几句话印象很深"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/&title=看iOS人机交互指南,几句话印象很深"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/&title=看iOS人机交互指南,几句话印象很深"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/&name=看iOS人机交互指南,几句话印象很深&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        看iOS人机交互指南,几句话印象很深
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">ZSMS_HEE</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2016-01-19T22:59:19.000Z" itemprop="datePublished">2016-01-20</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/iOS/">iOS</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><code>遵从：UI 能够帮助用户理解内容并与之互动，但却不会分散用户对内容的注意力</code></p>
+<p><code>清晰：每种大小的文字都必须是易读的，界面中的图标醒目且无多余的修饰，在功能上有突出的重点，很好地突显了设计理念。</code></p>
+<p><code>深度：视觉层次和生动的交互操作赋予了 UI 生命力，不仅能够帮助用户更好的理解 UI，还能让用户在使用过程中感到惊喜</code></p>
+<p>然后再看看自己的做的项目,真是惨不忍睹.</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/&text=看iOS人机交互指南,几句话印象很深"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/&title=看iOS人机交互指南,几句话印象很深"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/&is_video=false&description=看iOS人机交互指南,几句话印象很深"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=看iOS人机交互指南,几句话印象很深&body=Check out this article: http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/&title=看iOS人机交互指南,几句话印象很深"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/&title=看iOS人机交互指南,几句话印象很深"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/&title=看iOS人机交互指南,几句话印象很深"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/&title=看iOS人机交互指南,几句话印象很深"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2016/01/20/e7-9c-8bios-e4-ba-ba-e6-9c-ba-e4-ba-a4-e4-ba-92-e6-8c-87-e5-8d-97-e5-87-a0-e5-8f-a5-e8-af-9d-e5-8d-b0-e8-b1-a1-e5-be-88-e6-b7-b1/&name=看iOS人机交互指南,几句话印象很深&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Hee
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Traceback (most recent call last):   File &amp;quot;/usr/bin/certbot&amp;quot;, line 9, in &amp;lt;module&amp;gt;     load_entry_point(&amp;#39;certbot==0.12.0&amp;#39;, &amp;#39;console_scripts&amp;#39;, &amp;#39;certbot&amp;#39;)()   File">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer.">
+<meta property="og:url" content="http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/index.html">
+<meta property="og:site_name" content="ZSMS_HEE">
+<meta property="og:description" content="Traceback (most recent call last):   File &amp;quot;/usr/bin/certbot&amp;quot;, line 9, in &amp;lt;module&amp;gt;     load_entry_point(&amp;#39;certbot==0.12.0&amp;#39;, &amp;#39;console_scripts&amp;#39;, &amp;#39;certbot&amp;#39;)()   File">
+<meta property="og:updated_time" content="2017-12-07T07:20:21.186Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer.">
+<meta name="twitter:description" content="Traceback (most recent call last):   File &amp;quot;/usr/bin/certbot&amp;quot;, line 9, in &amp;lt;module&amp;gt;     load_entry_point(&amp;#39;certbot==0.12.0&amp;#39;, &amp;#39;console_scripts&amp;#39;, &amp;#39;certbot&amp;#39;)()   File">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer.</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/07/14/remove-pastcopy-action-of-uitextview/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2017/03/06/store-logs-in-ios-for-qa/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/&text=certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer."><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/&title=certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer."><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/&is_video=false&description=certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer."><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer.&body=Check out this article: http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/&title=certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer."><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/&title=certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer."><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/&title=certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer."><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/&title=certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer."><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/&name=certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer.&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer.
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">ZSMS_HEE</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-04-19T18:21:02.000Z" itemprop="datePublished">2017-04-20</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/linux/">linux</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><code>Traceback (most recent call last):
+  File &quot;/usr/bin/certbot&quot;, line 9, in &lt;module&gt;
+    load_entry_point(&#39;certbot==0.12.0&#39;, &#39;console_scripts&#39;, &#39;certbot&#39;)()
+  File &quot;/usr/lib/python2.7/site-packages/pkg_resources/__init__.py&quot;, line 560, in load_entry_point
+    return get_distribution(dist).load_entry_point(group, name)
+  File &quot;/usr/lib/python2.7/site-packages/pkg_resources/__init__.py&quot;, line 2648, in load_entry_point
+    return ep.load()
+  File &quot;/usr/lib/python2.7/site-packages/pkg_resources/__init__.py&quot;, line 2302, in load
+    return self.resolve()
+  File &quot;/usr/lib/python2.7/site-packages/pkg_resources/__init__.py&quot;, line 2308, in resolve
+    module = __import__(self.module_name, fromlist=[&#39;__name__&#39;], level=0)
+  File &quot;/usr/lib/python2.7/site-packages/certbot/main.py&quot;, line 21, in &lt;module&gt;
+    from certbot import client
+  File &quot;/usr/lib/python2.7/site-packages/certbot/client.py&quot;, line 10, in &lt;module&gt;
+    from acme import client as acme_client
+  File &quot;/usr/lib/python2.7/site-packages/acme/client.py&quot;, line 31, in &lt;module&gt;
+    requests.packages.urllib3.contrib.pyopenssl.inject_into_urllib3()
+  File &quot;/usr/lib/python2.7/site-packages/requests/packages/urllib3/contrib/pyopenssl.py&quot;, line 112, in inject_into_urllib3
+    _validate_dependencies_met()
+  File &quot;/usr/lib/python2.7/site-packages/requests/packages/urllib3/contrib/pyopenssl.py&quot;, line 147, in _validate_dependencies_met
+    raise ImportError(&quot;&#39;pyOpenSSL&#39; module missing required functionality. &quot;
+ImportError: &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer.</code></p>
+<p><strong>solution</strong>:<br><code>wget ftp://mirror.switch.ch/pool/4/mirror/centos/7.3.1611/cloud/x86_64/openstack-liberty/common/pyOpenSSL-0.15.1-1.el7.noarch.rpm</code><br><code>rpm -Uvh pyOpenSSL-0.15.1-1.el7.noarch.rpm</code></p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/&text=certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer."><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/&title=certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer."><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/&is_video=false&description=certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer."><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer.&body=Check out this article: http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/&title=certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer."><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/&title=certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer."><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/&title=certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer."><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/&title=certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer."><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2017/04/20/certbot-error-pyopenssl-module-missing-required-functionality-try-upgrading-to-v0-14-or-newer/&name=certbot error &#39;pyOpenSSL&#39; module missing required functionality. Try upgrading to v0.14 or newer.&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Hee
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="FFmpeg集成 *   编译.a静态库  导入.a静态库和头文件 *   include下的文件夹应该导入真实文件夹,不是group  build setting中的一些设置 *   需要在header search path中设置代码目录 `$(PROJECT_DIR)/ffmpegDemo`  以及library search path$(PROJECT_DIR)/ffmpegDemo 以">
+<meta name="keywords" content="iOS,ffmpeg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用xcode对新版本的ffmpeg集成">
+<meta property="og:url" content="http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/index.html">
+<meta property="og:site_name" content="ZSMS_HEE">
+<meta property="og:description" content="FFmpeg集成 *   编译.a静态库  导入.a静态库和头文件 *   include下的文件夹应该导入真实文件夹,不是group  build setting中的一些设置 *   需要在header search path中设置代码目录 `$(PROJECT_DIR)/ffmpegDemo`  以及library search path$(PROJECT_DIR)/ffmpegDemo 以">
+<meta property="og:updated_time" content="2017-12-07T07:20:21.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用xcode对新版本的ffmpeg集成">
+<meta name="twitter:description" content="FFmpeg集成 *   编译.a静态库  导入.a静态库和头文件 *   include下的文件夹应该导入真实文件夹,不是group  build setting中的一些设置 *   需要在header search path中设置代码目录 `$(PROJECT_DIR)/ffmpegDemo`  以及library search path$(PROJECT_DIR)/ffmpegDemo 以">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>使用xcode对新版本的ffmpeg集成</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2016/01/11/e8-a7-a3-e5-86-b3library-not-found-for-lpods/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2015/12/31/2016-e5-b0-8f-e7-9a-84-e8-a7-84-e5-88-92-ef-bd-9e/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/&text=使用xcode对新版本的ffmpeg集成"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/&title=使用xcode对新版本的ffmpeg集成"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/&is_video=false&description=使用xcode对新版本的ffmpeg集成"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=使用xcode对新版本的ffmpeg集成&body=Check out this article: http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/&title=使用xcode对新版本的ffmpeg集成"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/&title=使用xcode对新版本的ffmpeg集成"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/&title=使用xcode对新版本的ffmpeg集成"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/&title=使用xcode对新版本的ffmpeg集成"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/&name=使用xcode对新版本的ffmpeg集成&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        使用xcode对新版本的ffmpeg集成
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">ZSMS_HEE</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2016-01-08T21:33:50.000Z" itemprop="datePublished">2016-01-09</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/ffmpeg/">ffmpeg</a>, <a class="tag-link" href="/tags/iOS/">iOS</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <ul>
+<li><p>FFmpeg集成</p>
+<pre><code>*   编译.a静态库
+</code></pre><ul>
+<li><p>导入.a静态库和头文件</p>
+<pre><code>*   include下的文件夹应该导入真实文件夹,不是group
+</code></pre></li>
+<li><p>build setting中的一些设置</p>
+<pre><code>*   需要在header search path中设置代码目录 `$(PROJECT_DIR)/ffmpegDemo`
+</code></pre><ul>
+<li>以及library search path<code>$(PROJECT_DIR)/ffmpegDemo</code></li>
+<li>以及oher link flag中添加<code>-liconv</code> <code>-lz</code> 不然会报错误,大约20个</li>
+<li>还要添加库<code>libbz2.1.0</code> 不添加会报BZ开头的错误</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>导入头文件<code>#include &quot;libavcodec/avcodec.h&quot;</code></li>
+<li>调用查看系统信息函数<code>avcodec_configuration()</code> 编译如果编译成功就集成成功了.</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/&text=使用xcode对新版本的ffmpeg集成"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/&title=使用xcode对新版本的ffmpeg集成"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/&is_video=false&description=使用xcode对新版本的ffmpeg集成"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=使用xcode对新版本的ffmpeg集成&body=Check out this article: http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/&title=使用xcode对新版本的ffmpeg集成"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/&title=使用xcode对新版本的ffmpeg集成"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/&title=使用xcode对新版本的ffmpeg集成"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/&title=使用xcode对新版本的ffmpeg集成"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2016/01/09/e4-bd-bf-e7-94-a8xcode-e5-af-b9-e6-96-b0-e7-89-88-e6-9c-ac-e7-9a-84ffmpeg-e9-9b-86-e6-88-90/&name=使用xcode对新版本的ffmpeg集成&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 Hee
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/heemoe">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+
