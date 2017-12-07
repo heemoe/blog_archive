@@ -3386,16 +3386,16 @@ return 0;
     </entry>
     
     <entry>
-      <title><![CDATA[Search]]></title>
-      <url>/search/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[about]]></title>
       <url>/about/index.html</url>
       <content type="html"><![CDATA[<p>Hello Wrold.</p>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Search]]></title>
+      <url>/search/index.html</url>
+      <content type="html"></content>
     </entry>
     
   
