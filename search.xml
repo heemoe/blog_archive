@@ -3387,7 +3387,7 @@ return 0;
     
     <entry>
       <title><![CDATA[Search]]></title>
-      <url>/Search/index.html</url>
+      <url>/search/index.html</url>
       <content type="html"></content>
     </entry>
     
