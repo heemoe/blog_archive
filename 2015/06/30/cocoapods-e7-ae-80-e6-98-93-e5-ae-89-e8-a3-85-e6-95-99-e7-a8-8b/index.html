@@ -10,7 +10,7 @@
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CocoaPods简易安装教程!">
-<meta property="og:url" content="http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/index.html">
+<meta property="og:url" content="http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/index.html">
 <meta property="og:site_name" content="ZSMS_HEE">
 <meta property="og:description" content="CocoaPods是什么？当你开发iOS应用时，会经常使用到很多第三方开源类库，比如JSONKit，AFNetWorking等等。可能某个类库又用到其他类库，所以要使用它，必须得另外下载其他类库，而其他类库又用到其他类库，“子子孙孙无穷尽也”，这也许是比较特殊的情况。总之小编的意思就是，手动一个个去下载所需类库十分麻烦。另外一种常见情况是，你项目中用到的类库有更新，你必须得重新下载新版本，重新加入">
 <meta property="og:updated_time" content="2017-12-07T07:20:21.178Z">
@@ -84,16 +84,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&text=CocoaPods简易安装教程!"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&is_video=false&description=CocoaPods简易安装教程!"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=CocoaPods简易安装教程!&body=Check out this article: http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&name=CocoaPods简易安装教程!&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&text=CocoaPods简易安装教程!"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&is_video=false&description=CocoaPods简易安装教程!"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CocoaPods简易安装教程!&body=Check out this article: http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&name=CocoaPods简易安装教程!&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -179,16 +179,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&text=CocoaPods简易安装教程!"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&is_video=false&description=CocoaPods简易安装教程!"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=CocoaPods简易安装教程!&body=Check out this article: http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&name=CocoaPods简易安装教程!&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&text=CocoaPods简易安装教程!"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&is_video=false&description=CocoaPods简易安装教程!"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CocoaPods简易安装教程!&body=Check out this article: http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&title=CocoaPods简易安装教程!"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.zsms.me/2015/06/30/cocoapods-e7-ae-80-e6-98-93-e5-ae-89-e8-a3-85-e6-95-99-e7-a8-8b/&name=CocoaPods简易安装教程!&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

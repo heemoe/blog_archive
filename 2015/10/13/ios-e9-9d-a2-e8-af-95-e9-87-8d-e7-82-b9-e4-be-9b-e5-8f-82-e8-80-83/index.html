@@ -10,7 +10,7 @@
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS面试重点,供参考.">
-<meta property="og:url" content="http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/index.html">
+<meta property="og:url" content="http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/index.html">
 <meta property="og:site_name" content="ZSMS_HEE">
 <meta property="og:description" content="Tip:如果下面每一条你都能扯个10分钟拿个15K+是没问题了.靠前面本人被问得越多.都是一个点开始,延伸很多问题,各种被追问… UI的东西,CALayer和View的关系,CoreAnimation,Core Graphics,Quartz 2D,自动布局,面试时较多的情况还是打开一个APP问你这个界面怎么搭建的,动态Cell之类的.某些公司对动画,绘图是比较严格的. SDWebImage的原理">
 <meta property="og:updated_time" content="2017-12-07T07:20:21.179Z">
@@ -84,16 +84,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&text=iOS面试重点,供参考."><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&is_video=false&description=iOS面试重点,供参考."><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=iOS面试重点,供参考.&body=Check out this article: http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&name=iOS面试重点,供参考.&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&text=iOS面试重点,供参考."><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&is_video=false&description=iOS面试重点,供参考."><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=iOS面试重点,供参考.&body=Check out this article: http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&name=iOS面试重点,供参考.&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -186,16 +186,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&text=iOS面试重点,供参考."><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&is_video=false&description=iOS面试重点,供参考."><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=iOS面试重点,供参考.&body=Check out this article: http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&name=iOS面试重点,供参考.&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&text=iOS面试重点,供参考."><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&is_video=false&description=iOS面试重点,供参考."><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=iOS面试重点,供参考.&body=Check out this article: http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&title=iOS面试重点,供参考."><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.zsms.me/2015/10/13/ios-e9-9d-a2-e8-af-95-e9-87-8d-e7-82-b9-e4-be-9b-e5-8f-82-e8-80-83/&name=iOS面试重点,供参考.&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
