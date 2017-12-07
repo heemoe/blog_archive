@@ -3353,9 +3353,9 @@ return 0;
         
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> c </tag>
+            
+            <tag> linux </tag>
             
         </tags>
         
@@ -3389,6 +3389,13 @@ return 0;
       <title><![CDATA[Search]]></title>
       <url>/Search/index.html</url>
       <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[about]]></title>
+      <url>/about/index.html</url>
+      <content type="html"><![CDATA[<p>Hello Wrold.</p>
+]]></content>
     </entry>
     
   
