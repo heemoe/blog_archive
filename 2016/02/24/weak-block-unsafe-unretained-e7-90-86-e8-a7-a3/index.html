@@ -13,7 +13,7 @@
 <meta property="og:url" content="http://www.zsms.me/2016/02/24/weak-block-unsafe-unretained-e7-90-86-e8-a7-a3/index.html">
 <meta property="og:site_name" content="ZSMS_HEE">
 <meta property="og:description" content="一些关键字的作用__weak __block unsafe_unretained __unsafe_unretained的问题unsafe_unretained和weak类似，weak会自己所指向的内存释放并且置空（nil），但是unsafe_unretained所指向的内存被释放后并不知道自己指向的内存地址被销毁了，所以会造成野指针是不安全的。 strong会给计数器+1，有可能会造成不会释放。">
-<meta property="og:updated_time" content="2017-12-07T07:20:21.181Z">
+<meta property="og:updated_time" content="2017-12-07T07:20:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="__weak __block __unsafe_unretained理解">
 <meta name="twitter:description" content="一些关键字的作用__weak __block unsafe_unretained __unsafe_unretained的问题unsafe_unretained和weak类似，weak会自己所指向的内存释放并且置空（nil），但是unsafe_unretained所指向的内存被释放后并不知道自己指向的内存地址被销毁了，所以会造成野指针是不安全的。 strong会给计数器+1，有可能会造成不会释放。">
@@ -219,7 +219,7 @@
     
     <footer id="footer">
   <div class="footer-left">
-    Copyright &copy; 2017 Hee
+    Copyright &copy; 2018 Hee
   </div>
   <div class="footer-right">
     <nav>
