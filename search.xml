@@ -3,6 +3,35 @@
   
     
     <entry>
+      <title><![CDATA[hide navigationBar bottom line]]></title>
+      <url>/2018/03/21/hide-navigationBar-bottom-line/</url>
+      <content type="html"><![CDATA[<h3 id="hide-navigationBar-bottom-line"><a href="#hide-navigationBar-bottom-line" class="headerlink" title="hide navigationBar bottom line"></a>hide navigationBar bottom line</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">navigationController.navigationBar.setValue(true, forKey: &quot;hidesShadow&quot;)</span><br></pre></td></tr></table></figure>]]></content>
+      
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[swift 4.0 using closure pass value]]></title>
+      <url>/2018/03/20/swift-4-pass-value-using-closure/</url>
+      <content type="html"><![CDATA[<h3 id="swift-4-0-using-closure-pass-value"><a href="#swift-4-0-using-closure-pass-value" class="headerlink" title="swift 4.0 using closure pass value"></a>swift 4.0 using closure pass value</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// class A</span><br><span class="line"></span><br><span class="line">// 1.create a typealis</span><br><span class="line">typealias WebHandler = (_ height:CGFloat) -&gt; Void</span><br><span class="line"></span><br><span class="line">// 2.a handler </span><br><span class="line">var handler: WebHandler?</span><br><span class="line"></span><br><span class="line">// 3.a function pass the handler</span><br><span class="line">func webHeightDidChange(handle: @escaping WebHandler) &#123;</span><br><span class="line">         handler = handle</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">// 4.the value passing</span><br><span class="line">func heightDidChange(height: CGFloat) &#123;</span><br><span class="line">	if handler != nil &#123;</span><br><span class="line">		handler!(height)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/// class B</span><br><span class="line"></span><br><span class="line">var a = A()</span><br><span class="line">a.webHeightDidChange(handle: &#123; (height) in</span><br><span class="line">	print(height)    </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+      
+        
+        <tags>
+            
+            <tag> iOS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[2018]]></title>
       <url>/2018/02/28/2018/</url>
       <content type="html"><![CDATA[<p>Do not take life too seriously. You will never get out of it alive.</p>
